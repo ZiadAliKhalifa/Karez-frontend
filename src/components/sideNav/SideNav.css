@@ -3,10 +3,10 @@
   width: 8.5%;
   min-width: 100px;
   height: 100vh;
-  /* position: absolute; */
   left: 0px;
   top: 0px;
   background: var(--blue);
+  position: relative;
 }
 
 .sidenav-title {
@@ -31,10 +31,10 @@
 }
 
 .sidenav-logout-container {
-  position: inherit;
-  bottom: 40px;
   width: 100%;
   display: flex;
+  position: absolute;
+  bottom: 40px;
 }
 
 .sidenav-logout-button {
