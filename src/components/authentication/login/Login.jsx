@@ -8,14 +8,16 @@ import { setCookie } from "../../../utils/cookies";
 import restHelper from "../../../helpers/RestHelper";
 import appConfig from "../../../config.json";
 import { loginUser } from "../../../redux/authentication/authenticationActions";
+import { useHistory } from "react-router";
 
 function Login() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const phoneError = useRef(false);
   const passwordError = useRef(false);
-
-  const dispatch = useDispatch();
 
   const formValidation = (phone, password) => {
     if (phone === "") {
@@ -51,10 +53,8 @@ function Login() {
           setCookie("refreshToken", res.data.refresh, 14);
           setCookie("role", res.data.role, 7);
           dispatch(loginUser());
-          if(res.data.role === "Montage Admin")
-            history.push("/admin");
-          else
-            history.push("/printer");
+          if (res.data.role === "Montage Admin") history.push("/admin");
+          else history.push("/printer");
         })
         .catch((err) => {
           alert("اسم المستخدم او كلمة المرور غير صحيحة , برجاء اعادة المحاولة");
