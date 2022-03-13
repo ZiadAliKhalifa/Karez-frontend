@@ -13,7 +13,7 @@ function SideNav() {
   return (
     <nav className="sidenav-container">
       <div className="sidenav-title">الكراز</div>
-      {userRole !== "Montage Admin" && (
+      {userRole === "Montage Admin" && (
         <>
           <div
             className="sidenav-tabs"
