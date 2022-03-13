@@ -3,18 +3,6 @@
   display: flex;
 }
 
-.login-container-left {
-  height: 100vh;
-  width: 60%;
-}
-.login-image-container {
-  background-image: url(../../../static/images/zanobia.svg);
-  background-repeat: no-repeat;
-  /* background-size: cover; */
-  width: 100%;
-  height: 100%;
-}
-
 .login-error-container {
   width: 90%;
   margin-top: 30px;
@@ -22,29 +10,15 @@
   margin-right: auto;
 }
 
-.login-left-heading {
-  padding-top: 10px;
-  font-size: 40px;
-  font-weight: 600;
-}
-
-.login-left-subheading {
-  font-size: 25px;
-  color: #717171;
-  font-style: italic;
-  margin-top: 15px;
-}
-
-.login-container-right {
-  width: 40%;
+.login-container-main {
+  width: 100%;
   min-width: 400px;
   text-align: center;
   background-color: white;
 }
 
 .login-logo-black {
-  width: 65%;
-  margin-top: 20%;
+  margin-top: 5%;
 }
 
 .login-right-subheading {
@@ -53,8 +27,8 @@
 }
 
 .login-form-container {
-  width: 66%;
-  padding-top: 11%;
+  width: 25%;
+  padding-top: 2%;
   text-align: left;
   margin: auto;
 }
@@ -82,7 +56,7 @@
   padding-bottom: 15px;
   padding-right: 11px;
   font-size: 20px;
-  color: var(--grey);
+  color: var(--black);
   direction: rtl;
   text-align: right;
 }
@@ -96,7 +70,7 @@
   height: 40px;
   border-radius: 25px !important;
   border: none !important;
-  background-color: #a97b50 !important;
+  background-color: var(--blue) !important;
   color: var(--white) !important;
   font-family: Tajawal !important;
   margin: auto !important;

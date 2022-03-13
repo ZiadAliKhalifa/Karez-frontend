@@ -1,7 +1,7 @@
 {
   "host": {
     "protocol": "http",
-    "host": "127.0.0.1",
+    "host": "192.168.1.13",
     "port": "8000"
   },
   "services": {
@@ -9,7 +9,7 @@
       "getUnits": "api/inventory/get-all-units",
       "getTypes": "api/recipe/get-type",
       "getSection": "api/recipe/get-section",
-      "login": "api/token/"
+      "login": "api/user/token/"
     },
     "inventory": {
       "getAllItems": "api/inventory/get-all-inventory-items",

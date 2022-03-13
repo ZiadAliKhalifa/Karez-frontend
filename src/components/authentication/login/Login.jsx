@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./login.css";
-import zanobiaLogo from "../../../static/images/zanobia-logo.svg";
+import karezLogo from "../../../static/images/karez_login.jpeg";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setActiveNavTab } from "../../../redux/navbar/navbarActions";
 import { navtabs } from "../../../consts/navTabs";
 import AppInput from "../../common/input/Input";
 import Button from "../../common/button/Button";
@@ -14,36 +13,30 @@ import appConfig from "../../../config.json";
 function Login() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  let [phoneError, setPhoneError] = useState(false);
-  let [passwordError, setPasswordError] = useState(false);
+  const phoneError = useRef(false);
+  const passwordError = useRef(false);
 
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
-    if (window.location.pathname.slice(0, 6) === "/login") {
-      dispatch(setActiveNavTab(navtabs.LOGIN));
-    }
-  }, []);
-
   const formValidation = (phone, password) => {
     if (phone === "") {
-      setPhoneError((Error = "This Feild is required"));
+      phoneError.current = "This Feild is required";
     } else {
-      setPhoneError((phoneError = null));
+      phoneError.current = null;
     }
 
     if (password === "") {
-      setPasswordError((passwordError = "This Feild is required"));
+      passwordError.current = "This Feild is required";
     } else {
-      setPasswordError((passwordError = null));
+      passwordError.current = null;
     }
-    return passwordError === null && phoneError === null ? true : false;
+    return passwordError.current === null && phoneError.current === null ? true : false;
   };
 
   const loginSubmitHandler = (e) => {
     e.preventDefault();
-    const data = { mobile_number: phone, password: password };
+    const data = { email: phone, password: password };
 
     const isValidated = formValidation(phone, password);
 
@@ -54,10 +47,10 @@ function Login() {
       restHelper
         .postRequest(url, data)
         .then((res) => {
-          setCookie("accessToken", res.data.access, 1);
-          setCookie("refreshToken", res.data.refresh, 7);
-          dispatch(setActiveNavTab(navtabs.INVENTORY));
-          history.push("/inventory");
+          setCookie("accessToken", res.data.access, 7);
+          setCookie("refreshToken", res.data.refresh, 14);
+          setCookie("role", res.data.role, 7);
+          //history.push("/inventory");
         })
         .catch((err) => {
           alert("اسم المستخدم او كلمة المرور غير صحيحة , برجاء اعادة المحاولة");
@@ -67,11 +60,8 @@ function Login() {
 
   return (
     <div className="login-container">
-      <div className="login-container-left">
-        <div className="login-image-container"></div>
-      </div>
-      <div className="login-container-right">
-        <img className="login-logo-black" src={zanobiaLogo} alt="" />
+      <div className="login-container-main">
+        <img className="login-logo-black" src={karezLogo} alt="" />
         <div className="login-form-container">
           <form onSubmit={loginSubmitHandler} id="login-form">
             <div className="login-phone-input-container">

@@ -27,9 +27,9 @@ const requireLogin = (to, from, next) => {
 const Routes = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  // useEffect(() => {
     
-  }, [dispatch]);
+  // }, [dispatch]);
 
   return (
     <BrowserRouter>
