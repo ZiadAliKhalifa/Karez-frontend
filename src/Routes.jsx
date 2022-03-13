@@ -33,7 +33,7 @@ const Routes = () => {
   return (
     <BrowserRouter>
       <GenericModal />
-      <SideNav />
+      {getCookie("accessToken") && <SideNav />}
       {/* we can have multiple GuardProvider wrappers with different validation functions */}
       <GuardProvider guards={[requireLogin]}>
         <Switch>
