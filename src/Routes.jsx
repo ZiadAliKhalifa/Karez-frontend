@@ -1,16 +1,16 @@
 // react router guards package docs
 // https://www.npmjs.com/package/react-router-guards?activeTab=readme
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Switch, BrowserRouter } from "react-router-dom";
 import { GuardProvider, GuardedRoute } from "react-router-guards";
-import { useDispatch } from "react-redux";
 
 import GenericModal from "./components/common/modal/GenericModal";
 import Login from "./components/authentication/login/Login";
 import Logout from "./components/authentication/logout/Logout";
 import { getCookie } from "./utils/cookies";
 import SideNav from "./components/sideNav/SideNav";
+import { useSelector } from "react-redux";
 import Table from "./components/common/Table/Table";
 import Customer from "./Customer/Customer";
 
@@ -28,14 +28,11 @@ const requireLogin = (to, from, next) => {
 };
 
 const Routes = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => { }, [dispatch]);
-
+  const { isLoggedIn } = useSelector((state) => state.authentication);
   return (
     <BrowserRouter>
       <GenericModal />
-      <Customer />
+      {isLoggedIn && <SideNav />}
       {/* we can have multiple GuardProvider wrappers with different validation functions */}
       <GuardProvider guards={[requireLogin]}>
         <Switch>
