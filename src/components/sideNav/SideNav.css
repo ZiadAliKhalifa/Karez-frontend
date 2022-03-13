@@ -1,0 +1,51 @@
+.sidenav-container {
+  max-width: 160px;
+  width: 8.5%;
+  min-width: 100px;
+  height: 100vh;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  background: var(--blue);
+}
+
+.sidenav-title {
+  font-size: 25px;
+  color: var(--white);
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.sidenav-tabs {
+  text-align: center;
+  font-family: Tajawal, roboto;
+  cursor: pointer;
+  color: var(--white);
+  margin-bottom: 45px;
+  font-size: 20px;
+}
+
+.sidenav-tab-img {
+  width: 62.6%;
+}
+
+.sidenav-logout-container {
+  position: inherit;
+  bottom: 40px;
+  width: 100%;
+  display: flex;
+}
+
+.sidenav-logout-button {
+  background: transparent;
+  border: 2px solid var(--white);
+  border-radius: 3px;
+  color: var(--white);
+  width: 100px;
+  height: 40px;
+  align-self: center;
+  margin: auto;
+  cursor: pointer;
+  font-family: Tajawal, roboto;
+}
