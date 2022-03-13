@@ -7,27 +7,22 @@ import {
   TableRow,
   TableCell,
   TableContainer,
-  TableHead,
-  TextField
+  TableHead
 } from "@material-ui/core";
-import DateAdapter from '@mui/lab/AdapterDateFns';
-import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-
-import { ClickAwayListener, Fade, MenuItem, MenuList, Popper } from "@mui/material";
-import MoreVertOutlined from "@mui/icons-material/MoreVertOutlined";
 
 import AppInput from "../../common/input/Input"
 
 import { omniSearch } from "../../../helpers/searchUtility";
 
 import "./Table.css";
+import AppButton from "../button/Button";
 
 
 const SORT_DIRECTION = {
   ASCENDING: "ASCENDING",
   DECENDING: "DECENDING",
 };
+
 
 export default function Table({
   headers = [],
@@ -37,7 +32,6 @@ export default function Table({
   tableHeight = "80vh",
   rowActions = [],
   searchable = false,
-  datepicker = false
 }) {
   /**
    * This is a generic table component
@@ -57,65 +51,16 @@ export default function Table({
    * @param tableHeight: A height to for the table, defaults to 80% of the user's view.
    *
    * @param searchable: A boolean value that defaults to false, it indicates whether the table will have a search bar.
-   *
-   * @param datepicker: A boolean value that defaults to false, it indicates whether the table will have a date filter.
    * 
    * @param rowActions: An  array that contains the list of actions that can be carried on the table items. (menuHelper.js)
    */
 
   const [_rows, _setRows] = useState([...rows]);
   const [_searchPhrase, _setSearchPhrase] = useState("");
-  const [_date, _setDate] = useState();
   const [_lastSort, _setlastSort] = useState({
     key: "",
     sort: SORT_DIRECTION.ASCENDING,
   });
-
-
-  // Context menu related fields
-  const [_openRow, _setOpenRow] = React.useState(0);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-
-  // Context menu functions
-  const handleClose = (e) => {
-    _setOpenRow(0);
-    e.stopPropagation();
-  };
-
-  const handleContextMenu = (e, row) => {
-    e.stopPropagation();
-    const { clientX, clientY } = e;
-    _setOpenRow(row.id);
-    const virtualElement = {
-      getBoundingClientRect: () => ({
-        width: 0,
-        height: 0,
-        top: clientY,
-        right: clientX,
-        bottom: clientY,
-        left: clientX
-      })
-    };
-    setAnchorEl(virtualElement);
-  };
-
-  // Carries out the function passed to the menu action
-  const handleRowAction = (event, func, id) => {
-    // Closes the menu before running the function passed to the menu action
-    handleClose(event);
-    func(id);
-  }
-
-
-  // Closes the menu if the user scrolls outside the table
-  useEffect(() => {
-    window.addEventListener("scroll", (e) => handleClose(e));
-
-    return () => { // return a cleanup function to unregister our function since its gonna run multiple times
-      window.removeEventListener("scroll", (e) => handleClose(e));
-    };
-  }, []);
 
 
   // Table functions
@@ -135,6 +80,7 @@ export default function Table({
   };
 
   const _sort = useCallback((key, _rows, sortDirection) => {
+    console.log(rowActions);
     if (sortDirection === SORT_DIRECTION.ASCENDING)
       return [..._rows].sort((a, b) => (a[key] > b[key] ? 1 : -1));
     else
@@ -168,37 +114,21 @@ export default function Table({
             />
           </div>
         }
-        {
-          datepicker &&
-          <div className="date-picker-container">
-            <LocalizationProvider dateAdapter={DateAdapter}>
-              <DesktopDatePicker
-                label="التاريخ"
-                inputFormat="dd/MM/yyyy"
-                value={_date}
-                disableFuture={true}
-                onChange={value => _setDate(value)}
-                renderInput={(params) => <TextField {...params} />}
-              />
-            </LocalizationProvider>
-          </div>
-        }
       </div>
       <Paper >
         <TableContainer style={{ height: tableHeight }}>
-          <TableMUI stickyHeader aria-label="sticky table" onScroll={handleClose}>
+          <TableMUI stickyHeader aria-label="sticky table">
             <TableHead>
               <TableRow className="head">
-
                 {
                   // Leaves an empty header in case there was a context menu for the table
                   rowActions &&
-                  <TableCell
-                    key="menu"
-                    className="header-cell"
-                  >
-                    <div className="header-cell-content" />
-                  </TableCell>
+
+                  rowActions.map(action => (
+                    < TableCell key="menu" className="header-cell">
+                      <div className="header-cell-content" />
+                    </TableCell>
+                  ))
                 }
                 {headers.map((header) => (
                   <TableCell
@@ -222,42 +152,12 @@ export default function Table({
                   className="row"
                   style={onRowClick && { cursor: "pointer" }}
                 >
-                  {
-                    // Context menu
-                    rowActions &&
-                    <TableCell key="menu">
-                      <MoreVertOutlined onClick={e => handleContextMenu(e, row)} />
-                      <Popper
-                        id={row.id}
-                        open={_openRow != 0}
-                        anchorEl={anchorEl}
-                        transition
-                        placement="bottom-start"
-                      >
-                        {({ TransitionProps }) => (
-                          <ClickAwayListener onClickAway={handleClose}>
-                            <Fade {...TransitionProps}>
-                              <MenuList key={row.id}>
-                                {
-                                  rowActions.map(action => (
-                                    <MenuItem
-                                      key={row.id + action.name}
-                                      onClick={e => {
-                                        let targetedRow = rows.find(row => row.id === _openRow)
-                                        handleRowAction(e, action.func, targetedRow)
-                                      }}
-                                    >
-                                      {action.icon}{action.name}
-                                    </MenuItem>
-                                  ))
-                                }
-                              </MenuList>
-                            </Fade>
-                          </ClickAwayListener>
-                        )}
-                      </Popper>
+                  {rowActions.map(action => (
+                    <TableCell key={Math.random()} align="center">
+                      <AppButton onClick={e => action.action(row.id)} text={action.name} />
                     </TableCell>
-                  }
+                  ))}
+
                   {headers.map((header) => (
                     <TableCell key={Math.random()} align="center">
                       {row[header.key]} {header.suffix && header.suffix}
