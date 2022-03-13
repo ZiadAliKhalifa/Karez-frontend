@@ -39,6 +39,18 @@ const Routes = () => {
         <Switch>
           <GuardedRoute path="/login" exact component={Login}></GuardedRoute>
           <GuardedRoute path="/logout" exact component={Logout}></GuardedRoute>
+          <GuardedRoute
+            path="/admin"
+            exact
+            //component={}
+            meta={{ auth: true }}
+          />
+          <GuardedRoute
+            path="/printer"
+            exact
+            //component={}
+            meta={{ auth: true }}
+          />
         </Switch>
       </GuardProvider>
     </BrowserRouter>

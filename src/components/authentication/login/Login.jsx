@@ -50,7 +50,10 @@ function Login() {
           setCookie("accessToken", res.data.access, 7);
           setCookie("refreshToken", res.data.refresh, 14);
           setCookie("role", res.data.role, 7);
-          //history.push("/inventory");
+          if(res.data.role === "Montage Admin")
+            history.push("/admin");
+          else
+            history.push("/printer");
         })
         .catch((err) => {
           alert("اسم المستخدم او كلمة المرور غير صحيحة , برجاء اعادة المحاولة");
