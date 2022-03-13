@@ -29,7 +29,7 @@ function SideNav() {
         <>
           <div
             className="sidenav-tabs"
-            onClick={() => history.push("/customers")}
+            onClick={() => history.push("/admin/customers")}
           >
             <img
               src={customerLogo}
