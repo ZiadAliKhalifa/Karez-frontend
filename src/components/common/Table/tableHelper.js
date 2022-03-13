@@ -13,3 +13,10 @@ export const createTableHeader = (displayName, objectKey, helperContent, suffix)
         suffix: suffix
     }
 }
+
+export const createRowAction = (buttonName, action) => {
+    return {
+        name: buttonName,
+        action: action
+    }
+}
