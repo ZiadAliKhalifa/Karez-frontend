@@ -1,14 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./login.css";
 import karezLogo from "../../../static/images/karez_login.jpeg";
-import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { navtabs } from "../../../consts/navTabs";
 import AppInput from "../../common/input/Input";
 import Button from "../../common/button/Button";
 import { setCookie } from "../../../utils/cookies";
 import restHelper from "../../../helpers/RestHelper";
 import appConfig from "../../../config.json";
+import { loginUser } from "../../../redux/authentication/authenticationActions";
 
 function Login() {
   const [phone, setPhone] = useState("");
@@ -17,7 +16,6 @@ function Login() {
   const passwordError = useRef(false);
 
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const formValidation = (phone, password) => {
     if (phone === "") {
@@ -31,7 +29,9 @@ function Login() {
     } else {
       passwordError.current = null;
     }
-    return passwordError.current === null && phoneError.current === null ? true : false;
+    return passwordError.current === null && phoneError.current === null
+      ? true
+      : false;
   };
 
   const loginSubmitHandler = (e) => {
@@ -50,6 +50,7 @@ function Login() {
           setCookie("accessToken", res.data.access, 7);
           setCookie("refreshToken", res.data.refresh, 14);
           setCookie("role", res.data.role, 7);
+          dispatch(loginUser());
           //history.push("/inventory");
         })
         .catch((err) => {
