@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="99" height="88" viewBox="0 0 99 88">
+  <g id="MDI_package-variant-closed" data-name="MDI / package-variant-closed" opacity="0.6">
+    <g id="Boundary" fill="#ebebeb" stroke="rgba(0,0,0,0)" stroke-width="1" opacity="0">
+      <rect width="99" height="88" stroke="none"/>
+      <rect x="0.5" y="0.5" width="98" height="87" fill="none"/>
+    </g>
+    <path id="Path_package-variant-closed" data-name="Path / package-variant-closed" d="M96,62.9a4.146,4.146,0,0,1-2.738,3.7L52.445,85.244a6.114,6.114,0,0,1-5.89,0L5.738,66.6A4.146,4.146,0,0,1,3,62.9V25.1a4.146,4.146,0,0,1,2.738-3.7L46.555,2.756a6.114,6.114,0,0,1,5.89,0L93.262,21.4A4.146,4.146,0,0,1,96,25.1V62.9M49.5,11.03l-9.765,4.494L70.167,29.762,80.293,25.1,49.5,11.03M18.707,25.1,49.5,39.17l10.127-4.62L29.247,20.27,18.707,25.1M13.333,60.422l31,14.2V46.436l-31-14.154v28.14m72.333,0V32.282l-31,14.154V74.618Z" transform="translate(0 0)" fill="#ebebeb"/>
+  </g>
+</svg>
