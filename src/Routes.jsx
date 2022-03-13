@@ -9,10 +9,8 @@ import GenericModal from "./components/common/modal/GenericModal";
 import Login from "./components/authentication/login/Login";
 import Logout from "./components/authentication/logout/Logout";
 import { getCookie } from "./utils/cookies";
-import SideNav from "./components/sideNav/SideNav";
-import { useSelector } from "react-redux";
-import Table from "./components/common/Table/Table";
-import Customer from "./Customer/Customer";
+import Customer from "./components/customer/Customer";
+import ComponentWrapper from "./components/componentWrapper/ComponentWrapper";
 
 // This function should check if the JWT access token exists to avail guarded routes
 // check if JWT exists
@@ -28,22 +26,19 @@ const requireLogin = (to, from, next) => {
 };
 
 const Routes = () => {
-  const { isLoggedIn } = useSelector((state) => state.authentication);
   return (
     <BrowserRouter>
       <GenericModal />
-      {isLoggedIn && <SideNav />}
       {/* we can have multiple GuardProvider wrappers with different validation functions */}
       <GuardProvider guards={[requireLogin]}>
         <Switch>
           <GuardedRoute path="/login" exact component={Login}></GuardedRoute>
           <GuardedRoute path="/logout" exact component={Logout}></GuardedRoute>
-          <GuardedRoute
-            path="/admin"
-            exact
-            //component={}
-            meta={{ auth: true }}
-          />
+          <GuardedRoute path="/admin/customers" exact meta={{ auth: true }}>
+            <ComponentWrapper>
+              <Customer />
+            </ComponentWrapper>
+          </GuardedRoute>
           <GuardedRoute
             path="/printer"
             exact
@@ -52,7 +47,7 @@ const Routes = () => {
           />
         </Switch>
       </GuardProvider>
-    </BrowserRouter >
+    </BrowserRouter>
   );
 };
 
