@@ -1,0 +1,81 @@
+.head:hover {
+  cursor: pointer;
+}
+
+table {
+  border-radius: 20px !important;
+  border: none !important;
+}
+
+th {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.171) !important;
+}
+
+td {
+  font-size: 16px !important;
+  font-family: Tajawal !important;
+  color: var(--grey) !important;
+  border: none !important;
+}
+
+.MuiPaper-root {
+  border-radius: 20px !important;
+  font-family: Tajawal !important;
+  box-shadow: 0px 6px 20px #88888852 !important;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.row:hover {
+  background-color: #f3f3f3;
+  cursor: pointer;
+}
+
+.header-cell {
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-content: space-between;
+  align-items: center;
+  font-size: 16px !important;
+  font-family: Tajawal !important;
+  font-weight: bold !important;
+  color: var(--grey) !important;
+}
+
+.header-cell:hover {
+  filter: brightness(1.15);
+}
+
+.header-cell-content {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: space-between;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.header-helper {
+  width: 30px !important;
+}
+
+.table-search-bar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.table-search-bar {
+  border: 1px solid var(--grey) !important;
+  border-radius: 25px;
+  padding: 5px 10px 0px 20px !important;
+  width: calc(80% - 30px) !important;
+}
+
+.date-picker-container {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}

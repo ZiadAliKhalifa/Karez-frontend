@@ -1,0 +1,13 @@
+.inputDefault .MuiOutlinedInput-root {
+    border-radius: 25px !important;
+  } 
+
+.MuiInput-input[type="text"] {
+  font-family: Tajawal !important;
+  font-weight: 500;
+}
+
+.inputDisabled {
+  background-color: rgb(241, 241, 241);
+  border-radius: 25px !important;
+}

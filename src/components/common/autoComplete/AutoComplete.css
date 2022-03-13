@@ -1,0 +1,20 @@
+.auto-complete-input-default .Mui-focused::after {
+  /* border-bottom: 0.5px solid var(--gold) !important; */
+}
+
+.auto-complete-input-default {
+  border: 1px solid var(--grey) !important;
+  border-radius: 25px;
+  height: 40px !important;
+  font-family: Tajawal !important;
+}
+
+.autoCompleteError {
+  border: 1px solid #ec2626 !important;
+  border-radius: 25px;
+  height: 40px !important;
+}
+
+.inputDisabled {
+  background-color: rgb(241, 241, 241);
+}

@@ -1,0 +1,134 @@
+.underline {
+  height: 1px;
+  background-color: var(--light-grey);
+  width: 100%;
+}
+
+.edit-raw-material-qty-container {
+  width: 70%;
+  min-width: 1300px;
+  margin: auto;
+  padding-top: 40px;
+  direction: rtl;
+  color: var(--grey);
+}
+
+.edit-raw-material-qty-header {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+.edit-raw-material-qty-search-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.edit-raw-material-qty-search-label {
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 11px;
+  padding-right: 11px;
+  font-size: 20px;
+}
+
+.edit-raw-material-qty-search-input {
+  border: 1px solid var(--grey) !important;
+  border-radius: 25px;
+  padding: 5px 10px 0px 20px !important;
+  width: 400px !important;
+}
+
+.edit-raw-materials-qty-table-container {
+  width: 100%;
+  padding-top: 42px;
+}
+
+.edit-raw-materials-qty-table-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-raw-materials-qty-table-header {
+  font-size: 20px;
+  font-weight: bold;
+  width: 35%;
+  text-align: center;
+}
+
+.edit-raw-materials-qty-table-header-first {
+  font-size: 20px;
+  font-weight: bold;
+  width: 15%;
+}
+
+.edit-raw-materials-qty-table-header-last {
+  font-size: 20px;
+  font-weight: bold;
+  width: 11%;
+}
+
+.edit-raw-materials-qty-table-data {
+  width: 35%;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.edit-raw-materials-qty-table-data-first {
+  width: 15%;
+  padding-top: 20px;
+  text-align: right;
+  font-size: 18px;
+}
+
+.edit-raw-materials-qty-table-data-last {
+  width: 11%;
+  padding-top: 20px;
+  text-align: right;
+  font-size: 18px;
+}
+
+.edit-raw-materials-qty-input {
+  direction: ltr !important;
+  border: 1px solid var(--grey) !important;
+  border-radius: 25px;
+  padding: 5px 10px 0px 20px !important;
+  width: calc(80% - 30px) !important;
+}
+
+.edit-raw-materials-qty-actions-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  position: fixed;
+  bottom: 69px;
+  /*Noice*/
+  right: 0%;
+}
+
+.edit-raw-materials-qty-actions-subcontainer {
+  width: 140px;
+  display: flex;
+  justify-content: center;
+}
+
+.edit-raw-materials-qty-cancel,
+.edit-raw-materials-qty-submit {
+  width: 130px;
+  border-radius: 25px !important;
+  font-family: Tajawal !important;
+  font-size: 14px !important;
+}
+
+.edit-raw-materials-qty-cancel {
+  background-color: red !important;
+  border: 1px solid red !important;
+  color: white !important;
+}
+
+.edit-raw-materials-qty-submit {
+  background-color: white !important;
+  border: 1px solid var(--grey) !important;
+  color: var(--grey) !important;
+}

@@ -1,0 +1,30 @@
+.confirmation-container {
+  direction: rtl;
+  padding: 20px;
+}
+
+.confirmation-msg {
+  text-align: center;
+  color: var(--grey);
+  min-width: 400px;
+  max-width: 600px;
+}
+
+.confirmation-actions {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.close-btn {
+  width: 15%;
+  color: var(--white) !important;
+  border-radius: 25px !important;
+  border-color: var(--grey) !important;
+  background-color: red !important;
+}
+.save-btn {
+  width: 15%;
+  color: var(--grey) !important;
+  border-radius: 25px !important;
+  border-color: var(--grey) !important;
+}

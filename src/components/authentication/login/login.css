@@ -1,0 +1,113 @@
+.login-container {
+  width: 100%;
+  display: flex;
+}
+
+.login-container-left {
+  height: 100vh;
+  width: 60%;
+}
+.login-image-container {
+  background-image: url(../../../static/images/zanobia.svg);
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+  width: 100%;
+  height: 100%;
+}
+
+.login-error-container {
+  width: 90%;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login-left-heading {
+  padding-top: 10px;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.login-left-subheading {
+  font-size: 25px;
+  color: #717171;
+  font-style: italic;
+  margin-top: 15px;
+}
+
+.login-container-right {
+  width: 40%;
+  min-width: 400px;
+  text-align: center;
+  background-color: white;
+}
+
+.login-logo-black {
+  width: 65%;
+  margin-top: 20%;
+}
+
+.login-right-subheading {
+  margin-top: 35px;
+  font-size: 1.2vw;
+}
+
+.login-form-container {
+  width: 66%;
+  padding-top: 11%;
+  text-align: left;
+  margin: auto;
+}
+
+.login-password-input-container {
+  padding-top: 30px;
+}
+
+.forgot-password-link {
+  text-decoration: none;
+  color: #fe3b1f;
+}
+
+.forgot-password {
+  font-weight: 600;
+  color: #fe3b1f;
+  font-style: italic;
+  font-size: 0.8vw;
+  text-align: right;
+  padding-top: 2.5%;
+}
+.phone-password-input-label {
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  padding-right: 11px;
+  font-size: 20px;
+  color: var(--grey);
+  direction: rtl;
+  text-align: right;
+}
+.login-button-container {
+  margin-top: 50px;
+  display: flex;
+}
+
+.login-button {
+  width: 200px;
+  height: 40px;
+  border-radius: 25px !important;
+  border: none !important;
+  background-color: #a97b50 !important;
+  color: var(--white) !important;
+  font-family: Tajawal !important;
+  margin: auto !important;
+}
+
+.phone-password-input {
+  border: 1px solid var(--grey) !important;
+  border-radius: 25px;
+  padding: 10px 20px 0px 0px !important;
+  width: calc(100% - 20px) !important;
+  height: 40px !important;
+  margin-right: 25px !important;
+  direction: rtl !important;
+}

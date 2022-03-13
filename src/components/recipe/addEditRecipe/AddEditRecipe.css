@@ -1,0 +1,124 @@
+.add-edit-recipe-container {
+  width: 53%;
+  min-width: 1000px;
+  margin: auto;
+  padding-top: 40px;
+}
+
+.add-edit-recipe-header {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 40px;
+  color: var(--grey);
+  padding-bottom: 40px;
+}
+
+.add-edit-recipe-input-conatiner {
+  width: 100%;
+  direction: rtl;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.add-edit-recipe-dropdown-error {
+  color: red;
+  font-size: 14px;
+  position: absolute;
+  bottom: 20px;
+  margin-right: 40px;
+}
+
+.add-edit-recipe-name-input {
+  width: calc(55% - 20px) !important;
+}
+
+.add-edit-recipe-section-input {
+  width: calc(22% - 20px) !important;
+  margin-left: 25px !important;
+}
+
+.add-edit-recipe-type-input {
+  width: calc(22% - 20px) !important;
+}
+
+.add-edit-recipe-quantity-input {
+  width: calc(22% - 20px) !important;
+  margin-left: 25px !important;
+}
+
+.add-edit-recipe-input-label {
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  padding-right: 11px;
+  font-size: 20px;
+  color: var(--grey);
+  margin-right: 25px;
+}
+
+.add-edit-recipe-input-name,
+.add-edit-recipe-input-section,
+.add-edit-recipe-input-type,
+.add-edit-recipe-input-quantity {
+  border: 1px solid var(--grey) !important;
+  border-radius: 25px;
+  padding: 10px 20px 0px 0px !important;
+  width: calc(100% - 20px) !important;
+  height: 40px !important;
+  margin-right: 25px !important;
+}
+
+.add-edit-recipe-input-quantity {
+  padding: 10px 20px 0px 20px !important;
+  width: calc(100% - 40px) !important;
+}
+
+.add-edit-recipe-button-container {
+  display: flex;
+  align-items: flex-end;
+  width: calc(22% - 20px);
+}
+
+.add-edit-recipe-button {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px !important;
+  border: 2px solid var(--grey) !important;
+  color: var(--grey) !important;
+  font-family: Tajawal !important;
+}
+
+.add-edit-recipe-ingredients-container {
+  width: calc(100% - 70px);
+  padding-top: 40px;
+  margin: auto;
+}
+
+.add-edit-recipe-ingredients-row {
+  direction: rtl;
+  display: flex;
+}
+
+.add-edit-recipe-ingredient-label {
+  width: 47%;
+  color: var(--grey);
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 25px;
+}
+
+.add-edit-recipe-ingredient-data {
+  width: 47%;
+  font-size: 18px;
+  color: var(--grey);
+  padding-bottom: 25px;
+}
+
+.add-edit-recipe-ingredient-icon {
+  cursor: pointer;
+  color: var(--grey);
+  width: 15px;
+  height: 15px;
+}
