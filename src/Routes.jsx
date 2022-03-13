@@ -10,6 +10,7 @@ import GenericModal from "./components/common/modal/GenericModal";
 import Login from "./components/authentication/login/Login";
 import Logout from "./components/authentication/logout/Logout";
 import { getCookie } from "./utils/cookies";
+import SideNav from "./components/sideNav/SideNav";
 
 // This function should check if the JWT access token exists to avail guarded routes
 // check if JWT exists
@@ -27,13 +28,12 @@ const requireLogin = (to, from, next) => {
 const Routes = () => {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-    
-  // }, [dispatch]);
+  useEffect(() => {}, [dispatch]);
 
   return (
     <BrowserRouter>
       <GenericModal />
+      <SideNav />
       {/* we can have multiple GuardProvider wrappers with different validation functions */}
       <GuardProvider guards={[requireLogin]}>
         <Switch>
