@@ -11,35 +11,8 @@
       "getSection": "api/recipe/get-section",
       "login": "api/user/token/"
     },
-    "inventory": {
-      "getAllItems": "api/inventory/get-all-inventory-items",
-      "getItemById": "api/inventory/get-inventory-by-id",
-      "addItem": "api/inventory/create-inventory-item",
-      "editItem": "api/inventory/update-inventory-item",
-      "deleteItem": "api/inventory/delete-inventory-item?id={id}"
-    },
-    "recipe": {
-      "getAllItems": "api/recipe/get-all-recipe-items",
-      "getItemById": "api/recipe/get-recipe-by-id?id={id}",
-      "getByType": "api/recipe/get-recipe-by-type?type={recipe_type}",
-      "addItem": "api/recipe/create-recipe-item",
-      "editItem": "api/recipe/update-recipe-item?id={id}",
-      "deleteItem": "api/recipe/delete-recipe-item?id={id}",
-      "getTypes": "api/recipe/get-type",
-      "getSections": "api/recipe/get-section",
-      "addRecipeIngredients": "api/recipe/create-recipe-ingredient",
-      "deleteRecipeIngredient": "api/recipe/delete-recipe-ingredient"
-    },
-    "orders": {
-      "addItem": "api/order/create-order",
-      "getAllItems": "api/order/get-all-order-details",
-      "getById": "api/order/get-order-details-by-id?id={id}",
-      "getByDate": "api/order/get-order-details-by-date?date={date}",
-      "getByType": "api/order/get-order-details-by-type?type={orders_type}",
-      "getItemsDetailsById": "api/order/get-order-by-id?id={id}",
-      "getOrderitemssById": "api/order/get-order-items-by-id?id={id}",
-      "deleteOrderItem": "api/order/delete-order-item?id={id}",
-      "addOrderItem": "api/order/add-order-item"
+    "customers": {
+      "getCustomers": "api/customer/customer/"
     }
   }
 }

@@ -11,6 +11,8 @@ import Logout from "./components/authentication/logout/Logout";
 import { getCookie } from "./utils/cookies";
 import SideNav from "./components/sideNav/SideNav";
 import { useSelector } from "react-redux";
+import Table from "./components/common/Table/Table";
+import Customer from "./Customer/Customer";
 
 // This function should check if the JWT access token exists to avail guarded routes
 // check if JWT exists
@@ -36,9 +38,21 @@ const Routes = () => {
         <Switch>
           <GuardedRoute path="/login" exact component={Login}></GuardedRoute>
           <GuardedRoute path="/logout" exact component={Logout}></GuardedRoute>
+          <GuardedRoute
+            path="/admin"
+            exact
+            //component={}
+            meta={{ auth: true }}
+          />
+          <GuardedRoute
+            path="/printer"
+            exact
+            //component={}
+            meta={{ auth: true }}
+          />
         </Switch>
       </GuardProvider>
-    </BrowserRouter>
+    </BrowserRouter >
   );
 };
 
