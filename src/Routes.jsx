@@ -13,6 +13,7 @@ import SideNav from "./components/sideNav/SideNav";
 import { useSelector } from "react-redux";
 import Table from "./components/common/Table/Table";
 import Customer from "./Customer/Customer";
+import AddMontage from "./components/montage/addMontage/AddMontage";
 
 // This function should check if the JWT access token exists to avail guarded routes
 // check if JWT exists
@@ -48,6 +49,12 @@ const Routes = () => {
             path="/printer"
             exact
             //component={}
+            meta={{ auth: true }}
+          />
+          <GuardedRoute
+            path="/montage/new"
+            exact
+            component={AddMontage}
             meta={{ auth: true }}
           />
         </Switch>
