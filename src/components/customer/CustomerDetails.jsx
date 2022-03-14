@@ -7,6 +7,8 @@ import restHelper from "../../helpers/RestHelper";
 import appConfig from "../../config.json";
 import { createRowAction } from "../common/Table/tableHelper";
 
+import AppButton from "../common/button/Button";
+
 import "./CustomerDetails.css"
 
 export default function CustomerDetails() {
@@ -17,6 +19,10 @@ export default function CustomerDetails() {
     const { id } = useParams();
     const history = useHistory();
     const location = useLocation();
+    
+    const navigteToNewMontage = () => {
+        history.push("/admin/montage/new");
+      }
 
     useEffect(() => {
 
@@ -118,6 +124,9 @@ export default function CustomerDetails() {
         <>
             <div className='montage-container'>
                 <div className='montage-header'>{customer.name}</div>
+                <div className="customers-new">
+                    <AppButton onClick={navigteToNewMontage} text={"اضافه مونتاج"} />
+                </div>
                 <div className='montage-customer-details'>
                     <div className='montage-customer-details-item'>
                         <div className='montage-customer-details-item-header'>Code</div>
