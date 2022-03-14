@@ -1,0 +1,14 @@
+.customers-header {
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customers-new {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    width: 10rem;
+    margin: 20px;
+}
