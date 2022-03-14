@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import Table from "../common/Table/Table";
+
+import FileUploadButton from "../common/uploadButton/uploadButton"
 import { createRowAction } from "../common/Table/tableHelper";
 
 import restHelper from "../../helpers/RestHelper";
@@ -55,6 +57,7 @@ export default function Customers() {
 
   return (
     <>
+      <FileUploadButton />
       <Table
         headers={headers}
         rows={customers}
