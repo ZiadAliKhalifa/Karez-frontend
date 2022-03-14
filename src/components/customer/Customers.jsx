@@ -7,32 +7,13 @@ import restHelper from "../../helpers/RestHelper";
 import appConfig from "../../config.json";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-const headers = [
-  {
-    key: "name",
-    name: "الاسم",
-  },
-  {
-    key: "code",
-    name: "الرقم التعريفي",
-  },
-  {
-    key: "mobile_number",
-    name: "رقم التليفون",
-  },
-  {
-    key: "address",
-    name: "العنوان",
-  },
-];
-
-export default function Customer() {
+export default function Customers() {
   const [customers, setCustomers] = useState([]);
 
   const history = useHistory();
 
   const navigateToCustomerDetails = (id) => {
-    history.push("/customer/" + id);
+    history.push("/admin/customer/" + id);
   };
 
   useEffect(() => {
@@ -49,6 +30,28 @@ export default function Customer() {
         alert("برجاء اعادة المحاولة");
       });
   }, []);
+
+
+  // Table headers
+  const headers = [
+    {
+      key: "name",
+      name: "الاسم",
+    },
+    {
+      key: "code",
+      name: "الرقم التعريفي",
+    },
+    {
+      key: "mobile_number",
+      name: "رقم التليفون",
+    },
+    {
+      key: "address",
+      name: "العنوان",
+    },
+  ];
+
 
   return (
     <>

@@ -12,12 +12,18 @@
       "login": "api/user/token/"
     },
     "customers": {
-      "getCustomers": "api/customer/customer/"
+      "getCustomers": "api/customer/customer/",
+      "getCustomerById": "api/customer/customer/"
+    },
+    "montages": {
+      "getMontagesByCustomerId": "api/montage/by-customer/",
+      "reorderMontageById": "api/montage/reorder/"
     },
     "orders": {
       "getPackedOrders": "api/order/get-packed-orders",
       "getUnPackedOrders": "api/order/get-unpacked-orders",
       "packOrder": "api/order/update-unpacked-orders/"
+      "getOrdersByMontageId": "api/order/by-montage/"
     }
   }
 }
