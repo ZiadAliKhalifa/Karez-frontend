@@ -51,21 +51,21 @@ function SideNav() {
         <>
           <div
             className="sidenav-tabs"
-            onClick={() => history.push("/orders/unpacked")}
+            onClick={() => history.push("/printer/unpacked")}
           >
             <img
               src={unpackedLogo}
               alt="customer"
               className="sidenav-tab-img"
             />
-            <div className="sidenav-tab-label">طلبات مغلفة</div>
+            <div className="sidenav-tab-label">طلبات غير مغلفة</div>
           </div>
           <div
             className="sidenav-tabs"
-            onClick={() => history.push("/orders/packed")}
+            onClick={() => history.push("/printer/packed")}
           >
             <img src={packedLogo} alt="design" className="sidenav-tab-img" />
-            <div className="sidenav-tab-label">طلبات غير مغلفة</div>
+            <div className="sidenav-tab-label">طلبات مغلفة</div>
           </div>
         </>
       )}

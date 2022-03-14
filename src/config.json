@@ -13,6 +13,11 @@
     },
     "customers": {
       "getCustomers": "api/customer/customer/"
+    },
+    "orders": {
+      "getPackedOrders": "api/order/get-packed-orders",
+      "getUnPackedOrders": "api/order/get-unpacked-orders",
+      "packOrder": "api/order/update-unpacked-orders/"
     }
   }
 }
