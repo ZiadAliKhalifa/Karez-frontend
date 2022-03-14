@@ -17,6 +17,9 @@
     },
     "montages": {
       "getMontagesByCustomerId": "api/montage/by-customer/"
+    },
+    "orders": {
+      "getOrdersByMontageId": "api/order/by-montage/"
     }
   }
 }

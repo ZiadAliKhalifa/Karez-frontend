@@ -13,7 +13,7 @@ export default function Customers() {
   const history = useHistory();
 
   const navigateToCustomerDetails = (id) => {
-    history.push("/customer/" + id);
+    history.push("/admin/customer/" + id);
   };
 
   useEffect(() => {

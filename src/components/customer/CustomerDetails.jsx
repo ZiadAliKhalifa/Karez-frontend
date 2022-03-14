@@ -14,11 +14,9 @@ export default function CustomerDetails() {
     const [customer, setCustomer] = useState({})
     const [montages, setMontages] = useState([])
 
-    const { id } = useParams()
-    const history = useHistory()
-    const location = useLocation()
-
-    console.log(location);
+    const { id } = useParams();
+    const history = useHistory();
+    const location = useLocation();
 
     useEffect(() => {
 
@@ -44,7 +42,6 @@ export default function CustomerDetails() {
         restHelper
             .getRequest(url + id)
             .then((res) => {
-                console.log(res.data);
                 setMontages(res.data)
             })
             .catch((err) => {
@@ -68,21 +65,18 @@ export default function CustomerDetails() {
     ];
 
     const reorder = () => {
-
+        // API request to reorder
     }
 
     const navigateToDetails = () => {
-        const location = { pathname: "/montage/details/" + id }
+        const location = { pathname: "/admin/montage/details/" + id }
         history.replace(location)
     }
 
     const navigateToListOfOrders = () => {
-        const location = { pathname: "/order/by-montage/" + id }
+        const location = { pathname: "/admin/order/by-montage/" + id }
         history.replace(location)
     }
-
-
-
 
     return (
         <>
