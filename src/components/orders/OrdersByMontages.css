@@ -1,0 +1,9 @@
+.montage-container {
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.montage-header {
+    font-size: 4rem;
+}

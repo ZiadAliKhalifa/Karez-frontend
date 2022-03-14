@@ -12,6 +12,7 @@ import { getCookie } from "./utils/cookies";
 import Customers from "./components/customer/Customers";
 import ComponentWrapper from "./components/componentWrapper/ComponentWrapper";
 import CustomerDetails from "./components/customer/CustomerDetails";
+import OrdersByMontage from "./components/orders/OrdersByMontage";
 
 // This function should check if the JWT access token exists to avail guarded routes
 // check if JWT exists
@@ -43,6 +44,11 @@ const Routes = () => {
           <GuardedRoute path="/admin/customer/:id?" meta={{ auth: true }}>
             <ComponentWrapper>
               <CustomerDetails />
+            </ComponentWrapper>
+          </GuardedRoute>
+          <GuardedRoute path="/admin/order/by-montage/:id?" meta={{ auth: true }}>
+            <ComponentWrapper>
+              <OrdersByMontage />
             </ComponentWrapper>
           </GuardedRoute>
           <GuardedRoute
