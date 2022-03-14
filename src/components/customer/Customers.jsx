@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import Table from "../common/Table/Table";
 
-import FileUploadButton from "../common/uploadButton/uploadButton"
+import AppButton from "../common/button/Button";
+
 import { createRowAction } from "../common/Table/tableHelper";
 
 import restHelper from "../../helpers/RestHelper";
 import appConfig from "../../config.json";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
+import "./Customers.css"
 
 export default function Customers() {
   const [customers, setCustomers] = useState([]);
@@ -17,6 +20,10 @@ export default function Customers() {
   const navigateToCustomerDetails = (id) => {
     history.push("/admin/customer/" + id);
   };
+
+  const navigteToNewCustomer = () => {
+    history.push("/admin/customer/new");
+  }
 
   useEffect(() => {
     const url =
@@ -57,12 +64,18 @@ export default function Customers() {
 
   return (
     <>
-      <FileUploadButton />
-      <Table
-        headers={headers}
-        rows={customers}
-        rowActions={[createRowAction("البيانات", navigateToCustomerDetails)]}
-      />
+      <div className="customers-container">
+        <div className="customers-header">العملاء</div>
+        <div className="customers-new">
+          <AppButton onClick={navigteToNewCustomer} text={"اضافه"} />
+        </div>
+
+        <Table
+          headers={headers}
+          rows={customers}
+          rowActions={[createRowAction("البيانات", navigateToCustomerDetails)]}
+        />
+      </div>
     </>
   );
 }
