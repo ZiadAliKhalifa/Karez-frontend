@@ -12,8 +12,9 @@
       "login": "api/user/token/"
     },
     "customers": {
-      "getCustomers": "api/customer/customer/",
-      "getCustomerById": "api/customer/customer/"
+      "getCustomers": "api/customer/",
+      "getCustomerById": "api/customer/",
+      "newCustomer": "api/customer/"
     },
     "montages": {
       "getMontagesByCustomerId": "api/montage/by-customer/",

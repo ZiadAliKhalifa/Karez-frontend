@@ -1,0 +1,23 @@
+.new-customer-container {
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.new-customer-header {
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-customer-fields {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.customer-input {
+    margin: 20px;
+}
