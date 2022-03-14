@@ -42,12 +42,30 @@ export default function CustomerDetails() {
         restHelper
             .getRequest(url + id)
             .then((res) => {
+                console.log(res.data);
                 setMontages(res.data)
             })
             .catch((err) => {
                 alert("برجاء اعادة المحاولة");
             });
     }, [])
+
+    useEffect(() => {
+        // Get customer orders
+        const url =
+            restHelper.getURLPrefix(appConfig.host) +
+            appConfig.services.montages.getMontagesByCustomerId;
+
+        restHelper
+            .getRequest(url + id)
+            .then((res) => {
+                setMontages(res.data)
+            })
+            .catch((err) => {
+                alert("برجاء اعادة المحاولة");
+            });
+    }, [customer])
+
 
     const headers = [
         {
@@ -64,8 +82,26 @@ export default function CustomerDetails() {
         }
     ];
 
-    const reorder = () => {
+    const reorder = (montageId) => {
         // API request to reorder
+        const url =
+            restHelper.getURLPrefix(appConfig.host) +
+            appConfig.services.montages.reorderMontageById;
+
+        const data = {
+            id: montageId
+        }
+
+        restHelper
+            .postRequest(url, data)
+            .then((res) => {
+                // Hacky way to reset the orders for the customer
+                setCustomer("")
+                setCustomer(customer)
+            })
+            .catch((err) => {
+                alert("لا يمكن اعادة الطلب");
+            });
     }
 
     const navigateToDetails = () => {
