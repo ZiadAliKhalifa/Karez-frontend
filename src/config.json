@@ -13,7 +13,8 @@
     },
     "customers": {
       "getCustomers": "api/customer/",
-      "getCustomerById": "api/customer/customer/"
+      "getCustomerById": "api/customer/",
+      "newCustomer": "api/customer/"
     },
     "montages": {
       "getMontagesByCustomerId": "api/montage/by-customer/",
