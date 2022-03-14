@@ -9,8 +9,9 @@ import GenericModal from "./components/common/modal/GenericModal";
 import Login from "./components/authentication/login/Login";
 import Logout from "./components/authentication/logout/Logout";
 import { getCookie } from "./utils/cookies";
-import Customer from "./components/customer/Customer";
+import Customers from "./components/customer/Customers";
 import ComponentWrapper from "./components/componentWrapper/ComponentWrapper";
+import CustomerDetails from "./components/customer/CustomerDetails";
 
 // This function should check if the JWT access token exists to avail guarded routes
 // check if JWT exists
@@ -36,7 +37,12 @@ const Routes = () => {
           <GuardedRoute path="/logout" exact component={Logout}></GuardedRoute>
           <GuardedRoute path="/admin/customers" exact meta={{ auth: true }}>
             <ComponentWrapper>
-              <Customer />
+              <Customers />
+            </ComponentWrapper>
+          </GuardedRoute>
+          <GuardedRoute path="/admin/customer/:id?" meta={{ auth: true }}>
+            <ComponentWrapper>
+              <CustomerDetails />
             </ComponentWrapper>
           </GuardedRoute>
           <GuardedRoute

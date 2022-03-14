@@ -1,0 +1,26 @@
+.montage-container {
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+}
+
+.montage-header {
+    font-size: 4rem;
+}
+
+.montage-customer-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+    height: 5rem;
+    margin-top: 1rem;
+}
+
+.montage-customer-details-item-header {
+    color: var(--grey);
+}
+
+.montage-customer-details-item-data {
+    margin-top: 10px;
+}

@@ -8,7 +8,8 @@ function ComponentWrapper({ children }) {
       <div
         style={{
           width: "calc(100vw - 160px",
-          margin: "auto",
+          height: "100%",
+          margin: "auto"
         }}
       >
         {children}
