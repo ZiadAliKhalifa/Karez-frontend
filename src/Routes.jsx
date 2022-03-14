@@ -11,6 +11,7 @@ import Logout from "./components/authentication/logout/Logout";
 import { getCookie } from "./utils/cookies";
 import Customers from "./components/customer/Customers";
 import ComponentWrapper from "./components/componentWrapper/ComponentWrapper";
+import PackedOrders from "./components/packedOrders/PackedOrders";
 import CustomerDetails from "./components/customer/CustomerDetails";
 import OrdersByMontage from "./components/orders/OrdersByMontage";
 
@@ -49,6 +50,16 @@ const Routes = () => {
           <GuardedRoute path="/admin/order/by-montage/:id?" meta={{ auth: true }}>
             <ComponentWrapper>
               <OrdersByMontage />
+            </ComponentWrapper>
+          </GuardedRoute>
+          <GuardedRoute path="/printer/packed" exact meta={{ auth: true }}>
+            <ComponentWrapper>
+              <PackedOrders />
+            </ComponentWrapper>
+          </GuardedRoute>
+          <GuardedRoute path="/printer/unpacked" exact meta={{ auth: true }}>
+            <ComponentWrapper>
+              <PackedOrders />
             </ComponentWrapper>
           </GuardedRoute>
           <GuardedRoute

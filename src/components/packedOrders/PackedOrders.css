@@ -1,0 +1,70 @@
+.packed-modal-container {
+  width: 400px;
+  padding: 30px;
+}
+
+.packed-modal-title {
+  color: var(--blue);
+  font-family: Tajawal, roboto;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.packed-modal-input-container {
+  margin-top: 50px;
+}
+
+.packed-modal-input-error {
+  color: red;
+  font-size: 14px;
+  position: relative;
+  bottom: -5px;
+  margin-right: 10px;
+  float: right;
+  margin-bottom: 10px;
+}
+
+.packed-modal-input-label {
+  font-weight: bold;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  padding-right: 11px;
+  font-size: 18px;
+  color: var(--grey);
+  margin-right: 25px;
+  float: right;
+}
+
+.packed-modal-input {
+  border: 1px solid var(--grey) !important;
+  border-radius: 25px;
+  padding: 10px 20px 0px 0px !important;
+  width: calc(100% - 20px) !important;
+  height: 40px !important;
+  margin-right: 25px !important;
+  padding: 10px 20px 0px 20px !important;
+  width: calc(100% - 40px) !important;
+  direction: rtl !important;
+}
+
+.pack-modal-submit-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.pack-modal-submit-button {
+  border: 2px solid var(--grey);
+  color: 2px solid var(--grey);
+  border-radius: 25px 25px 25px 25px;
+  width: 40%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.pack-modal-submit-button:hover {
+  background-color: rgb(247, 247, 247);
+  transition: all 0.2s ease-in-out;
+}

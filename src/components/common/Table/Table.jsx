@@ -7,22 +7,20 @@ import {
   TableRow,
   TableCell,
   TableContainer,
-  TableHead
+  TableHead,
 } from "@material-ui/core";
 
-import AppInput from "../../common/input/Input"
+import AppInput from "../../common/input/Input";
 
 import { omniSearch } from "../../../helpers/searchUtility";
 
 import "./Table.css";
 import AppButton from "../button/Button";
 
-
 const SORT_DIRECTION = {
   ASCENDING: "ASCENDING",
   DECENDING: "DECENDING",
 };
-
 
 export default function Table({
   headers = [],
@@ -47,11 +45,11 @@ export default function Table({
    *              will be displayed. Can have extra objects.
    *
    * @param onRowClick: Action to happen when the row is clicked.
-   * 
+   *
    * @param tableHeight: A height to for the table, defaults to 80% of the user's view.
    *
    * @param searchable: A boolean value that defaults to false, it indicates whether the table will have a search bar.
-   * 
+   *
    * @param rowActions: An  array that contains the list of actions that can be carried on the table items. (menuHelper.js)
    */
 
@@ -61,7 +59,6 @@ export default function Table({
     key: "",
     sort: SORT_DIRECTION.ASCENDING,
   });
-
 
   // Table functions
   const handleSort = (key) => {
@@ -83,8 +80,7 @@ export default function Table({
     console.log(rowActions);
     if (sortDirection === SORT_DIRECTION.ASCENDING)
       return [..._rows].sort((a, b) => (a[key] > b[key] ? 1 : -1));
-    else
-      return [..._rows].sort((a, b) => (a[key] > b[key] ? -1 : 1));
+    else return [..._rows].sort((a, b) => (a[key] > b[key] ? -1 : 1));
   }, []);
 
   // Prevents recomputing of rows unless the rows or the search phrase change
@@ -102,20 +98,19 @@ export default function Table({
   return (
     <>
       <div className="table-controls-container">
-        {
-          searchable &&
+        {searchable && (
           <div className="table-search-bar-container">
             <AppInput
               type="text"
               inputClassName="table-search-bar"
               InputProps={{ disableUnderline: true }}
               value={_searchPhrase}
-              onChange={e => _setSearchPhrase(e.target.value)}
+              onChange={(e) => _setSearchPhrase(e.target.value)}
             />
           </div>
-        }
+        )}
       </div>
-      <Paper >
+      <Paper>
         <TableContainer style={{ height: tableHeight }}>
           <TableMUI stickyHeader aria-label="sticky table">
             <TableHead>
@@ -123,12 +118,11 @@ export default function Table({
                 {
                   // Leaves an empty header in case there was a context menu for the table
                   rowActions &&
-
-                  rowActions.map(action => (
-                    < TableCell key="menu" className="header-cell">
-                      <div className="header-cell-content" />
-                    </TableCell>
-                  ))
+                    rowActions.map((action, index) => (
+                      <TableCell key={index} className="header-cell">
+                        <div className="header-cell-content" />
+                      </TableCell>
+                    ))
                 }
                 {headers.map((header) => (
                   <TableCell
@@ -148,13 +142,16 @@ export default function Table({
                 <TableRow
                   data-tip={onRowHover && onRowHover}
                   key={row.name}
-                  onClick={onRowClick ? () => onRowClick(row) : () => { }}
+                  onClick={onRowClick ? () => onRowClick(row) : () => {}}
                   className="row"
                   style={onRowClick && { cursor: "pointer" }}
                 >
-                  {rowActions.map(action => (
+                  {rowActions.map((action) => (
                     <TableCell key={Math.random()} align="center">
-                      <AppButton onClick={e => action.action(row.id)} text={action.name} />
+                      <AppButton
+                        onClick={(e) => action.action(row.id)}
+                        text={action.name}
+                      />
                     </TableCell>
                   ))}
 
@@ -178,6 +175,5 @@ Table.propTypes = {
   rows: PropTypes.array,
   onRowClick: PropTypes.func,
   onRowHover: PropTypes.func,
-  searchable: PropTypes.bool
+  searchable: PropTypes.bool,
 };
-

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getCookie } from "../utils/cookies";
 
 class RestServices {
   axiosInstance = null;
@@ -14,9 +15,10 @@ class RestServices {
 
     this.axiosInstance.interceptors.request.use(
       (req) => {
+        this.setToken(getCookie("accessToken"));
         // Do something before request is sent
         if (this.currToken) {
-          req.headers.common.Token = this.currToken;
+          req.headers.common.Authorization = this.currToken;
         } else {
           // "Invalid Token , please login to get a valid token";
           // return Promise.reject(
@@ -44,7 +46,7 @@ class RestServices {
    * @param {string} token
    */
   setToken(token) {
-    this.currToken = token;
+    this.currToken = `Bearer ${token}`;
   }
   /**
    * @param {string} url
