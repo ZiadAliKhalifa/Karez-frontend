@@ -15,7 +15,6 @@ export default function OrdersByMontage() {
 
 
     useEffect(() => {
-
         let url =
             restHelper.getURLPrefix(appConfig.host) +
             appConfig.services.orders.getOrdersByMontageId;
