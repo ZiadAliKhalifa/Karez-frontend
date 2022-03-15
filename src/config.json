@@ -1,7 +1,7 @@
 {
   "host": {
     "protocol": "http",
-    "host": "192.168.1.13",
+    "host": "192.168.1.14",
     "port": "8000"
   },
   "services": {
@@ -24,7 +24,8 @@
       "getPackedOrders": "api/order/get-packed-orders",
       "getUnPackedOrders": "api/order/get-unpacked-orders",
       "packOrder": "api/order/update-unpacked-orders/",
-      "getOrdersByMontageId": "api/order/by-montage/"
+      "getOrdersByMontageId": "api/order/by-montage/",
+      "deliverPackedOrder": "api/order/delivered/"
     }
   }
 }
