@@ -32,7 +32,7 @@ export default function OrdersByMontage() {
             });
     }, []);
 
-    const navigateToDetails = () => {
+    const navigateToDetails = (event) => {
         const location = { pathname: "/admin/order/details/" + id };
         history.replace(location);
     };
@@ -68,7 +68,7 @@ export default function OrdersByMontage() {
                         rows={orders}
                         headers={headers}
                         rowActions={[
-                            createRowAction("التفاصيل", navigateToDetails)
+                            createRowAction("التفاصيل", e => { navigateToDetails(e) })
                         ]}
                     />
                 </div>

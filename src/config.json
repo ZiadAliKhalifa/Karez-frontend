@@ -1,7 +1,7 @@
 {
   "host": {
     "protocol": "http",
-    "host": "192.168.1.12",
+    "host": "192.168.1.14",
     "port": "8000"
   },
   "services": {
@@ -19,7 +19,8 @@
     "montages": {
       "getMontagesByCustomerId": "api/montage/by-customer/",
       "reorderMontageById": "api/montage/reorder/",
-      "newMontage": "api/montage/create-montage/"
+      "newMontage": "api/montage/create-montage/",
+      "getMontageById": "api/montage/details/"
     },
     "orders": {
       "getPackedOrders": "api/order/get-packed-orders",
