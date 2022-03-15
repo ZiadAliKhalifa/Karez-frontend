@@ -1,21 +1,67 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppInput from "../../common/input/Input";
 import Autocomplete from "../../common/autoComplete/AutoComplete";
 import "./AddMontage.css";
+import { FileUploadButton } from "../../common/uploadButton/uploadButton";
+import AppButton from "../../common/button/Button";
+
+import restHelper from "../../../helpers/RestHelper";
+import appConfig from "../../../config.json";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function AddMontage() {
   const [formData, setFormData] = useState({});
+  const [files, setFiles] = useState([]);
+
+  const history = useHistory();
 
   const handleChange = (text, key) => {
     let keys = "";
     if (key.indexOf("-") > 0) keys = key.substr(0, key.indexOf("-"));
     else keys = key;
-    console.log(keys);
-    console.log(text);
     let newFormData = { ...formData };
     newFormData[keys] = text;
     setFormData(newFormData);
-    console.log(newFormData);
+  };
+
+  const handleFileUpdated = (file, id) => {
+    let newFiles = [...files]
+    newFiles[id] = file
+    setFiles(newFiles)
+  }
+
+  const handleSubmitMontage = () => {
+    if (
+      formData.job_name
+    ) {
+      const url =
+        restHelper.getURLPrefix(appConfig.host) +
+        appConfig.services.montages.newMontage;
+
+
+      let form = new FormData();
+      form.append("name", formData.name);
+      form.append("file1", files[0])
+      form.append("file2", files[1])
+      form.append("file3", files[2])
+      form.append("file4", files[3])
+      const config = {
+        headers: { "content-type": "multipart/form-data" }
+      };
+
+      restHelper.postRequest(url, form, config)
+        .then(function (response) {
+          navigateToAllCustomers();
+        })
+        .catch(function (error) {
+          alert("Error while uploading")
+        });
+
+    }
+  }
+
+  const navigateToAllCustomers = () => {
+    history.push("/admin/customers");
   };
 
   return (
@@ -161,8 +207,23 @@ export default function AddMontage() {
                 onChange={(e, newValue) => handleChange(newValue, e.target.id)}
               />
             </div>
+            <div className="part">
+              <FileUploadButton runParentFunction={file => handleFileUpdated(file, 0)} />
+            </div>
+            <div className="part">
+              <FileUploadButton runParentFunction={file => handleFileUpdated(file, 1)} />
+            </div>
+            <div className="part">
+              <FileUploadButton runParentFunction={file => handleFileUpdated(file, 2)} />
+            </div>
+            <div className="part">
+              <FileUploadButton runParentFunction={file => handleFileUpdated(file, 3)} />
+            </div>
           </div>
         </div>
+      </div>
+      <div className="submit-button">
+        <AppButton onClick={handleSubmitMontage} text={"اضافه"} />
       </div>
     </div>
   );

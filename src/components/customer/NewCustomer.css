@@ -12,12 +12,59 @@
 }
 
 .new-customer-fields {
-    margin: 50px;
+    width: 60%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    margin-top: 40px;
+}
+
+.customer-input-container {
+    width: 70%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.customer-input-label {
+    font-weight: bold;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-size: 18px;
+    color: var(--grey);
+    margin-right: 25px;
+    float: right;
 }
 
 .customer-input {
-    margin: 20px;
+    border: 1px solid var(--grey) !important;
+    border-radius: 25px;
+    padding: 10px 20px 0px 0px !important;
+    width: calc(100% - 20px) !important;
+    height: 40px !important;
+    margin-right: 25px !important;
+    padding: 10px 20px 0px 20px !important;
+    width: calc(100% - 40px) !important;
+    direction: rtl !important;
+}
+
+.customer-submit {
+    border: 2px solid var(--light-grey);
+    color: 1px solid var(--light-grey);
+    background-color: transparent;
+    border-radius: 25px 25px 25px 25px;
+    width: 200px;
+    padding-top: 17px;
+    padding-bottom: 10px;
+    margin: auto;
+    cursor: pointer;
+    margin-top: 40px;
+    font-family: Tajawal, roboto;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.customer-submit:hover {
+    background-color: rgb(247, 247, 247);
+    transition: all 0.2s ease-in-out;
 }
