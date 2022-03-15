@@ -50,44 +50,41 @@ export default function NewCustomer() {
         }
     }
 
+    const formData = {
+        name: {
+            label: 'الاسم',
+            value: customer.name,
+        },
+        code: {
+            label: 'الكود',
+            value: customer.code,
+        },
+        mobile: {
+            label: 'رقم التليفون',
+            value: customer.mobile_number,
+        },
+        address: {
+            label: 'العنوان',
+            value: customer.address,
+        },
+    }
+
     return (
         <div className="new-customer-container">
             <div className="new-customer-header">عميل جديد</div>
             <div className="new-customer-fields">
-                <div className="customer-input">
-                    <AppInput
-                        labelText='الاسم'
-                        id="name"
-                        value={customer.name}
-                        onChange={(e) => handleChange(e.target.id, e.target.value)}
-                    />
-                </div>
-                <div className="customer-input">
-                    <AppInput
-                        labelText='الكود'
-                        id="code"
-                        value={customer.code}
-                        onChange={(e) => handleChange(e.target.id, e.target.value)}
-                    />
-                </div>
-                <div className="customer-input">
-                    <AppInput
-                        labelText='رقم التليفون'
-                        id="mobile_number"
-                        value={customer.mobile_number}
-                        onChange={(e) => handleChange(e.target.id, e.target.value)}
-                    />
-                </div>
-                <div className="customer-input">
-                    <AppInput
-                        labelText='العنوان'
-                        id="address"
-                        value={customer.address}
-                        onChange={(e) => handleChange(e.target.id, e.target.value)}
-                    />
-                </div>
-
-                <AppButton text={"اضافة"} onClick={handleSubmit} />
+                {Object.keys(formData).map(item =>
+                    <div className="customer-input-container">
+                        <div className="customer-input-label">{formData[`${item}`].label}</div>
+                        <input
+                            type="text"
+                            className='customer-input'
+                            value={formData[`${item}`].value}
+                            onChange={(e) => handleChange(e.target.id, e.target.value)}
+                        />
+                    </div>
+                )}
+                <button className="customer-submit" onClick={handleSubmit}>اضافة</button>
             </div>
         </div>
     )
