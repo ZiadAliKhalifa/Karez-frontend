@@ -7,3 +7,11 @@
 .montage-header {
     font-size: 4rem;
 }
+
+.montage-new-order {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    width: 10rem;
+    margin: 20px;
+}

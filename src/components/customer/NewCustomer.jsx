@@ -19,6 +19,8 @@ export default function NewCustomer() {
         let newCustomer = { ...customer }
         newCustomer[key] = value
         setCustomer(newCustomer)
+        console.log(key);
+        console.log(value);
     }
 
     const navigateToAllCustomers = () => {
@@ -46,6 +48,7 @@ export default function NewCustomer() {
                     alert("لم نتمكن من ادخال العميل");
                 });
         } else {
+            console.log(customer);
             alert('لم يتم ادخال كل المدخلات')
         }
     }
@@ -59,7 +62,7 @@ export default function NewCustomer() {
             label: 'الكود',
             value: customer.code,
         },
-        mobile: {
+        mobile_number: {
             label: 'رقم التليفون',
             value: customer.mobile_number,
         },
@@ -73,11 +76,12 @@ export default function NewCustomer() {
         <div className="new-customer-container">
             <div className="new-customer-header">عميل جديد</div>
             <div className="new-customer-fields">
-                {Object.keys(formData).map(item =>
+                {Object.keys(formData).map((item) =>
                     <div className="customer-input-container">
                         <div className="customer-input-label">{formData[`${item}`].label}</div>
                         <input
                             type="text"
+                            id={item}
                             className='customer-input'
                             value={formData[`${item}`].value}
                             onChange={(e) => handleChange(e.target.id, e.target.value)}
