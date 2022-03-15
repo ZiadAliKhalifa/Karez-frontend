@@ -71,6 +71,26 @@ function PackedOrders() {
       });
   };
 
+  const deliveryHandler = (orderId) => {
+    const url =
+      restHelper.getURLPrefix(appConfig.host) +
+      appConfig.services.orders.deliverPackedOrder;
+
+    const reqData = {
+      id: orderId,
+    };
+
+    restHelper
+      .postRequest(url, reqData)
+      .then((res) => {
+        fetchPackedOrders();
+        alert("تم تأكيد الاستلام بنجاح");
+      })
+      .catch((err) => {
+        alert("برجاء اعادة المحاولة");
+      });
+  };
+
   const dispatchPackedModal = (orderId) => {
     const orderData = orders.find((order) => order.id === orderId);
     dispatch(
@@ -155,7 +175,10 @@ function PackedOrders() {
         rows={orders}
         rowActions={
           isPacked
-            ? [createRowAction("البيانات", navigateToOrderDetails)]
+            ? [
+                createRowAction("البيانات", navigateToOrderDetails),
+                createRowAction("تأكيد الاستلام", deliveryHandler),
+              ]
             : [
                 createRowAction("البيانات", navigateToOrderDetails),
                 createRowAction("تعبئة الطلب", dispatchPackedModal),
