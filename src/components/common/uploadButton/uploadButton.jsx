@@ -1,17 +1,5 @@
-import React, { Component } from "react";
 import ReactDOM from "react-dom";
-
 import React, {useState} from 'react';
-
-function user (){
-	const [selectedFile, setSelectedFile] = useState();
-  
-  const changeHandler = () => {
-    setSelectedFile(null);
-  }
-
-  <FileUploadPage value={selectedFile} setValue={setSelectedFile}/>
-}
 
 
 function FileUploadPage({value, setValue}){

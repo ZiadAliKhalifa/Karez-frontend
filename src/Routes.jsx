@@ -9,6 +9,7 @@ import GenericModal from "./components/common/modal/GenericModal";
 import Login from "./components/authentication/login/Login";
 import Logout from "./components/authentication/logout/Logout";
 import { getCookie } from "./utils/cookies";
+import AddMontage from "./components/montage/addMontage/AddMontage";
 import Customers from "./components/customer/Customers";
 import ComponentWrapper from "./components/componentWrapper/ComponentWrapper";
 import PackedOrders from "./components/packedOrders/PackedOrders";
@@ -69,11 +70,14 @@ const Routes = () => {
             </ComponentWrapper>
           </GuardedRoute>
           <GuardedRoute
-            path="/printer"
+            path="/admin/montage/new"
             exact
-            //component={}
             meta={{ auth: true }}
-          />
+          >
+             <ComponentWrapper>
+              <AddMontage />
+            </ComponentWrapper>
+          </GuardedRoute>
         </Switch>
       </GuardProvider>
     </BrowserRouter>

@@ -53,7 +53,7 @@ function Login() {
           setCookie("refreshToken", res.data.refresh, 14);
           setCookie("role", res.data.role, 7);
           dispatch(loginUser());
-          if (res.data.role === "Montage Admin") history.push("/admin");
+          if (res.data.role === "Montage Admin") history.push("/admin/customers");
           else history.push("/printer");
         })
         .catch((err) => {
