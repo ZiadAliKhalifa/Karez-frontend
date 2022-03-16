@@ -121,8 +121,8 @@ export default function CustomerDetails() {
             });
     }
 
-    const navigateToDetails = () => {
-        const location = { pathname: "/admin/montage/details/" + id }
+    const navigateToDetails = (montageId) => {
+        const location = { pathname: "/admin/montage/details/" + montageId }
         history.replace(location)
     }
 
@@ -159,7 +159,7 @@ export default function CustomerDetails() {
                         headers={headers}
                         rowActions={[
                             createRowAction("اعادة الطلب", reorder),
-                            createRowAction("التفاصيل", navigateToDetails),
+                            createRowAction("التفاصيل", montageId => { navigateToDetails(montageId) }),
                             // createRowAction("edit", edit),
                             createRowAction("الطلبات", montageId => { navigateToListOfOrders(montageId) })
                         ]}
