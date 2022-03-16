@@ -79,18 +79,20 @@ export default function CustomerDetails() {
 
 
     const headers = [
-        {
-            key: "sub_code",
-            name: "الرقم التعريفي",
-        },
+
         {
             key: "type",
             name: "النوع",
         },
         {
+            key: "sub_code",
+            name: "الرقم التعريفي",
+        },
+        {
             key: "job_name",
             name: "الاسم",
         }
+
     ];
 
     const edit = (montageId) => {
@@ -158,7 +160,7 @@ export default function CustomerDetails() {
                         rowActions={[
                             createRowAction("اعادة الطلب", reorder),
                             createRowAction("التفاصيل", navigateToDetails),
-                            createRowAction("edit", edit),
+                            // createRowAction("edit", edit),
                             createRowAction("الطلبات", montageId => { navigateToListOfOrders(montageId) })
                         ]}
                     />

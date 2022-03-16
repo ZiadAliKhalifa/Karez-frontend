@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import AppInput from '../common/input/Input'
 
 import restHelper from "../../helpers/RestHelper";
@@ -12,6 +12,7 @@ export default function AddOrderForMontage() {
     const [montage, setMontage] = useState({})
     const [formData, setFormData] = useState({});
 
+    const history = useHistory();
     const { id } = useParams();
 
     useEffect(() => {
@@ -220,7 +221,7 @@ export default function AddOrderForMontage() {
                                 id="material_type"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={formData.quantity}
+                                value={formData.material_type}
                                 onChange={(e) => handleChange(e.target.value, e.target.id)}
                             />
                         </div>

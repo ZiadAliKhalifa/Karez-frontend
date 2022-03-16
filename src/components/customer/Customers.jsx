@@ -44,20 +44,20 @@ export default function Customers() {
   // Table headers
   const headers = [
     {
-      key: "name",
-      name: "الاسم",
-    },
-    {
-      key: "code",
-      name: "الرقم التعريفي",
-    },
-    {
       key: "mobile_number",
       name: "رقم التليفون",
     },
     {
       key: "address",
       name: "العنوان",
+    },
+    {
+      key: "name",
+      name: "الاسم",
+    },   
+    {
+      key: "code",
+      name: "الرقم التعريفي",
     },
   ];
 
