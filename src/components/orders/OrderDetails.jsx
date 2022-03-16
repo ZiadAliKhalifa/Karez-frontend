@@ -1,70 +1,34 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+
 import AppInput from '../common/input/Input'
+
 
 import restHelper from "../../helpers/RestHelper";
 import appConfig from "../../config.json";
 
-import "./AddOrderForMontage.css"
+export default function OrderDetails() {
 
-export default function AddOrderForMontage() {
+    const [order, setOrder] = useState({})
 
-    const [montage, setMontage] = useState({})
-    const [formData, setFormData] = useState({});
-
-    const history = useHistory();
     const { id } = useParams();
 
     useEffect(() => {
+
         let url =
             restHelper.getURLPrefix(appConfig.host) +
-            appConfig.services.montages.getMontageById;
+            appConfig.services.orders.getOrderDetails;
 
         restHelper
             .getRequest(url + id)
             .then((res) => {
-                setMontage({ ...res.data });
+                setOrder(res.data);
             })
             .catch((err) => {
                 alert("برجاء اعادة المحاولة");
             });
+    }, [id])
 
-    }, [])
-
-    const handleChange = (text, key) => {
-        let keys = "";
-        if (key.indexOf("-") > 0) keys = key.substr(0, key.indexOf("-"));
-        else keys = key;
-        let newFormData = { ...formData };
-        newFormData[keys] = text;
-        setFormData(newFormData);
-    };
-
-    const handleSubmit = () => {
-        // new order
-
-        formData.montage_id = id;
-
-        const url =
-            restHelper.getURLPrefix(appConfig.host) +
-            appConfig.services.orders.newOrder;
-
-
-        restHelper
-            .postRequest(url, formData)
-            .then((res) => {
-                navigateToAllCustomers()
-            })
-            .catch((err) => {
-                alert("لم نتمكن من ادخال");
-            });
-
-    }
-
-    const navigateToAllCustomers = () => {
-        const location = { pathname: "/admin/customers" }
-        history.replace(location)
-    }
 
     return (
         <div className='main_container'>
@@ -77,7 +41,7 @@ export default function AddOrderForMontage() {
                                 id="job_name"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={montage.job_name}
+                                value={order.job_name}
                             />
                         </div>
                         <div className="part">
@@ -86,7 +50,7 @@ export default function AddOrderForMontage() {
                                 id="skina_code"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={montage.skina_code}
+                                value={order.skina_code}
                             />
                         </div>
                         <div className="part">
@@ -95,7 +59,7 @@ export default function AddOrderForMontage() {
                                 id="aps"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={montage.aps}
+                                value={order.aps}
                             />
                         </div>
                         <div className="part">
@@ -104,7 +68,7 @@ export default function AddOrderForMontage() {
                                 id="color"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={montage.color}
+                                value={order.color}
                             />
                         </div>
                         <div className="part">
@@ -113,7 +77,7 @@ export default function AddOrderForMontage() {
                                 id="darafel"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={montage.darafel}
+                                value={order.darafel}
                             />
                         </div>
                     </div>
@@ -124,7 +88,7 @@ export default function AddOrderForMontage() {
                                 id="type"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={montage.type}
+                                value={order.type}
                             />
                         </div>
                         <div className="part">
@@ -133,7 +97,7 @@ export default function AddOrderForMontage() {
                                 id="etgah_el_gar"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={montage.etgah_el_gar}
+                                value={order.etgah_el_gar}
                             />
                         </div>
                         <div className="part">
@@ -142,7 +106,7 @@ export default function AddOrderForMontage() {
                                 id="gap"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={montage.gap}
+                                value={order.gap}
                             />
                         </div>
                         <div className="part">
@@ -151,7 +115,7 @@ export default function AddOrderForMontage() {
                                 id="special_color"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={montage.special_color}
+                                value={order.special_color}
                             />
                         </div>
                         <div className="part">
@@ -160,7 +124,7 @@ export default function AddOrderForMontage() {
                                 id="tars_el_takser"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={montage.tars_el_takser}
+                                value={order.tars_el_takser}
                             />
                         </div>
                     </div>
@@ -171,7 +135,7 @@ export default function AddOrderForMontage() {
                                 id="sub_code"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={montage.sub_code}
+                                value={order.sub_code}
                             />
                         </div>
                         <div className="part">
@@ -180,7 +144,7 @@ export default function AddOrderForMontage() {
                                 id="etgah_el_ard"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={montage.etgah_el_ard}
+                                value={order.etgah_el_ard}
                             />
                         </div>
                     </div>
@@ -194,57 +158,52 @@ export default function AddOrderForMontage() {
                 <div className='inputs_section'>
                     <div className='column'>
                         <div className="part">
-                            <div className="inputs_label">كمية</div>
+                            <div className="inputs_label">Quantity</div>
                             <AppInput
                                 id="quantity"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={formData.quantity}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
+                                value={order.quantity}
                             />
                         </div>
                         <div className="part">
-                            <div className="inputs_label">نوع الخامة</div>
+                            <div className="inputs_label">Material Type</div>
                             <AppInput
                                 id="material_type"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={formData.material_type}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
+                                value={order.material_type}
                             />
                         </div>
                     </div>
                     <div className='column'>
                         <div className="part">
-                            <div className="inputs_label">رقم سكينة جديدة</div>
+                            <div className="inputs_label">Skina Code New</div>
                             <AppInput
                                 id="skina_code_new"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={formData.skina_code_new}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
+                                value={order.skina_code_new}
                             />
                         </div>
                         <div className="part">
-                            <div className="inputs_label">التصفيح</div>
+                            <div className="inputs_label">Lamination</div>
                             <AppInput
                                 id="lamination"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={formData.lamination}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
+                                value={order.lamination}
                             />
                         </div>
                     </div>
                     <div className='column'>
                         <div className="part">
-                            <div className="inputs_label">إتجاه الشغلة</div>
+                            <div className="inputs_label">Job Direction</div>
                             <AppInput
                                 id="job_direction"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={formData.job_direction}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
+                                value={order.job_direction}
                             />
                         </div>
                         <div className="part">
@@ -253,8 +212,7 @@ export default function AddOrderForMontage() {
                                 id="job_per_meter"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={formData.job_per_meter}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
+                                value={order.job_per_meter}
                             />
                         </div>
                     </div>
@@ -271,8 +229,7 @@ export default function AddOrderForMontage() {
                                 id="sample"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={formData.sample}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
+                                value={order.sample}
                             />
                         </div>
                         <div className="part">
@@ -281,8 +238,7 @@ export default function AddOrderForMontage() {
                                 id="order_roll"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={formData.order_roll}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
+                                value={order.order_roll}
                             />
                         </div>
                     </div>
@@ -293,8 +249,7 @@ export default function AddOrderForMontage() {
                                 id="roll_per_meter"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={formData.roll_per_meter}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
+                                value={order.roll_per_meter}
                             />
                         </div>
                     </div>
@@ -305,16 +260,12 @@ export default function AddOrderForMontage() {
                                 id="label_per_roll"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={formData.label_per_roll}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
+                                value={order.label_per_roll}
                             />
                         </div>
                     </div>
                 </div>
             </div>
-
-            <button className="customer-submit" onClick={handleSubmit}>اضافة</button>
-
         </div>
     )
 }

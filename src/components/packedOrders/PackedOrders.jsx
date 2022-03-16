@@ -177,13 +177,13 @@ function PackedOrders() {
         rowActions={
           isPacked
             ? [
-                createRowAction("البيانات", navigateToOrderDetails),
-                createRowAction("تأكيد الاستلام", deliveryHandler),
-              ]
+              createRowAction("البيانات", navigateToOrderDetails),
+              createRowAction("تأكيد الاستلام", deliveryHandler),
+            ]
             : [
-                createRowAction("البيانات", navigateToOrderDetails),
-                createRowAction("تعبئة الطلب", dispatchPackedModal),
-              ]
+              createRowAction("البيانات", navigateToOrderDetails),
+              createRowAction("تعبئة الطلب", dispatchPackedModal),
+            ]
         }
       />
     </>

@@ -100,7 +100,7 @@ const Routes = () => {
             </ComponentWrapper>
           </GuardedRoute>
           <GuardedRoute
-            ath="/order/:id?"
+            path="/order/:id?"
             exact
             meta={{ auth: true }}
           >

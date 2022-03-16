@@ -20,8 +20,6 @@ export default function OrdersByMontage() {
             restHelper.getURLPrefix(appConfig.host) +
             appConfig.services.orders.getOrdersByMontageId;
 
-        console.log(url);
-
         restHelper
             .getRequest(url + id)
             .then((res) => {
