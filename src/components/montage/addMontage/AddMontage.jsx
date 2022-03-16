@@ -7,13 +7,31 @@ import AppButton from "../../common/button/Button";
 
 import restHelper from "../../../helpers/RestHelper";
 import appConfig from "../../../config.json";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, useParams } from "react-router-dom";
+
 
 export default function AddMontage() {
   const [formData, setFormData] = useState({});
   const [files, setFiles] = useState([]);
+  const { id } = useParams();
 
   const history = useHistory();
+
+  useEffect(()=>{
+    const url =
+    restHelper.getURLPrefix(appConfig.host) +
+    appConfig.services.montages.getMontage.replace("{id}",id);
+
+    restHelper.getRequest(url)
+        .then(function (response) {
+          console.log(response.data);
+          setFormData(response.data);
+        })
+        .catch(function (error) {
+          alert("Error while uploading")
+        });
+
+  },[id])
 
   const handleChange = (text, key) => {
     let keys = "";
