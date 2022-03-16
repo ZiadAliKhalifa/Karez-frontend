@@ -38,13 +38,13 @@ function SideNav() {
             />
             <div className="sidenav-tab-label">عملاء</div>
           </div>
-          <div
+          {/* <div
             className="sidenav-tabs"
             onClick={() => history.push("/designs")}
           >
             <img src={designLogo} alt="design" className="sidenav-tab-img" />
             <div className="sidenav-tab-label">تصميمات</div>
-          </div>
+          </div> */}
         </>
       )}
       {userRole === "Montage Printer" && (

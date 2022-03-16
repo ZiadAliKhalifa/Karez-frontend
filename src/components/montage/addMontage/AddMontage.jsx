@@ -60,10 +60,10 @@ export default function AddMontage() {
 
       let form = new FormData();
       form.append("name", formData.name);
-      form.append("file1", files[0])
-      form.append("file2", files[1])
-      form.append("file3", files[2])
-      form.append("file4", files[3])
+      form.append("montage_attachment", files[0])
+      form.append("image_attachment", files[1])
+      form.append("desgin_upload_file", files[2])
+      form.append("po", files[3])
 
       form.append("customer_id", location.state.id)
       form.append("job_name", formData.job_name)
