@@ -6,6 +6,7 @@ import restHelper from "../../helpers/RestHelper";
 import appConfig from "../../config.json";
 
 import "./AddOrderForMontage.css"
+import { number } from 'prop-types';
 
 export default function AddOrderForMontage() {
 
@@ -200,6 +201,7 @@ export default function AddOrderForMontage() {
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
                                 value={formData.quantity}
+                                type={"number"}
                                 onChange={(e) => handleChange(e.target.value, e.target.id)}
                             />
                         </div>
