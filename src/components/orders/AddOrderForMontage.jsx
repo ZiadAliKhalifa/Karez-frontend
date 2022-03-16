@@ -39,9 +39,12 @@ export default function AddOrderForMontage() {
         setFormData(newFormData);
     };
 
+    const handleSubmit = () => {
+        // new order
+    }
+
     return (
         <div className='main_container'>
-
             <div className="inputs_container">
                 <div className="inputs_section">
                     <div>
