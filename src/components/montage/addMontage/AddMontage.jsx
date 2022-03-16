@@ -18,6 +18,22 @@ export default function AddMontage() {
 
   const history = useHistory();
 
+  useEffect(()=>{
+    const url =
+    restHelper.getURLPrefix(appConfig.host) +
+    appConfig.services.montages.getMontage.replace("{id}",id);
+
+    restHelper.getRequest(url)
+        .then(function (response) {
+          console.log(response.data);
+          setFormData(response.data);
+        })
+        .catch(function (error) {
+          alert("Error while uploading")
+        });
+
+  },[id])
+
   const handleChange = (text, key) => {
     let keys = "";
     if (key.indexOf("-") > 0) keys = key.substr(0, key.indexOf("-"));

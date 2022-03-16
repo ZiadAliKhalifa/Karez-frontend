@@ -93,6 +93,10 @@ export default function CustomerDetails() {
         }
     ];
 
+    const edit = (montageId) => {
+        history.push(`/admin/montage/new/${montageId}`)
+    }
+
     const reorder = (montageId) => {
         // API request to reorder
         const url =
@@ -154,6 +158,7 @@ export default function CustomerDetails() {
                         rowActions={[
                             createRowAction("اعادة الطلب", reorder),
                             createRowAction("التفاصيل", navigateToDetails),
+                            createRowAction("edit", edit),
                             createRowAction("الطلبات", montageId => { navigateToListOfOrders(montageId) })
                         ]}
                     />
