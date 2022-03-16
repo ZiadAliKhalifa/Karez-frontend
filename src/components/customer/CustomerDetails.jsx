@@ -18,11 +18,16 @@ export default function CustomerDetails() {
 
     const { id } = useParams();
     const history = useHistory();
-    const location = useLocation();
-    
+
     const navigteToNewMontage = () => {
-        history.push("/admin/montage/new");
-      }
+        const location = {
+            pathname: `/admin/montage/new`,
+            state: {
+                id: id
+            }
+        }
+        history.push(location)
+    }
 
     useEffect(() => {
 
@@ -119,8 +124,8 @@ export default function CustomerDetails() {
         history.replace(location)
     }
 
-    const navigateToListOfOrders = () => {
-        const location = { pathname: "/admin/order/by-montage/" + id }
+    const navigateToListOfOrders = (montageId) => {
+        const location = { pathname: "/admin/order/by-montage/" + montageId }
         history.replace(location)
     }
 
@@ -153,8 +158,8 @@ export default function CustomerDetails() {
                         rowActions={[
                             createRowAction("اعادة الطلب", reorder),
                             createRowAction("التفاصيل", navigateToDetails),
-                            createRowAction("الطلبات", navigateToListOfOrders),
-                            createRowAction("edit", edit)
+                            createRowAction("edit", edit),
+                            createRowAction("الطلبات", montageId => { navigateToListOfOrders(montageId) })
                         ]}
                     />
                 </div>

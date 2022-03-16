@@ -7,13 +7,14 @@ import AppButton from "../../common/button/Button";
 
 import restHelper from "../../../helpers/RestHelper";
 import appConfig from "../../../config.json";
-import { useHistory, useParams } from "react-router-dom";
-
+import { useParams, useHistory, useLocation } from "react-router-dom";
 
 export default function AddMontage() {
   const [formData, setFormData] = useState({});
   const [files, setFiles] = useState([]);
+
   const { id } = useParams();
+  const location = useLocation();
 
   const history = useHistory();
 
@@ -63,6 +64,21 @@ export default function AddMontage() {
       form.append("file2", files[1])
       form.append("file3", files[2])
       form.append("file4", files[3])
+
+      form.append("customer_id", location.state.id)
+      form.append("job_name", formData.job_name)
+      form.append("skina_code", formData.skina_code)
+      form.append("aps", formData.aps)
+      form.append("color", formData.color)
+      form.append("darafel", formData.darafel)
+      form.append("type", formData.type)
+      form.append("etgah_el_gar", formData.etgah_el_gar)
+      form.append("gap", formData.gap)
+      form.append("special_color", formData.special_color)
+      form.append("tars_el_takser", formData.tars_el_takser)
+      form.append("sub_code", formData.sub_code)
+      form.append("etgah_el_ard", formData.etgah_el_ard)
+
       const config = {
         headers: { "content-type": "multipart/form-data" }
       };
@@ -114,7 +130,6 @@ export default function AddMontage() {
                 dropDownClassName="input"
                 value={formData.skina_code}
                 onChange={(e, newValue) => {
-                  debugger;
                   handleChange(newValue, e.target.id);
                 }}
               />
