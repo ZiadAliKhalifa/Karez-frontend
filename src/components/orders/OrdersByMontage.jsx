@@ -30,8 +30,8 @@ export default function OrdersByMontage() {
             });
     }, []);
 
-    const navigateToDetails = (event) => {
-        const location = { pathname: "/admin/order/details/" + id };
+    const navigateToDetails = (orderId) => {
+        const location = { pathname: "/order/" + orderId };
         history.replace(location);
     };
 
@@ -66,7 +66,7 @@ export default function OrdersByMontage() {
                         rows={orders}
                         headers={headers}
                         rowActions={[
-                            createRowAction("التفاصيل", e => { navigateToDetails(e) })
+                            createRowAction("التفاصيل", orderId => { navigateToDetails(orderId) })
                         ]}
                     />
                 </div>
