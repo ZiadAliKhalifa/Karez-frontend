@@ -41,6 +41,40 @@ export default function AddOrderForMontage() {
 
     const handleSubmit = () => {
         // new order
+
+        // "montage_id": 3,
+        // "quantity": 0,
+        // "material_type": "",
+        // "skina_code_new": "",
+        // "lamination": "",
+        // "job_direction": "",
+        // "job_per_meter": "",
+        // "sample": "",
+        // "order_roll": "",
+        // "roll_per_meter": "",
+        // "label_per_roll": ""
+
+        formData.montage_id = id;
+
+        const url =
+            restHelper.getURLPrefix(appConfig.host) +
+            appConfig.services.orders.newOrder;
+
+
+        restHelper
+            .postRequest(url, formData)
+            .then((res) => {
+                navigateToAllCustomers()
+            })
+            .catch((err) => {
+                alert("لم نتمكن من ادخال");
+            });
+
+    }
+
+    const navigateToAllCustomers = () => {
+        const location = { pathname: "/admin/customers" }
+        history.replace(location)
     }
 
     return (
@@ -195,10 +229,10 @@ export default function AddOrderForMontage() {
                         <div className="part">
                             <div className="inputs_label">Skina Code New</div>
                             <AppInput
-                                id="skina_code"
+                                id="skina_code_new"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={formData.quantity}
+                                value={formData.skina_code_new}
                                 onChange={(e) => handleChange(e.target.value, e.target.id)}
                             />
                         </div>
@@ -255,10 +289,10 @@ export default function AddOrderForMontage() {
                         <div className="part">
                             <div className="inputs_label">Ordered Roll</div>
                             <AppInput
-                                id="ordered_roll"
+                                id="order_roll"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={formData.ordered_roll}
+                                value={formData.order_roll}
                                 onChange={(e) => handleChange(e.target.value, e.target.id)}
                             />
                         </div>
@@ -289,6 +323,9 @@ export default function AddOrderForMontage() {
                     </div>
                 </div>
             </div>
+
+            <button className="customer-submit" onClick={handleSubmit}>اضافة</button>
+
         </div>
     )
 }

@@ -48,8 +48,7 @@ export default function NewCustomer() {
                     alert("لم نتمكن من ادخال العميل");
                 });
         } else {
-            console.log(customer);
-            alert('لم يتم ادخال كل المدخلات')
+            alert('لم يتم ادخال كل المدخلات');
         }
     }
 
