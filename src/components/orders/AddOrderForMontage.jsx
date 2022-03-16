@@ -43,18 +43,6 @@ export default function AddOrderForMontage() {
     const handleSubmit = () => {
         // new order
 
-        // "montage_id": 3,
-        // "quantity": 0,
-        // "material_type": "",
-        // "skina_code_new": "",
-        // "lamination": "",
-        // "job_direction": "",
-        // "job_per_meter": "",
-        // "sample": "",
-        // "order_roll": "",
-        // "roll_per_meter": "",
-        // "label_per_roll": ""
-
         formData.montage_id = id;
 
         const url =
