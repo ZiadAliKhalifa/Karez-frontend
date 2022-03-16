@@ -29,7 +29,8 @@
       "packOrder": "api/order/update-unpacked-orders/",
       "getOrdersByMontageId": "api/order/by-montage/",
       "deliverPackedOrder": "api/order/delivered/",
-      "newOrder": "api/order/create-order/"
+      "newOrder": "api/order/create-order/",
+      "getOrderDetails": "api/order/get-all-orders-details/"
     }
   }
 }
