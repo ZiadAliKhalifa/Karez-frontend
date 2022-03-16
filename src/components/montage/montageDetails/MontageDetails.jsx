@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
-import AppInput from '../common/input/Input'
+import AppInput from '../../common/input/Input'
 
-import restHelper from "../../helpers/RestHelper";
-import appConfig from "../../config.json";
+import restHelper from "../../../helpers/RestHelper";
+import appConfig from "../../../config.json";
 
-import "./AddOrderForMontage.css"
+import "./MontageDetails.css"
 
-export default function AddOrderForMontage() {
+export default function MontageDetails() {
 
     const [montage, setMontage] = useState({})
     const [formData, setFormData] = useState({});
@@ -198,135 +198,6 @@ export default function AddOrderForMontage() {
                     </div>
                 </div>
             </div>
-
-            <div className="inputs_container">
-                <div className='data-header'>
-                    Order Data
-                </div>
-                <div className='inputs_section'>
-                    <div className='column'>
-                        <div className="part">
-                            <div className="inputs_label">كمية</div>
-                            <AppInput
-                                id="quantity"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.quantity}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                        <div className="part">
-                            <div className="inputs_label">نوع الخامة</div>
-                            <AppInput
-                                id="material_type"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.material_type}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                    </div>
-                    <div className='column'>
-                        <div className="part">
-                            <div className="inputs_label">رقم سكينة جديدة</div>
-                            <AppInput
-                                id="skina_code_new"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.skina_code_new}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                        <div className="part">
-                            <div className="inputs_label">التصفيح</div>
-                            <AppInput
-                                id="lamination"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.lamination}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                    </div>
-                    <div className='column'>
-                        <div className="part">
-                            <div className="inputs_label">إتجاه الشغلة</div>
-                            <AppInput
-                                id="job_direction"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.job_direction}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                        <div className="part">
-                            <div className="inputs_label">Job/m</div>
-                            <AppInput
-                                id="job_per_meter"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.job_per_meter}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                    </div>
-
-                </div>
-                <div className='data-header'>
-                    Quantity Data
-                </div>
-                <div className='inputs_section'>
-                    <div className='column'>
-                        <div className="part">
-                            <div className="inputs_label">Sample</div>
-                            <AppInput
-                                id="sample"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.sample}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                        <div className="part">
-                            <div className="inputs_label">Ordered Roll</div>
-                            <AppInput
-                                id="order_roll"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.order_roll}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                    </div>
-                    <div className='column'>
-                        <div className="part">
-                            <div className="inputs_label">Roll per meter</div>
-                            <AppInput
-                                id="roll_per_meter"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.roll_per_meter}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                    </div>
-                    <div className='column'>
-                        <div className="part">
-                            <div className="inputs_label">Label/Rolls</div>
-                            <AppInput
-                                id="label_per_roll"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.label_per_roll}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <button className="customer-submit" onClick={handleSubmit}>اضافة</button>
-
         </div>
-    )
-}
+            );
+        }

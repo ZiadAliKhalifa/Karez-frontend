@@ -54,7 +54,7 @@ function Login() {
           setCookie("role", res.data.role, 7);
           dispatch(loginUser());
           if (res.data.role === "Montage Admin") history.push("/admin/customers");
-          else history.push("/printer");
+          else history.push("/printer/unpacked");
         })
         .catch((err) => {
           alert("اسم المستخدم او كلمة المرور غير صحيحة , برجاء اعادة المحاولة");

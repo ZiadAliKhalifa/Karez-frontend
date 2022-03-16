@@ -18,7 +18,7 @@ function PackedOrders() {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const [isPacked, setIsPacked] = useState(true);
+  const [isPacked, setIsPacked] = useState();
   const [orders, setOrders] = useState([]);
   const [headers, setHeaders] = useState([]);
 
@@ -130,6 +130,7 @@ function PackedOrders() {
         },
       ]);
     } else {
+      setIsPacked(true);
       setHeaders([
         {
           key: "status",
