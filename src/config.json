@@ -1,6 +1,6 @@
 {
   "host": {
-    "protocol": "http",
+    "protocol": "https",
     "host": "glacial-eyrie-43651.herokuapp.com",
     "port": "443"
   },
