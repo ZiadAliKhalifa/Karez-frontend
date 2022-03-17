@@ -39,7 +39,7 @@ class RestServices {
    * @param {object} params contains http/https and ip and port
    */
   getURLPrefix({ protocol, host, port }) {
-    return `${protocol}://${host}:${port}/`;
+    return `${protocol}s://${host}:${port}/`;
   }
 
   /**
