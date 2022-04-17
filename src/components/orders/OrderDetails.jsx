@@ -33,10 +33,13 @@ export default function OrderDetails() {
     return (
         <div className='main_container'>
             <div className="inputs_container">
+            <div className="header_lable">Montage Data</div>
                 <div className="inputs_section">
                     <div>
+                    <div className='column'>
+
                         <div className="part">
-                            <div className="inputs_label">اسم العمل</div>
+                            <div className="inputs_label">اسم مونتاج</div>
                             <AppInput
                                 id="job_name"
                                 inputClassName="input"
@@ -45,7 +48,7 @@ export default function OrderDetails() {
                             />
                         </div>
                         <div className="part">
-                            <div className="inputs_label">كود سكينا </div>
+                            <div className="inputs_label">كود سكينا</div>
                             <AppInput
                                 id="skina_code"
                                 inputClassName="input"
@@ -80,6 +83,7 @@ export default function OrderDetails() {
                                 value={order.darafel}
                             />
                         </div>
+                    </div>
                     </div>
                     <div className="column">
                         <div className="part">
@@ -119,7 +123,7 @@ export default function OrderDetails() {
                             />
                         </div>
                         <div className="part">
-                            <div className="inputs_label"> ترس التكسير</div>
+                            <div className="inputs_label">ترس التكسير</div>
                             <AppInput
                                 id="tars_el_takser"
                                 inputClassName="input"
@@ -130,7 +134,7 @@ export default function OrderDetails() {
                     </div>
                     <div className="column">
                         <div className="part">
-                            <div className="inputs_label">كود فرعي </div>
+                            <div className="inputs_label">كود فرعي</div>
                             <AppInput
                                 id="sub_code"
                                 inputClassName="input"
@@ -152,9 +156,7 @@ export default function OrderDetails() {
             </div>
 
             <div className="inputs_container">
-                <div className='data-header'>
-                    Order Data
-                </div>
+            <div className="header_lable">Order Data</div>
                 <div className='inputs_section'>
                     <div className='column'>
                         <div className="part">
@@ -218,11 +220,9 @@ export default function OrderDetails() {
                     </div>
 
                 </div>
-                <div className='data-header'>
-                    Quantity Data
-                </div>
+                <div className="header_lable">Quantity Data</div>
                 <div className='inputs_section'>
-                    <div className='column'>
+                    {/* <div className='column'>
                         <div className="part">
                             <div className="inputs_label">Sample</div>
                             <AppInput
@@ -241,7 +241,7 @@ export default function OrderDetails() {
                                 value={order.order_roll}
                             />
                         </div>
-                    </div>
+                    </div> */}
                     <div className='column'>
                         <div className="part">
                             <div className="inputs_label">Roll per meter</div>

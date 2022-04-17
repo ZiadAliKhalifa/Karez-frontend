@@ -6,7 +6,6 @@ import restHelper from "../../helpers/RestHelper";
 import appConfig from "../../config.json";
 
 import "./AddOrderForMontage.css"
-import { number } from 'prop-types';
 
 export default function AddOrderForMontage() {
 
@@ -138,7 +137,7 @@ export default function AddOrderForMontage() {
                             />
                         </div>
                         <div className="part">
-                            <div className="inputs_label">فجوة </div>
+                            <div className="inputs_label">فجوة</div>
                             <AppInput
                                 id="gap"
                                 inputClassName="input"
@@ -167,7 +166,7 @@ export default function AddOrderForMontage() {
                     </div>
                     <div className="column">
                         <div className="part">
-                            <div className="inputs_label">كود فرعي </div>
+                            <div className="inputs_label">كود فرعي</div>
                             <AppInput
                                 id="sub_code"
                                 inputClassName="input"
@@ -228,7 +227,7 @@ export default function AddOrderForMontage() {
                             />
                         </div>
                         <div className="part">
-                            <div className="inputs_label">التصفيح</div>
+                            <div className="inputs_label">Lamination</div>
                             <AppInput
                                 id="lamination"
                                 inputClassName="input"
@@ -266,7 +265,7 @@ export default function AddOrderForMontage() {
                     Quantity Data
                 </div>
                 <div className='inputs_section'>
-                    <div className='column'>
+                    {/* <div className='column'>
                         <div className="part">
                             <div className="inputs_label">Sample</div>
                             <AppInput
@@ -287,7 +286,7 @@ export default function AddOrderForMontage() {
                                 onChange={(e) => handleChange(e.target.value, e.target.id)}
                             />
                         </div>
-                    </div>
+                    </div> */}
                     <div className='column'>
                         <div className="part">
                             <div className="inputs_label">Roll per meter</div>

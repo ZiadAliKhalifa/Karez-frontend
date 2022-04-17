@@ -104,8 +104,9 @@ export default function AddMontage() {
         <div className="header_lable">AddMontage</div>
         <div className="inputs_section">
           <div>
+          <div className='column'>
             <div className="part">
-              <div className="inputs_label">اسم العمل</div>
+              <div className="inputs_label">اسم مونتاج</div>
               <AppInput
                 id="job_name"
                 inputClassName="input"
@@ -139,6 +140,7 @@ export default function AddMontage() {
               <AppInput
                 id="aps"
                 inputClassName="input"
+                type={"number"}
                 InputProps={{ disableUnderline: true }}
                 value={formData.aps}
                 onChange={(e) => handleChange(e.target.value, e.target.id)}
@@ -165,6 +167,7 @@ export default function AddMontage() {
               />
             </div>
           </div>
+          </div>
           <div className="column">
             <div className="part">
               <div className="inputs_label">نوع</div>
@@ -177,14 +180,14 @@ export default function AddMontage() {
               />
             </div>
             <div className="part">
-              <div className="inputs_label"> اتجاه جر</div>
-              <Autocomplete
+              <div className="inputs_label">اتجاه جر</div>
+              <AppInput
                 id="etgah_el_gar"
-                type="dropdown"
-                options={["amr", "abdo"]}
-                dropDownClassName="input"
+                inputClassName="input"
+                InputProps={{ disableUnderline: true }}
                 value={formData.etgah_el_gar}
-                onChange={(e, newValue) => handleChange(newValue, e.target.id)}
+                type={"number"}
+                onChange={(e) => handleChange(e.target.value, e.target.id)}
               />
             </div>
             <div className="part">
@@ -220,7 +223,7 @@ export default function AddMontage() {
           </div>
           <div className="column">
             <div className="part">
-              <div className="inputs_label">كود فرعي </div>
+              <div className="inputs_label">كود فرعي</div>
               <AppInput
                 id="sub_code"
                 inputClassName="input"
@@ -231,25 +234,29 @@ export default function AddMontage() {
             </div>
             <div className="part">
               <div className="inputs_label">اتجاه عرض</div>
-              <Autocomplete
+              <AppInput
                 id="etgah_el_ard"
-                type="dropdown"
-                options={["amr", "abdo"]}
-                dropDownClassName="input"
+                inputClassName="input"
+                InputProps={{ disableUnderline: true }}
                 value={formData.etgah_el_ard}
-                onChange={(e, newValue) => handleChange(newValue, e.target.id)}
+                type={"number"}
+                onChange={(e) => handleChange(e.target.value, e.target.id)}
               />
             </div>
             <div className="part">
+              <div className="inputs_label">Montage Attachment</div>
               <FileUploadButton runParentFunction={file => handleFileUpdated(file, 0)} />
             </div>
             <div className="part">
+              <div className="inputs_label">Image Attachment</div>
               <FileUploadButton runParentFunction={file => handleFileUpdated(file, 1)} />
             </div>
             <div className="part">
+              <div className="inputs_label">Desgin Upload File</div>
               <FileUploadButton runParentFunction={file => handleFileUpdated(file, 2)} />
             </div>
             <div className="part">
+              <div className="inputs_label">PO</div>
               <FileUploadButton runParentFunction={file => handleFileUpdated(file, 3)} />
             </div>
           </div>

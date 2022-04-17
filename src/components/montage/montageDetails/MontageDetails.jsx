@@ -81,10 +81,11 @@ export default function MontageDetails() {
     return (
         <div className='main_container'>
             <div className="inputs_container">
+            <div className="header_lable">Montage Details</div>
                 <div className="inputs_section">
                     <div>
                         <div className="part">
-                            <div className="inputs_label">اسم العمل</div>
+                            <div className="inputs_label">اسم مونتاج</div>
                             <AppInput
                                 id="job_name"
                                 inputClassName="input"
