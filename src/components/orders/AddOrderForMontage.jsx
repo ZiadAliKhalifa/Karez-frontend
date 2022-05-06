@@ -32,10 +32,18 @@ export default function AddOrderForMontage() {
     }, [])
 
     useEffect(() => {
-        formData.roll_per_meter = ((parseInt(montage.etgah_el_gar) + parseInt(montage.gap)) * parseInt(formData.label_per_roll)) / 100;
+        let newFormData = { ...formData }
+        newFormData.roll_per_meter = ((parseInt(montage.etgah_el_gar) + parseInt(montage.gap)) * parseInt(formData.label_per_roll)) / 100;
+        setFormData(newFormData)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [formData.etgah_el_gar, formData.gap, formData.label_per_roll])
+    }, [formData.label_per_roll])
+
+    useEffect(() => {
+        let newFormData = { ...formData }
+        newFormData.job_per_meter = ((((parseInt(montage.etgah_el_gar) + parseInt(montage.gap))) * parseInt(formData.quantity)) / parseInt(montage.aps)) / 100
+        setFormData(newFormData)
+    }, [formData.quantity])
 
 
     const handleChange = (text, key) => {
@@ -144,7 +152,7 @@ export default function AddOrderForMontage() {
                             />
                         </div>
                         <div className="part">
-                            <div className="inputs_label">فجوة</div>
+                            <div className="inputs_label">Gap</div>
                             <AppInput
                                 id="gap"
                                 inputClassName="input"
