@@ -75,13 +75,13 @@ export default function MontageDetails() {
 
     const navigateToAllCustomers = () => {
         const location = { pathname: "/admin/customers" }
-        history.replace(location)
+        history.push(location)
     }
 
     return (
         <div className='main_container'>
             <div className="inputs_container">
-            <div className="header_lable">Montage Details</div>
+                <div className="header_lable">Montage Details</div>
                 <div className="inputs_section">
                     <div>
                         <div className="part">
@@ -200,5 +200,5 @@ export default function MontageDetails() {
                 </div>
             </div>
         </div>
-            );
-        }
+    );
+}

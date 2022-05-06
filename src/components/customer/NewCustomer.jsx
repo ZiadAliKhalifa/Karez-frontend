@@ -25,7 +25,7 @@ export default function NewCustomer() {
 
     const navigateToAllCustomers = () => {
         const location = { pathname: "/admin/customers" }
-        history.replace(location)
+        history.push(location)
     }
 
     const handleSubmit = () => {

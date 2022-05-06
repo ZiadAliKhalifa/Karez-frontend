@@ -63,7 +63,7 @@ export default function AddOrderForMontage() {
 
     const navigateToAllCustomers = () => {
         const location = { pathname: "/admin/customers" }
-        history.replace(location)
+        history.push(location)
     }
 
     return (
