@@ -31,6 +31,13 @@ export default function AddOrderForMontage() {
 
     }, [])
 
+    useEffect(() => {
+        formData.roll_per_meter = ((parseInt(montage.etgah_el_gar) + parseInt(montage.gap)) * parseInt(formData.label_per_roll)) / 100;
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [formData.etgah_el_gar, formData.gap, formData.label_per_roll])
+
+
     const handleChange = (text, key) => {
         let keys = "";
         if (key.indexOf("-") > 0) keys = key.substr(0, key.indexOf("-"));
