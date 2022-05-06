@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import AppInput from '../../common/input/Input'
 
+import { IMAGE_BASE_URL } from "../../../consts/general.js"
+
 import restHelper from "../../../helpers/RestHelper";
 import appConfig from "../../../config.json";
 
@@ -75,13 +77,13 @@ export default function MontageDetails() {
 
     const navigateToAllCustomers = () => {
         const location = { pathname: "/admin/customers" }
-        history.replace(location)
+        history.push(location)
     }
 
     return (
         <div className='main_container'>
             <div className="inputs_container">
-            <div className="header_lable">Montage Details</div>
+                <div className="header_lable">Montage Details</div>
                 <div className="inputs_section">
                     <div>
                         <div className="part">
@@ -196,9 +198,35 @@ export default function MontageDetails() {
                                 value={montage.etgah_el_ard}
                             />
                         </div>
+
+                        <div style={{ margin: "50px" }}>
+                            <h4>Montage Attachment</h4>
+                            {
+                                montage.montage_attachment ?
+                                    <img src={`${IMAGE_BASE_URL}${montage.montage_attachment}`} alt="" /> :
+                                    <p>No image found</p>
+                            }
+                        </div>
+                        <div style={{ margin: "50px" }}>
+                            <h4>Sample</h4>
+                            {
+                                montage.design_upload_file ?
+                                    <img src={`${IMAGE_BASE_URL}${montage.design_upload_file}`} alt="" /> :
+                                    <p>No image found</p>
+                            }
+                        </div>
+                        <div style={{ margin: "50px" }}>
+                            <h4>Image</h4>
+                            {
+                                montage.image_attachment ?
+                                    <img src={`${IMAGE_BASE_URL}${montage.image_attachment}`} alt="" /> :
+                                    <p>No image found</p>
+                            }
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-            );
-        }
+    );
+}

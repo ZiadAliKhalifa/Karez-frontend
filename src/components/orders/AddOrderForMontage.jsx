@@ -31,6 +31,21 @@ export default function AddOrderForMontage() {
 
     }, [])
 
+    useEffect(() => {
+        let newFormData = { ...formData }
+        newFormData.roll_per_meter = ((parseInt(montage.etgah_el_gar) + parseInt(montage.gap)) * parseInt(formData.label_per_roll)) / 100;
+        setFormData(newFormData)
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [formData.label_per_roll])
+
+    useEffect(() => {
+        let newFormData = { ...formData }
+        newFormData.job_per_meter = ((((parseInt(montage.etgah_el_gar) + parseInt(montage.gap))) * parseInt(formData.quantity)) / parseInt(montage.aps)) / 100
+        setFormData(newFormData)
+    }, [formData.quantity])
+
+
     const handleChange = (text, key) => {
         let keys = "";
         if (key.indexOf("-") > 0) keys = key.substr(0, key.indexOf("-"));
@@ -63,7 +78,7 @@ export default function AddOrderForMontage() {
 
     const navigateToAllCustomers = () => {
         const location = { pathname: "/admin/customers" }
-        history.replace(location)
+        history.push(location)
     }
 
     return (
@@ -137,7 +152,7 @@ export default function AddOrderForMontage() {
                             />
                         </div>
                         <div className="part">
-                            <div className="inputs_label">فجوة</div>
+                            <div className="inputs_label">Gap</div>
                             <AppInput
                                 id="gap"
                                 inputClassName="input"
@@ -216,7 +231,7 @@ export default function AddOrderForMontage() {
                         </div>
                     </div>
                     <div className='column'>
-                        <div className="part">
+                        {/* <div className="part">
                             <div className="inputs_label">رقم سكينة جديدة</div>
                             <AppInput
                                 id="skina_code_new"
@@ -225,7 +240,7 @@ export default function AddOrderForMontage() {
                                 value={formData.skina_code_new}
                                 onChange={(e) => handleChange(e.target.value, e.target.id)}
                             />
-                        </div>
+                        </div> */}
                         <div className="part">
                             <div className="inputs_label">Lamination</div>
                             <AppInput

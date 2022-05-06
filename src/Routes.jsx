@@ -40,6 +40,7 @@ const Routes = () => {
       {/* we can have multiple GuardProvider wrappers with different validation functions */}
       <GuardProvider guards={[requireLogin]}>
         <Switch>
+          <GuardedRoute path="/" exact component={Login}></GuardedRoute>
           <GuardedRoute path="/login" exact component={Login}></GuardedRoute>
           <GuardedRoute path="/logout" exact component={Logout}></GuardedRoute>
           <GuardedRoute path="/admin/customer/new" exact meta={{ auth: true }}>
@@ -114,7 +115,7 @@ const Routes = () => {
             meta={{ auth: true }}
           >
             <ComponentWrapper>
-            <MontageDetails />
+              <MontageDetails />
             </ComponentWrapper>
           </GuardedRoute>
         </Switch>

@@ -32,12 +32,12 @@ export default function OrdersByMontage() {
 
     const navigateToDetails = (orderId) => {
         const location = { pathname: "/order/" + orderId };
-        history.replace(location);
+        history.push(location);
     };
 
     const navigateToNewOrder = () => {
         const location = { pathname: `/admin/montage/${id}/order/new` }
-        history.replace(location)
+        history.push(location)
     }
 
     const headers = [

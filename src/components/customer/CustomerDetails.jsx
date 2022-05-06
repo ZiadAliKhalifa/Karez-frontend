@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory, useParams, useLocation } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 import Table from '../common/Table/Table';
 
@@ -123,12 +123,12 @@ export default function CustomerDetails() {
 
     const navigateToDetails = (montageId) => {
         const location = { pathname: "/admin/montage/details/" + montageId }
-        history.replace(location)
+        history.push(location)
     }
 
     const navigateToListOfOrders = (montageId) => {
         const location = { pathname: "/admin/order/by-montage/" + montageId }
-        history.replace(location)
+        history.push(location)
     }
 
     return (
@@ -158,7 +158,7 @@ export default function CustomerDetails() {
                         rows={montages}
                         headers={headers}
                         rowActions={[
-                            createRowAction("اعادة الطلب", reorder),
+                            // createRowAction("اعادة الطلب", reorder),
                             createRowAction("التفاصيل", montageId => { navigateToDetails(montageId) }),
                             // createRowAction("edit", edit),
                             createRowAction("الطلبات", montageId => { navigateToListOfOrders(montageId) })
