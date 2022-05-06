@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import AppInput from '../common/input/Input'
 
-
+import { IMAGE_BASE_URL } from "../../consts/general.js"
 import restHelper from "../../helpers/RestHelper";
 import appConfig from "../../config.json";
 
@@ -33,57 +33,82 @@ export default function OrderDetails() {
     return (
         <div className='main_container'>
             <div className="inputs_container">
-            <div className="header_lable">Montage Data</div>
+                <div className="header_lable">Montage Data</div>
                 <div className="inputs_section">
                     <div>
-                    <div className='column'>
+                        <div className='column'>
 
-                        <div className="part">
-                            <div className="inputs_label">اسم مونتاج</div>
-                            <AppInput
-                                id="job_name"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.job_name}
-                            />
+                            <div className="part">
+                                <div className="inputs_label">اسم مونتاج</div>
+                                <AppInput
+                                    id="job_name"
+                                    inputClassName="input"
+                                    InputProps={{ disableUnderline: true }}
+                                    value={order.job_name}
+                                />
+                            </div>
+                            <div className="part">
+                                <div className="inputs_label">كود سكينا</div>
+                                <AppInput
+                                    id="skina_code"
+                                    inputClassName="input"
+                                    InputProps={{ disableUnderline: true }}
+                                    value={order.skina_code}
+                                />
+                            </div>
+                            <div className="part">
+                                <div className="inputs_label">APS</div>
+                                <AppInput
+                                    id="aps"
+                                    inputClassName="input"
+                                    InputProps={{ disableUnderline: true }}
+                                    value={order.aps}
+                                />
+                            </div>
+                            <div className="part">
+                                <div className="inputs_label">اللون</div>
+                                <AppInput
+                                    id="color"
+                                    inputClassName="input"
+                                    InputProps={{ disableUnderline: true }}
+                                    value={order.color}
+                                />
+                            </div>
+                            <div className="part">
+                                <div className="inputs_label">دارافيل</div>
+                                <AppInput
+                                    id="darafel"
+                                    inputClassName="input"
+                                    InputProps={{ disableUnderline: true }}
+                                    value={order.darafel}
+                                />
+                            </div>
+
+                            <div style={{ margin: "50px" }}>
+                                <h4>Montage Attachment</h4>
+                                {
+                                    order.montage_attachment ?
+                                        <img src={`${IMAGE_BASE_URL}${order.montage_attachment}`} alt="" /> :
+                                        <p>No image found</p>
+                                }
+                            </div>
+                            <div style={{ margin: "50px" }}>
+                                <h4>Sample</h4>
+                                {
+                                    order.design_upload_file ?
+                                        <img src={`${IMAGE_BASE_URL}${order.design_upload_file}`} alt="" /> :
+                                        <p>No image found</p>
+                                }
+                            </div>
+                            <div style={{ margin: "50px" }}>
+                                <h4>Image</h4>
+                                {
+                                    order.image_attachment ?
+                                        <img src={`${IMAGE_BASE_URL}${order.image_attachment}`} alt="" /> :
+                                        <p>No image found</p>
+                                }
+                            </div>
                         </div>
-                        <div className="part">
-                            <div className="inputs_label">كود سكينا</div>
-                            <AppInput
-                                id="skina_code"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.skina_code}
-                            />
-                        </div>
-                        <div className="part">
-                            <div className="inputs_label">APS</div>
-                            <AppInput
-                                id="aps"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.aps}
-                            />
-                        </div>
-                        <div className="part">
-                            <div className="inputs_label">اللون</div>
-                            <AppInput
-                                id="color"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.color}
-                            />
-                        </div>
-                        <div className="part">
-                            <div className="inputs_label">دارافيل</div>
-                            <AppInput
-                                id="darafel"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.darafel}
-                            />
-                        </div>
-                    </div>
                     </div>
                     <div className="column">
                         <div className="part">
@@ -156,7 +181,7 @@ export default function OrderDetails() {
             </div>
 
             <div className="inputs_container">
-            <div className="header_lable">Order Data</div>
+                <div className="header_lable">Order Data</div>
                 <div className='inputs_section'>
                     <div className='column'>
                         <div className="part">
