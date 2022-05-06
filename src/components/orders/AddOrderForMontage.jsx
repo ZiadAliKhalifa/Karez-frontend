@@ -231,7 +231,7 @@ export default function AddOrderForMontage() {
                         </div>
                     </div>
                     <div className='column'>
-                        <div className="part">
+                        {/* <div className="part">
                             <div className="inputs_label">رقم سكينة جديدة</div>
                             <AppInput
                                 id="skina_code_new"
@@ -240,7 +240,7 @@ export default function AddOrderForMontage() {
                                 value={formData.skina_code_new}
                                 onChange={(e) => handleChange(e.target.value, e.target.id)}
                             />
-                        </div>
+                        </div> */}
                         <div className="part">
                             <div className="inputs_label">Lamination</div>
                             <AppInput
