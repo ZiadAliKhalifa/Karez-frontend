@@ -1,73 +1,81 @@
 .main_container {
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    direction: rtl !important;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  direction: rtl !important;
+  overflow: hidden;
 }
 
 .inputs_container {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    margin-top: 50px;
-    margin-right: 50px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin-top: 50px;
+  margin-right: 50px;
 }
 
 .header_lable {
-    font-weight: bold;
-    font-size: 43px;
-    color: var(--light-grey);
+  font-weight: bold;
+  font-size: 43px;
+  color: var(--light-grey);
 }
 
 .inputs_section {
-    margin-top: 10px;
-    display: flex;
-    margin-right: 40px;
+  margin-top: 10px;
+  display: flex;
+  margin-right: 40px;
 }
 
 .part {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .input {
-    border: 1px solid var(--grey) !important;
-    border-radius: 25px;
-    padding: 10px 50px 0px 0px !important;
-    width: calc(100% - 20px) !important;
-    height: 40px !important;
-    direction: rtl !important;
+  border: 1px solid var(--grey) !important;
+  border-radius: 25px;
+  padding: 10px 50px 0px 0px !important;
+  width: calc(100% - 20px) !important;
+  height: 40px !important;
+  direction: rtl !important;
 }
 
 .column {
-    margin-right: 200px;
+  margin-right: 200px;
 }
 
 .inputs_label {
-    font-weight: bold;
-    font-size: 14px;
-    color: var(--black);
-    margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--black);
+  margin-bottom: 5px;
 }
 
-
 .customer-submit {
-    border: 2px solid var(--light-grey);
-    color: 1px solid var(--light-grey);
-    background-color: transparent;
-    border-radius: 25px 25px 25px 25px;
-    width: 200px;
-    padding-top: 17px;
-    padding-bottom: 10px;
-    margin: auto;
-    cursor: pointer;
-    margin-top: 40px;
-    font-family: Tajawal, roboto;
-    cursor: pointer;
-    font-size: 16px;
+  border: 2px solid var(--light-grey);
+  color: 1px solid var(--light-grey);
+  background-color: transparent;
+  border-radius: 25px 25px 25px 25px;
+  width: 200px;
+  padding-top: 17px;
+  padding-bottom: 10px;
+  margin: auto;
+  cursor: pointer;
+  margin-top: 40px;
+  font-family: Tajawal, roboto;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .customer-submit:hover {
-    background-color: rgb(247, 247, 247);
-    transition: all 0.2s ease-in-out;
+  background-color: rgb(247, 247, 247);
+  transition: all 0.2s ease-in-out;
+}
+
+.monategImages {
+  max-width: 400px;
+}
+
+.monategImageLink {
+  cursor: pointer;
+  text-decoration: none;
 }
