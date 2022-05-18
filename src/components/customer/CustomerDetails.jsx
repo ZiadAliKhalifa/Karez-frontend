@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { useHistory, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
-import Table from '../common/Table/Table';
+import Table from "../common/Table/Table";
 
 import restHelper from "../../helpers/RestHelper";
 import appConfig from "../../config.json";
@@ -9,163 +9,170 @@ import { createRowAction } from "../common/Table/tableHelper";
 
 import AppButton from "../common/button/Button";
 
-import "./CustomerDetails.css"
+import "./CustomerDetails.css";
 
 export default function CustomerDetails() {
+  const [customer, setCustomer] = useState({});
+  const [montages, setMontages] = useState([]);
 
-    const [customer, setCustomer] = useState({})
-    const [montages, setMontages] = useState([])
+  const { id, categoryId } = useParams();
+  const history = useHistory();
 
-    const { id } = useParams();
-    const history = useHistory();
+  const navigteToNewMontage = () => {
+    const location = {
+      pathname: `/admin/montage/new`,
+      state: {
+        id: id,
+      },
+    };
+    history.push(location);
+  };
 
-    const navigteToNewMontage = () => {
-        const location = {
-            pathname: `/admin/montage/new`,
-            state: {
-                id: id
-            }
-        }
-        history.push(location)
-    }
+  useEffect(() => {
+    // Get customer details
+    let url =
+      restHelper.getURLPrefix(appConfig.host) +
+      appConfig.services.customers.getCustomers;
 
-    useEffect(() => {
+    restHelper
+      .getRequest(`${url}${id}`)
+      .then((res) => {
+        setCustomer({ ...res.data });
+      })
+      .catch((err) => {
+        alert("برجاء اعادة المحاولة");
+      });
 
-        // Get customer details
-        let url =
-            restHelper.getURLPrefix(appConfig.host) +
-            appConfig.services.customers.getCustomers;
+    // Get customer orders
+    url =
+      restHelper.getURLPrefix(appConfig.host) +
+      appConfig.services.montages.getMontagebyCategory;
 
-        restHelper
-            .getRequest(url + id)
-            .then((res) => {
-                setCustomer({ ...res.data })
-            })
-            .catch((err) => {
-                alert("برجاء اعادة المحاولة");
-            });
+    restHelper
+      .getRequest(`${url}${categoryId}`)
+      .then((res) => {
+        console.log(res.data);
+        setMontages(res.data);
+      })
+      .catch((err) => {
+        alert("برجاء اعادة المحاولة");
+      });
+  }, []);
 
-        // Get customer orders
-        url =
-            restHelper.getURLPrefix(appConfig.host) +
-            appConfig.services.montages.getMontagesByCustomerId;
+  useEffect(() => {
+    // Get customer orders
+    const url =
+      restHelper.getURLPrefix(appConfig.host) +
+      appConfig.services.montages.getMontagebyCategory;
 
-        restHelper
-            .getRequest(url + id)
-            .then((res) => {
-                console.log(res.data);
-                setMontages(res.data)
-            })
-            .catch((err) => {
-                alert("برجاء اعادة المحاولة");
-            });
-    }, [])
+    restHelper
+      .getRequest(`${url}${categoryId}`)
+      .then((res) => {
+        setMontages(res.data);
+      })
+      .catch((err) => {
+        alert("برجاء اعادة المحاولة");
+      });
+  }, [customer]);
 
-    useEffect(() => {
-        // Get customer orders
-        const url =
-            restHelper.getURLPrefix(appConfig.host) +
-            appConfig.services.montages.getMontagesByCustomerId;
+  const headers = [
+    {
+      key: "type",
+      name: "النوع",
+    },
+    {
+      key: "sub_code",
+      name: "الرقم التعريفي",
+    },
+    {
+      key: "job_name",
+      name: "الاسم",
+    },
+  ];
 
-        restHelper
-            .getRequest(url + id)
-            .then((res) => {
-                setMontages(res.data)
-            })
-            .catch((err) => {
-                alert("برجاء اعادة المحاولة");
-            });
-    }, [customer])
+  const edit = (montageId) => {
+    history.push(`/admin/montage/new/${montageId}`);
+  };
 
+  const reorder = (montageId) => {
+    // API request to reorder
+    const url =
+      restHelper.getURLPrefix(appConfig.host) +
+      appConfig.services.montages.reorderMontageById;
 
-    const headers = [
+    const data = {
+      id: montageId,
+    };
 
-        {
-            key: "type",
-            name: "النوع",
-        },
-        {
-            key: "sub_code",
-            name: "الرقم التعريفي",
-        },
-        {
-            key: "job_name",
-            name: "الاسم",
-        }
+    restHelper
+      .postRequest(url, data)
+      .then((res) => {
+        // Hacky way to reset the orders for the customer
+        setCustomer("");
+        setCustomer(customer);
+      })
+      .catch((err) => {
+        alert("لا يمكن اعادة الطلب");
+      });
+  };
 
-    ];
+  const navigateToDetails = (montageId) => {
+    const location = { pathname: "/admin/montage/details/" + montageId };
+    history.push(location);
+  };
 
-    const edit = (montageId) => {
-        history.push(`/admin/montage/new/${montageId}`)
-    }
+  const navigateToListOfOrders = (montageId) => {
+    const location = { pathname: "/admin/order/by-montage/" + montageId };
+    history.push(location);
+  };
 
-    const reorder = (montageId) => {
-        // API request to reorder
-        const url =
-            restHelper.getURLPrefix(appConfig.host) +
-            appConfig.services.montages.reorderMontageById;
-
-        const data = {
-            id: montageId
-        }
-
-        restHelper
-            .postRequest(url, data)
-            .then((res) => {
-                // Hacky way to reset the orders for the customer
-                setCustomer("")
-                setCustomer(customer)
-            })
-            .catch((err) => {
-                alert("لا يمكن اعادة الطلب");
-            });
-    }
-
-    const navigateToDetails = (montageId) => {
-        const location = { pathname: "/admin/montage/details/" + montageId }
-        history.push(location)
-    }
-
-    const navigateToListOfOrders = (montageId) => {
-        const location = { pathname: "/admin/order/by-montage/" + montageId }
-        history.push(location)
-    }
-
-    return (
-        <>
-            <div className='montage-container'>
-                <div className='montage-header'>{customer.name}</div>
-                <div className="customers-new">
-                    <AppButton onClick={navigteToNewMontage} text={"اضافه مونتاج"} />
-                </div>
-                <div className='montage-customer-details'>
-                    <div className='montage-customer-details-item'>
-                        <div className='montage-customer-details-item-header'>Code</div>
-                        <div className='montage-customer-details-item-data'>{customer.code}</div>
-                    </div>
-                    <div className='montage-customer-details-item'>
-                        <div className='montage-customer-details-item-header'>Mobile Number</div>
-                        <div className='montage-customer-details-item-data'>{customer.mobile_number}</div>
-                    </div>
-                    <div className='montage-customer-details-item'>
-                        <div className='montage-customer-details-item-header'>Address</div>
-                        <div className='montage-customer-details-item-data'>{customer.address}</div>
-                    </div>
-                </div>
-
-                <div className='montages-container'>
-                    <Table
-                        rows={montages}
-                        headers={headers}
-                        rowActions={[
-                            // createRowAction("اعادة الطلب", reorder),
-                            createRowAction("التفاصيل", montageId => { navigateToDetails(montageId) }),
-                            // createRowAction("edit", edit),
-                            createRowAction("الطلبات", montageId => { navigateToListOfOrders(montageId) })
-                        ]}
-                    />
-                </div>
+  return (
+    <>
+      <div className="montage-container">
+        <div className="montage-header">{customer.name}</div>
+        <div className="customers-new">
+          <AppButton onClick={navigteToNewMontage} text={"اضافه مونتاج"} />
+        </div>
+        <div className="montage-customer-details">
+          <div className="montage-customer-details-item">
+            <div className="montage-customer-details-item-header">Code</div>
+            <div className="montage-customer-details-item-data">
+              {customer.code}
             </div>
-        </>
-    )
+          </div>
+          <div className="montage-customer-details-item">
+            <div className="montage-customer-details-item-header">
+              Mobile Number
+            </div>
+            <div className="montage-customer-details-item-data">
+              {customer.mobile_number}
+            </div>
+          </div>
+          <div className="montage-customer-details-item">
+            <div className="montage-customer-details-item-header">Address</div>
+            <div className="montage-customer-details-item-data">
+              {customer.address}
+            </div>
+          </div>
+        </div>
+
+        <div className="montages-container">
+          <Table
+            rows={montages}
+            headers={headers}
+            rowActions={[
+              // createRowAction("اعادة الطلب", reorder),
+              createRowAction("التفاصيل", (montageId) => {
+                navigateToDetails(montageId);
+              }),
+              // createRowAction("edit", edit),
+              createRowAction("الطلبات", (montageId) => {
+                navigateToListOfOrders(montageId);
+              }),
+            ]}
+          />
+        </div>
+      </div>
+    </>
+  );
 }

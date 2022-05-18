@@ -4,6 +4,11 @@
     "host": "glacial-eyrie-43651.herokuapp.com",
     "port": "443"
   },
+  "host1": {
+    "protocol": "http",
+    "host": "127.0.0.1",
+    "port": "8000"
+  },
   "services": {
     "general": {
       "getUnits": "api/inventory/get-all-units",
@@ -21,7 +26,11 @@
       "reorderMontageById": "api/montage/reorder/",
       "newMontage": "api/montage/create-montage/",
       "getMontage": "api/montage/details/{id}",
-      "getMontageById": "api/montage/details/"
+      "getMontageById": "api/montage/details/",
+      "getMontageCategories": "api/montage/categories/",
+      "getMontagebyCategory": "api/montage/by-category/",
+      "getMontageSkinaCodes": "api/montage/skina-codes/",
+      "newMontageSkinaCode": "api/montage/create-skina-codes/"
     },
     "orders": {
       "getPackedOrders": "api/order/get-packed-orders",

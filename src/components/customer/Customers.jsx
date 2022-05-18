@@ -4,26 +4,32 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Table from "../common/Table/Table";
 
 import AppButton from "../common/button/Button";
+import MontageCategoriesModal from "./MontageCategoriesModal";
+import { openModal } from "../../redux/modal/modalActions";
 
 import { createRowAction } from "../common/Table/tableHelper";
 
 import restHelper from "../../helpers/RestHelper";
 import appConfig from "../../config.json";
 
-import "./Customers.css"
+import { useDispatch } from "react-redux";
+
+import "./Customers.css";
 
 export default function Customers() {
+  const dispatch = useDispatch();
+
   const [customers, setCustomers] = useState([]);
 
   const history = useHistory();
 
   const navigateToCustomerDetails = (id) => {
-    history.push("/admin/customer/" + id);
+    dispatch(openModal(<MontageCategoriesModal customerId={id} />));
   };
 
   const navigteToNewCustomer = () => {
     history.push("/admin/customer/new");
-  }
+  };
 
   useEffect(() => {
     const url =
@@ -40,7 +46,6 @@ export default function Customers() {
       });
   }, []);
 
-
   // Table headers
   const headers = [
     {
@@ -54,13 +59,12 @@ export default function Customers() {
     {
       key: "name",
       name: "الاسم",
-    },   
+    },
     {
       key: "code",
       name: "الرقم التعريفي",
     },
   ];
-
 
   return (
     <>
