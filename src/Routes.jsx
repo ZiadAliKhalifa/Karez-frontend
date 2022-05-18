@@ -48,7 +48,11 @@ const Routes = () => {
               <NewCustomer />
             </ComponentWrapper>
           </GuardedRoute>
-          <GuardedRoute path="/admin/customer/:id?" exact meta={{ auth: true }}>
+          <GuardedRoute
+            path="/admin/customer/:id?/montage-category/:categoryId?"
+            exact
+            meta={{ auth: true }}
+          >
             <ComponentWrapper>
               <CustomerDetails />
             </ComponentWrapper>
@@ -58,7 +62,10 @@ const Routes = () => {
               <Customers />
             </ComponentWrapper>
           </GuardedRoute>
-          <GuardedRoute path="/admin/order/by-montage/:id?" meta={{ auth: true }}>
+          <GuardedRoute
+            path="/admin/order/by-montage/:id?"
+            meta={{ auth: true }}
+          >
             <ComponentWrapper>
               <OrdersByMontage />
             </ComponentWrapper>
@@ -73,11 +80,7 @@ const Routes = () => {
               <PackedOrders />
             </ComponentWrapper>
           </GuardedRoute>
-          <GuardedRoute
-            path="/admin/montage/new"
-            exact
-            meta={{ auth: true }}
-          >
+          <GuardedRoute path="/admin/montage/new" exact meta={{ auth: true }}>
             <ComponentWrapper>
               <AddMontage />
             </ComponentWrapper>
@@ -100,11 +103,7 @@ const Routes = () => {
               <AddOrderForMontage />
             </ComponentWrapper>
           </GuardedRoute>
-          <GuardedRoute
-            path="/order/:id?"
-            exact
-            meta={{ auth: true }}
-          >
+          <GuardedRoute path="/order/:id?" exact meta={{ auth: true }}>
             <ComponentWrapper>
               <OrderDetails />
             </ComponentWrapper>
