@@ -39,8 +39,8 @@
   direction: rtl !important;
 }
 
-.column{
-    margin-right: 250px;
+.column {
+  margin-right: 250px;
 }
 
 .inputs_label {
@@ -48,4 +48,32 @@
   font-size: 14px;
   color: var(--black);
   margin-bottom: 5px;
+}
+
+.montage-submit-button {
+  max-width: 300px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.skina-code-container {
+  display: flex;
+  width: calc(100% + 80px);
+}
+
+.skina-add-icon {
+  color: green;
+  font-size: 35px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 10px;
+  cursor: pointer;
+}
+
+.add-skina-code-modal-container {
+  min-width: 600px;
+  direction: rtl;
+  padding: 10px 40px 40px 10px;
 }
