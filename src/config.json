@@ -6,7 +6,7 @@
   },
   "host1": {
     "protocol": "http",
-    "host": "127.0.0.1",
+    "host": "18.192.183.95",
     "port": "8000"
   },
   "services": {
@@ -19,7 +19,8 @@
     "customers": {
       "getCustomers": "api/customer/",
       "getCustomerById": "api/customer/",
-      "newCustomer": "api/customer/"
+      "newCustomer": "api/customer/",
+      "newCategory": "api/montage/create-customer-category/"
     },
     "montages": {
       "getMontagesByCustomerId": "api/montage/by-customer/",

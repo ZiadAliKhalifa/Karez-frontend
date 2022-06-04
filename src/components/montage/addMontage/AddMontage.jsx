@@ -283,12 +283,12 @@ export default function AddMontage() {
                 runParentFunction={(file) => handleFileUpdated(file, 2)}
               />
             </div>
-            <div className="part">
+            {/* <div className="part">
               <div className="inputs_label">PO</div>
               <FileUploadButton
                 runParentFunction={(file) => handleFileUpdated(file, 3)}
               />
-            </div>
+            </div> */}
           </div>
         </div>
         <hr style={{ width: "70%", marginTop: "40px" }} />

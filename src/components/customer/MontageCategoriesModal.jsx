@@ -6,8 +6,23 @@ import appConfig from "../../config.json";
 
 import { IMAGE_BASE_URL } from "../../consts/general";
 
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { closeModal } from "../../redux/modal/modalActions";
+import { useDispatch } from "react-redux";
+
+import folderLogo from "../../static/images/folder.png";
+
+
 function MontagCategoriesModal({ customerId }) {
+  const history = useHistory();
   const [categories, setCategories] = useState([]);
+  const dispatch = useDispatch();
+  
+  
+  const handleAddCategory = () => {
+    dispatch(closeModal())
+    history.push({pathname:"/admin/category/new",state:{'customerId':customerId}});
+  }
 
   useEffect(() => {
     const url =
@@ -24,10 +39,9 @@ function MontagCategoriesModal({ customerId }) {
       });
   }, []);
 
-  console.log(categories);
-
   return (
     <div className="montage-categories-container">
+      <button className="add-montage-category" onClick={handleAddCategory}>اضف ملف جديد</button>
       {categories.length > 0 ? (
         <div className="category-grid">
           {categories.map((category) => (
@@ -37,7 +51,7 @@ function MontagCategoriesModal({ customerId }) {
             >
               <img
                 className="montage-category-image"
-                src={`${IMAGE_BASE_URL}${category.image}`}
+                src={folderLogo}
                 alt={category.name}
               />
 
@@ -47,11 +61,11 @@ function MontagCategoriesModal({ customerId }) {
         </div>
       ) : (
         <div className="montage-category-loading">
-          <div>Loading...</div>
+          <div>لا يوجد ملفات</div>
         </div>
       )}
     </div>
-  );
+      );
 }
 
 export default MontagCategoriesModal;

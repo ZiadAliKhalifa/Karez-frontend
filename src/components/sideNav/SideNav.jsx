@@ -25,50 +25,50 @@ function SideNav() {
   return (
     <nav className="sidenav-container">
       <div className="sidenav-title">الكارز</div>
-      {userRole === "Montage Admin" && (
-        <>
-          <div
-            className="sidenav-tabs"
-            onClick={() => history.push("/admin/customers")}
-          >
-            <img
-              src={customerLogo}
-              alt="customer"
-              className="sidenav-tab-img"
-            />
-            <div className="sidenav-tab-label">عملاء</div>
-          </div>
-          {/* <div
-            className="sidenav-tabs"
-            onClick={() => history.push("/designs")}
-          >
-            <img src={designLogo} alt="design" className="sidenav-tab-img" />
-            <div className="sidenav-tab-label">تصميمات</div>
-          </div> */}
-        </>
-      )}
-      {userRole === "Montage Printer" && (
-        <>
-          <div
-            className="sidenav-tabs"
-            onClick={() => history.push("/printer/unpacked")}
-          >
-            <img
-              src={unpackedLogo}
-              alt="customer"
-              className="sidenav-tab-img"
-            />
-            <div className="sidenav-tab-label">طلبات غير مغلفة</div>
-          </div>
-          <div
-            className="sidenav-tabs"
-            onClick={() => history.push("/printer/packed")}
-          >
-            <img src={packedLogo} alt="design" className="sidenav-tab-img" />
-            <div className="sidenav-tab-label">طلبات مغلفة</div>
-          </div>
-        </>
-      )}
+      {/* {userRole === "Montage Admin" && ( */}
+      <>
+        <div
+          className="sidenav-tabs"
+          onClick={() => history.push("/admin/customers")}
+        >
+          <img
+            src={customerLogo}
+            alt="customer"
+            className="sidenav-tab-img"
+          />
+          <div className="sidenav-tab-label">عملاء</div>
+        </div>
+        {/* <div
+          className="sidenav-tabs"
+          onClick={() => history.push("/designs")}
+        >
+          <img src={designLogo} alt="design" className="sidenav-tab-img" />
+          <div className="sidenav-tab-label">تصميمات</div>
+        </div> */}
+      </>
+      {/* )} */}
+      {/* {userRole === "Montage Printer" && ( */}
+      <>
+        <div
+          className="sidenav-tabs"
+          onClick={() => history.push("/printer/unpacked")}
+        >
+          <img
+            src={unpackedLogo}
+            alt="customer"
+            className="sidenav-tab-img"
+          />
+          <div className="sidenav-tab-label">طلبات غير مغلفة</div>
+        </div>
+        <div
+          className="sidenav-tabs"
+          onClick={() => history.push("/printer/packed")}
+        >
+          <img src={packedLogo} alt="design" className="sidenav-tab-img" />
+          <div className="sidenav-tab-label">طلبات مغلفة</div>
+        </div>
+      </>
+      {/* )} */}
       <div
         className="sidenav-logout-container"
         onClick={() => history.push("/logout")}
