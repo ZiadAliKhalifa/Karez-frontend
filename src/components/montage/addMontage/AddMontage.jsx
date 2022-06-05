@@ -48,7 +48,6 @@ export default function AddMontage() {
     restHelper
       .getRequest(url)
       .then(function (response) {
-        console.log(response.data);
         setFormData(response.data);
       })
       .catch(function (error) {
