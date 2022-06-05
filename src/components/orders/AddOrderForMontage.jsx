@@ -7,10 +7,16 @@ import appConfig from "../../config.json";
 
 import "./AddOrderForMontage.css"
 
+import { FileUploadButton } from '../common/uploadButton/uploadButton';
+import { formatMs } from '@material-ui/core';
+
+
 export default function AddOrderForMontage() {
 
     const [montage, setMontage] = useState({})
     const [formData, setFormData] = useState({});
+    const [files, setFiles] = useState([]);
+
 
     const history = useHistory();
     const { id } = useParams();
@@ -45,6 +51,11 @@ export default function AddOrderForMontage() {
         setFormData(newFormData)
     }, [formData.quantity])
 
+    const handleFileUpdated = (file, id) => {
+        let newFiles = [...files];
+        newFiles[id] = file;
+        setFiles(newFiles);
+      };
 
     const handleChange = (text, key) => {
         let keys = "";
@@ -58,17 +69,32 @@ export default function AddOrderForMontage() {
     const handleSubmit = () => {
         // new order
 
+        let form = new FormData()
         formData.montage_id = id;
+
+        form.append("montage_id", id);
+        form.append("po", files[0]);
+  
+        form.append("quantity", formData.quantity);
+        form.append("material_type", formData.material_type);
+        form.append("lamination", formData.lamination);
+        form.append("job_direction", formData.job_direction);
+        form.append("job_per_meter", formData.job_per_meter);
+        form.append("label_per_roll", formData.label_per_roll);
+        form.append("roll_per_meter", formData.roll_per_meter);
 
         const url =
             restHelper.getURLPrefix(appConfig.host) +
             appConfig.services.orders.newOrder;
 
+        const config = {
+            headers: { "content-type": "multipart/form-data" },
+            };
 
         restHelper
-            .postRequest(url, formData)
+            .postRequest(url, form, config)
             .then((res) => {
-                navigateToAllCustomers()
+                navigateToOrders(id)
             })
             .catch((err) => {
                 alert("لم نتمكن من ادخال");
@@ -76,8 +102,8 @@ export default function AddOrderForMontage() {
 
     }
 
-    const navigateToAllCustomers = () => {
-        const location = { pathname: "/admin/customers" }
+    const navigateToOrders = (id) => {
+        const location = { pathname: `/admin/order/by-montage/${id}` }
         history.push(location)
     }
 
@@ -96,7 +122,7 @@ export default function AddOrderForMontage() {
                             />
                         </div>
                         <div className="part">
-                            <div className="inputs_label">كود سكينا </div>
+                            <div className="inputs_label">كود سكينا</div>
                             <AppInput
                                 id="skina_code"
                                 inputClassName="input"
@@ -268,7 +294,7 @@ export default function AddOrderForMontage() {
                             <AppInput
                                 id="job_per_meter"
                                 inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
+                                InputProps={{ disableUnderline: true, disabled : true }}
                                 value={formData.job_per_meter}
                                 onChange={(e) => handleChange(e.target.value, e.target.id)}
                             />
@@ -304,25 +330,34 @@ export default function AddOrderForMontage() {
                     </div> */}
                     <div className='column'>
                         <div className="part">
-                            <div className="inputs_label">Roll per meter</div>
-                            <AppInput
-                                id="roll_per_meter"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.roll_per_meter}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                    </div>
-                    <div className='column'>
-                        <div className="part">
                             <div className="inputs_label">Label/Rolls</div>
                             <AppInput
                                 id="label_per_roll"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
                                 value={formData.label_per_roll}
+                                type={"number"}
                                 onChange={(e) => handleChange(e.target.value, e.target.id)}
+                            />
+                        </div>
+                    </div>
+                    <div className='column'>
+                        <div className="part">
+                            <div className="inputs_label">Roll per meter</div>
+                            <AppInput
+                                id="roll_per_meter"
+                                inputClassName="input"
+                                InputProps={{ disableUnderline: true, disabled: true }}
+                                value={formData.roll_per_meter}
+                                onChange={(e) => handleChange(e.target.value, e.target.id)}
+                            />
+                        </div>
+                    </div>
+                    <div className="column">
+                        <div className="part">
+                            <div className="inputs_label">PO</div>
+                            <FileUploadButton
+                                runParentFunction={(file) => handleFileUpdated(file, 0)}
                             />
                         </div>
                     </div>
