@@ -23,6 +23,7 @@ export default function CustomerDetails() {
       pathname: `/admin/montage/new`,
       state: {
         id: id,
+        categoryId: categoryId,
       },
     };
     history.push(location);

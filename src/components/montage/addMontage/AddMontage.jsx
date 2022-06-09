@@ -40,20 +40,20 @@ export default function AddMontage() {
       });
   }, []);
 
-  useEffect(() => {
-    const url =
-      restHelper.getURLPrefix(appConfig.host) +
-      appConfig.services.montages.getMontage.replace("{id}", id);
+  // useEffect(() => {
+  //   const url =
+  //     restHelper.getURLPrefix(appConfig.host) +
+  //     appConfig.services.montages.getMontage.replace("{id}", id);
 
-    restHelper
-      .getRequest(url)
-      .then(function (response) {
-        setFormData(response.data);
-      })
-      .catch(function (error) {
-        alert("Error while uploading");
-      });
-  }, [id]);
+  //   restHelper
+  //     .getRequest(url)
+  //     .then(function (response) {
+  //       setFormData(response.data);
+  //     })
+  //     .catch(function (error) {
+  //       alert("Error while uploading");
+  //     });
+  // }, [id]);
 
   const handleChange = (text, key) => {
     let keys = "";
@@ -81,9 +81,9 @@ export default function AddMontage() {
       form.append("montage_attachment", files[0]);
       form.append("image_attachment", files[1]);
       form.append("desgin_upload_file", files[2]);
-      form.append("po", files[3]);
 
       form.append("customer_id", location.state.id);
+      form.append("montage_category_id", location.state.categoryId);
       form.append("job_name", formData.job_name);
       form.append("skina_code", formData.skina_code);
       form.append("aps", formData.aps);
