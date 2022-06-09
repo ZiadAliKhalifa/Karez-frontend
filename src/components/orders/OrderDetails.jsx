@@ -83,30 +83,26 @@ export default function OrderDetails() {
                                     value={order.darafel}
                                 />
                             </div>
-
-                            <div style={{ margin: "50px" }}>
-                                <h4>Montage Attachment</h4>
-                                {
-                                    order.montage_attachment ?
-                                        <img src={`${IMAGE_BASE_URL}${order.montage_attachment}`} alt="" /> :
-                                        <p>No image found</p>
-                                }
-                            </div>
                             <div style={{ margin: "50px" }}>
                                 <h4>Sample</h4>
                                 {
-                                    order.design_upload_file ?
-                                        <img src={`${IMAGE_BASE_URL}${order.design_upload_file}`} alt="" /> :
+                                    order.desgin_upload_file ? (
+                                        <a
+                                          className="monategImageLink"
+                                          href={`${IMAGE_BASE_URL}${order.desgin_upload_file}`}
+                                          target="_blank"
+                                        >
+                                          <img
+                                            className="monategImages"
+                                            src={`${IMAGE_BASE_URL}${order.desgin_upload_file}`}
+                                            alt=""
+                                            height="200px"
+                                            width="200px"
+                                          />
+                                        </a>
+                                      ) : (
                                         <p>No image found</p>
-                                }
-                            </div>
-                            <div style={{ margin: "50px" }}>
-                                <h4>Image</h4>
-                                {
-                                    order.image_attachment ?
-                                        <img src={`${IMAGE_BASE_URL}${order.image_attachment}`} alt="" /> :
-                                        <p>No image found</p>
-                                }
+                                      )}
                             </div>
                         </div>
                     </div>
@@ -156,6 +152,27 @@ export default function OrderDetails() {
                                 value={order.tars_el_takser}
                             />
                         </div>
+                        <div style={{ margin: "50px" }}>
+                                <h4>Montage Attachment</h4>
+                                {
+                                    order.montage_attachment ? (
+                                        <a
+                                          className="monategImageLink"
+                                          href={`${IMAGE_BASE_URL}${order.montage_attachment}`}
+                                          target="_blank"
+                                        >
+                                          <img
+                                            className="monategImages"
+                                            src={`${IMAGE_BASE_URL}${order.montage_attachment}`}
+                                            alt=""
+                                            height="200px"
+                                            width="200px"
+                                          />
+                                        </a>
+                                      ) : (
+                                        <p>No image found</p>
+                                      )}
+                        </div>
                     </div>
                     <div className="column">
                         <div className="part">
@@ -175,6 +192,27 @@ export default function OrderDetails() {
                                 InputProps={{ disableUnderline: true }}
                                 value={order.etgah_el_ard}
                             />
+                        </div>
+                        <div style={{ margin: "50px" }}>
+                                <h4>Image</h4>
+                                {
+                                    order.image_attachment ? (
+                                        <a
+                                          className="monategImageLink"
+                                          href={`${IMAGE_BASE_URL}${order.image_attachment}`}
+                                          target="_blank"
+                                        >
+                                          <img
+                                            className="monategImages"
+                                            src={`${IMAGE_BASE_URL}${order.image_attachment}`}
+                                            alt=""
+                                            height="200px"
+                                            width="200px"
+                                          />
+                                        </a>
+                                      ) : (
+                                        <p>No image found</p>
+                                      )}
                         </div>
                     </div>
                 </div>
@@ -204,7 +242,7 @@ export default function OrderDetails() {
                         </div>
                     </div>
                     <div className='column'>
-                        <div className="part">
+                        {/* <div className="part">
                             <div className="inputs_label">Skina Code New</div>
                             <AppInput
                                 id="skina_code_new"
@@ -212,7 +250,7 @@ export default function OrderDetails() {
                                 InputProps={{ disableUnderline: true }}
                                 value={order.skina_code_new}
                             />
-                        </div>
+                        </div> */}
                         <div className="part">
                             <div className="inputs_label">Lamination</div>
                             <AppInput

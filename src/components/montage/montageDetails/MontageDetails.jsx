@@ -148,7 +148,7 @@ export default function MontageDetails() {
               />
             </div>
             <div className="part">
-              <div className="inputs_label">فجوة </div>
+              <div className="inputs_label">Gap</div>
               <AppInput
                 id="gap"
                 inputClassName="input"
@@ -207,6 +207,8 @@ export default function MontageDetails() {
                     className="monategImages"
                     src={`${IMAGE_BASE_URL}${montage.montage_attachment}`}
                     alt=""
+                    height="200px"
+                    width="200px"
                   />
                 </a>
               ) : (
@@ -225,6 +227,8 @@ export default function MontageDetails() {
                     className="monategImages"
                     src={`${IMAGE_BASE_URL}${montage.desgin_upload_file}`}
                     alt=""
+                    height="200px"
+                    width="200px"
                   />
                 </a>
               ) : (
@@ -243,6 +247,8 @@ export default function MontageDetails() {
                     className="monategImages"
                     src={`${IMAGE_BASE_URL}${montage.image_attachment}`}
                     alt=""
+                    height="200px"
+                    width="200px"
                   />
                 </a>
               ) : (

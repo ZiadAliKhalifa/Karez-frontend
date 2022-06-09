@@ -212,12 +212,13 @@ export default function AddMontage() {
               />
             </div>
             <div className="part">
-              <div className="inputs_label">فجوة </div>
+              <div className="inputs_label">Gap</div>
               <AppInput
                 id="gap"
                 inputClassName="input"
                 InputProps={{ disableUnderline: true }}
                 value={formData.gap}
+                type={"number"}
                 onChange={(e) => handleChange(e.target.value, e.target.id)}
               />
             </div>

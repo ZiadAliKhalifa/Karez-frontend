@@ -2,7 +2,7 @@
   max-width: 160px;
   width: 8.5%;
   min-width: 100px;
-  height: 100vh;
+  min-height: 100vh;
   left: 0px;
   top: 0px;
   background: var(--blue);
