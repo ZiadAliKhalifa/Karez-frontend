@@ -52,7 +52,6 @@ export default function CustomerDetails() {
     restHelper
       .getRequest(`${url}${categoryId}`)
       .then((res) => {
-        console.log(res.data);
         setMontages(res.data);
       })
       .catch((err) => {
@@ -123,7 +122,12 @@ export default function CustomerDetails() {
   };
 
   const navigateToListOfOrders = (montageId) => {
-    const location = { pathname: "/admin/order/by-montage/" + montageId };
+    const location = { 
+      pathname: "/admin/order/by-montage/" + montageId,
+      state: {
+        montageName: montages[0].job_name,
+        customerName: customer.name,
+    },};
     history.push(location);
   };
 

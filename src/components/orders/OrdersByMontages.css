@@ -5,7 +5,11 @@
 }
 
 .montage-header {
-    font-size: 4rem;
+    font-size: 3.5rem;
+}
+
+.montage-header-montage {
+    font-size: 2.5rem;
 }
 
 .montage-new-order {

@@ -83,27 +83,15 @@ export default function OrderDetails() {
                                     value={order.darafel}
                                 />
                             </div>
-                            <div style={{ margin: "50px" }}>
-                                <h4>Sample</h4>
-                                {
-                                    order.desgin_upload_file ? (
-                                        <a
-                                          className="monategImageLink"
-                                          href={`${IMAGE_BASE_URL}${order.desgin_upload_file}`}
-                                          target="_blank"
-                                        >
-                                          <img
-                                            className="monategImages"
-                                            src={`${IMAGE_BASE_URL}${order.desgin_upload_file}`}
-                                            alt=""
-                                            height="200px"
-                                            width="200px"
-                                          />
-                                        </a>
-                                      ) : (
-                                        <p>No image found</p>
-                                      )}
-                            </div>
+                            <div className="part">
+                            <div className="inputs_label">اتجاه عرض</div>
+                            <AppInput
+                                id="etgah_el_ard"
+                                inputClassName="input"
+                                InputProps={{ disableUnderline: true }}
+                                value={order.etgah_el_ard}
+                            />
+                        </div>
                         </div>
                     </div>
                     <div className="column">
@@ -152,6 +140,63 @@ export default function OrderDetails() {
                                 value={order.tars_el_takser}
                             />
                         </div>
+                        <div className="part">
+                            <div className="inputs_label">كود فرعي</div>
+                            <AppInput
+                                id="sub_code"
+                                inputClassName="input"
+                                InputProps={{ disableUnderline: true }}
+                                value={order.sub_code}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="inputs_container">
+                <div className="header_lable">Montage Images</div>
+                <div className="inputs_section">
+                    <div style={{ margin: "50px" }}>
+                        <h4>Sample</h4>
+                        {
+                            order.desgin_upload_file ? (
+                                <a
+                                    className="monategImageLink"
+                                    href={`${IMAGE_BASE_URL}${order.desgin_upload_file}`}
+                                    target="_blank"
+                                >
+                                    <img
+                                    className="monategImages"
+                                    src={`${IMAGE_BASE_URL}${order.desgin_upload_file}`}
+                                    alt=""
+                                    height="200px"
+                                    width="200px"
+                                    />
+                                </a>
+                                ) : (
+                                <p>No image found</p>
+                                )}
+                    </div>
+                    <div style={{ margin: "50px" }}>
+                                <h4>Image</h4>
+                                {
+                                    order.image_attachment ? (
+                                        <a
+                                          className="monategImageLink"
+                                          href={`${IMAGE_BASE_URL}${order.image_attachment}`}
+                                          target="_blank"
+                                        >
+                                          <img
+                                            className="monategImages"
+                                            src={`${IMAGE_BASE_URL}${order.image_attachment}`}
+                                            alt=""
+                                            height="200px"
+                                            width="200px"
+                                          />
+                                        </a>
+                                      ) : (
+                                        <p>No image found</p>
+                                      )}
+                        </div>
                         <div style={{ margin: "50px" }}>
                                 <h4>Montage Attachment</h4>
                                 {
@@ -173,51 +218,9 @@ export default function OrderDetails() {
                                         <p>No image found</p>
                                       )}
                         </div>
-                    </div>
-                    <div className="column">
-                        <div className="part">
-                            <div className="inputs_label">كود فرعي</div>
-                            <AppInput
-                                id="sub_code"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.sub_code}
-                            />
-                        </div>
-                        <div className="part">
-                            <div className="inputs_label">اتجاه عرض</div>
-                            <AppInput
-                                id="etgah_el_ard"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.etgah_el_ard}
-                            />
-                        </div>
-                        <div style={{ margin: "50px" }}>
-                                <h4>Image</h4>
-                                {
-                                    order.image_attachment ? (
-                                        <a
-                                          className="monategImageLink"
-                                          href={`${IMAGE_BASE_URL}${order.image_attachment}`}
-                                          target="_blank"
-                                        >
-                                          <img
-                                            className="monategImages"
-                                            src={`${IMAGE_BASE_URL}${order.image_attachment}`}
-                                            alt=""
-                                            height="200px"
-                                            width="200px"
-                                          />
-                                        </a>
-                                      ) : (
-                                        <p>No image found</p>
-                                      )}
-                        </div>
-                    </div>
                 </div>
+                
             </div>
-
             <div className="inputs_container">
                 <div className="header_lable">Order Data</div>
                 <div className='inputs_section'>
@@ -232,36 +235,14 @@ export default function OrderDetails() {
                             />
                         </div>
                         <div className="part">
-                            <div className="inputs_label">Material Type</div>
+                            <div className="inputs_label">Job/m</div>
                             <AppInput
-                                id="material_type"
+                                id="job_per_meter"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={order.material_type}
+                                value={order.job_per_meter}
                             />
                         </div>
-                    </div>
-                    <div className='column'>
-                        {/* <div className="part">
-                            <div className="inputs_label">Skina Code New</div>
-                            <AppInput
-                                id="skina_code_new"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.skina_code_new}
-                            />
-                        </div> */}
-                        <div className="part">
-                            <div className="inputs_label">Lamination</div>
-                            <AppInput
-                                id="lamination"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.lamination}
-                            />
-                        </div>
-                    </div>
-                    <div className='column'>
                         <div className="part">
                             <div className="inputs_label">Job Direction</div>
                             <AppInput
@@ -271,17 +252,27 @@ export default function OrderDetails() {
                                 value={order.job_direction}
                             />
                         </div>
+                    </div>
+                    <div className='column'>
                         <div className="part">
-                            <div className="inputs_label">Job/m</div>
+                            <div className="inputs_label">Lamination</div>
                             <AppInput
-                                id="job_per_meter"
+                                id="lamination"
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
-                                value={order.job_per_meter}
+                                value={order.lamination}
+                            />
+                        </div>
+                        <div className="part">
+                            <div className="inputs_label">Material Type</div>
+                            <AppInput
+                                id="material_type"
+                                inputClassName="input"
+                                InputProps={{ disableUnderline: true }}
+                                value={order.material_type}
                             />
                         </div>
                     </div>
-
                 </div>
                 <div className="header_lable">Quantity Data</div>
                 <div className='inputs_section'>

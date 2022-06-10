@@ -110,8 +110,11 @@ export default function AddOrderForMontage() {
     return (
         <div className='main_container'>
             <div className="inputs_container">
+            <div className='data-header'>
+                    Montage Data
+            </div>
                 <div className="inputs_section">
-                    <div>
+                        <div className="column">
                         <div className="part">
                             <div className="inputs_label">اسم العمل</div>
                             <AppInput
@@ -157,7 +160,16 @@ export default function AddOrderForMontage() {
                                 value={montage.darafel}
                             />
                         </div>
-                    </div>
+                        <div className="part">
+                            <div className="inputs_label">كود فرعي</div>
+                            <AppInput
+                                id="sub_code"
+                                inputClassName="input"
+                                InputProps={{ disableUnderline: true }}
+                                value={montage.sub_code}
+                            />
+                        </div>
+                        </div>
                     <div className="column">
                         <div className="part">
                             <div className="inputs_label">نوع</div>
@@ -204,17 +216,6 @@ export default function AddOrderForMontage() {
                                 value={montage.tars_el_takser}
                             />
                         </div>
-                    </div>
-                    <div className="column">
-                        <div className="part">
-                            <div className="inputs_label">كود فرعي</div>
-                            <AppInput
-                                id="sub_code"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={montage.sub_code}
-                            />
-                        </div>
                         <div className="part">
                             <div className="inputs_label">اتجاه عرض</div>
                             <AppInput
@@ -246,6 +247,28 @@ export default function AddOrderForMontage() {
                             />
                         </div>
                         <div className="part">
+                            <div className="inputs_label">Job/m</div>
+                            <AppInput
+                                id="job_per_meter"
+                                inputClassName="input"
+                                InputProps={{ disableUnderline: true, disabled : true }}
+                                value={formData.job_per_meter}
+                                onChange={(e) => handleChange(e.target.value, e.target.id)}
+                            />
+                        </div>
+                        <div className="part">
+                            <div className="inputs_label">إتجاه الشغلة</div>
+                            <AppInput
+                                id="job_direction"
+                                inputClassName="input"
+                                InputProps={{ disableUnderline: true }}
+                                value={formData.job_direction}
+                                onChange={(e) => handleChange(e.target.value, e.target.id)}
+                            />
+                        </div>
+                    </div>
+                    <div className='column'>
+                    <div className="part">
                             <div className="inputs_label">نوع الخامة</div>
                             <AppInput
                                 id="material_type"
@@ -255,18 +278,6 @@ export default function AddOrderForMontage() {
                                 onChange={(e) => handleChange(e.target.value, e.target.id)}
                             />
                         </div>
-                    </div>
-                    <div className='column'>
-                        {/* <div className="part">
-                            <div className="inputs_label">رقم سكينة جديدة</div>
-                            <AppInput
-                                id="skina_code_new"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.skina_code_new}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div> */}
                         <div className="part">
                             <div className="inputs_label">Lamination</div>
                             <AppInput
@@ -278,56 +289,11 @@ export default function AddOrderForMontage() {
                             />
                         </div>
                     </div>
-                    <div className='column'>
-                        <div className="part">
-                            <div className="inputs_label">إتجاه الشغلة</div>
-                            <AppInput
-                                id="job_direction"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.job_direction}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                        <div className="part">
-                            <div className="inputs_label">Job/m</div>
-                            <AppInput
-                                id="job_per_meter"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true, disabled : true }}
-                                value={formData.job_per_meter}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                    </div>
-
                 </div>
                 <div className='data-header'>
                     Quantity Data
                 </div>
                 <div className='inputs_section'>
-                    {/* <div className='column'>
-                        <div className="part">
-                            <div className="inputs_label">Sample</div>
-                            <AppInput
-                                id="sample"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.sample}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                        <div className="part">
-                            <div className="inputs_label">Ordered Roll</div>
-                            <AppInput
-                                id="order_roll"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={formData.order_roll}
-                                onChange={(e) => handleChange(e.target.value, e.target.id)}
-                            />
-                        </div>
-                    </div> */}
                     <div className='column'>
                         <div className="part">
                             <div className="inputs_label">Label/Rolls</div>
@@ -352,8 +318,6 @@ export default function AddOrderForMontage() {
                                 onChange={(e) => handleChange(e.target.value, e.target.id)}
                             />
                         </div>
-                    </div>
-                    <div className="column">
                         <div className="part">
                             <div className="inputs_label">PO</div>
                             <FileUploadButton

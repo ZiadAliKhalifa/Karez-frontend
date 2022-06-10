@@ -41,19 +41,6 @@ export default function MontageDetails() {
   };
 
   const handleSubmit = () => {
-    // new order
-
-    // "montage_id": 3,
-    // "quantity": 0,
-    // "material_type": "",
-    // "skina_code_new": "",
-    // "lamination": "",
-    // "job_direction": "",
-    // "job_per_meter": "",
-    // "sample": "",
-    // "order_roll": "",
-    // "roll_per_meter": "",
-    // "label_per_roll": ""
 
     formData.montage_id = id;
 
@@ -127,8 +114,6 @@ export default function MontageDetails() {
                 value={montage.darafel}
               />
             </div>
-          </div>
-          <div className="column">
             <div className="part">
               <div className="inputs_label">نوع</div>
               <AppInput
@@ -147,6 +132,8 @@ export default function MontageDetails() {
                 value={montage.etgah_el_gar}
               />
             </div>
+          </div>
+          <div className="column">
             <div className="part">
               <div className="inputs_label">Gap</div>
               <AppInput
@@ -166,7 +153,7 @@ export default function MontageDetails() {
               />
             </div>
             <div className="part">
-              <div className="inputs_label"> ترس التكسير</div>
+              <div className="inputs_label">ترس التكسير</div>
               <AppInput
                 id="tars_el_takser"
                 inputClassName="input"
@@ -174,8 +161,6 @@ export default function MontageDetails() {
                 value={montage.tars_el_takser}
               />
             </div>
-          </div>
-          <div className="column">
             <div className="part">
               <div className="inputs_label">كود فرعي </div>
               <AppInput
@@ -194,8 +179,13 @@ export default function MontageDetails() {
                 value={montage.etgah_el_ard}
               />
             </div>
-
-            <div style={{ margin: "50px" }}>
+          </div>
+        </div>
+      </div>
+      <div className="inputs_container">
+      <div className="header_lable">Montage Images</div>
+        <div className="inputs_section">
+        <div style={{ margin: "50px" }}>
               <h4>Montage Attachment</h4>
               {montage.montage_attachment ? (
                 <a
@@ -255,7 +245,6 @@ export default function MontageDetails() {
                 <p>No image found</p>
               )}
             </div>
-          </div>
         </div>
       </div>
     </div>

@@ -187,10 +187,7 @@ export default function AddMontage() {
                   onChange={(e) => handleChange(e.target.value, e.target.id)}
                 />
               </div>
-            </div>
-          </div>
-          <div className="column">
-            <div className="part">
+              <div className="part">
               <div className="inputs_label">نوع</div>
               <AppInput
                 id="type"
@@ -211,6 +208,9 @@ export default function AddMontage() {
                 onChange={(e) => handleChange(e.target.value, e.target.id)}
               />
             </div>
+            </div>
+          </div>
+          <div className="column">
             <div className="part">
               <div className="inputs_label">Gap</div>
               <AppInput
@@ -242,8 +242,6 @@ export default function AddMontage() {
                 onChange={(e) => handleChange(e.target.value, e.target.id)}
               />
             </div>
-          </div>
-          <div className="column">
             <div className="part">
               <div className="inputs_label">كود فرعي</div>
               <AppInput
@@ -283,12 +281,6 @@ export default function AddMontage() {
                 runParentFunction={(file) => handleFileUpdated(file, 2)}
               />
             </div>
-            {/* <div className="part">
-              <div className="inputs_label">PO</div>
-              <FileUploadButton
-                runParentFunction={(file) => handleFileUpdated(file, 3)}
-              />
-            </div> */}
           </div>
         </div>
         <hr style={{ width: "70%", marginTop: "40px" }} />
