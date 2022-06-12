@@ -10,7 +10,6 @@ function PackModal({ orderData, orderId, fetchUnPackedOrders }) {
   const dispatch = useDispatch();
   const [orderQuantity, setOrderQuantity] = useState("0");
   const [orderQuantityError, setOrderQuantityError] = useState("");
-  console.log(orderId);
 
   const packOrderValidation = () => {
     let isValid = true;

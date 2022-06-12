@@ -12,6 +12,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { openModal } from "../../redux/modal/modalActions";
 import PackModal from "./PackModal";
+import ChangeStatusModal from "./ChangeStatusModal"
 
 function PackedOrders() {
   const history = useHistory();
@@ -26,10 +27,10 @@ function PackedOrders() {
     history.push("/order/" + id);
   };
 
-  const fetchPackedOrders = () => {
+  const fetchUnderProcessingOrders = () => {
     const url =
       restHelper.getURLPrefix(appConfig.host) +
-      appConfig.services.orders.getPackedOrders;
+      appConfig.services.orders.getUnderProcessingOrders;
 
     restHelper
       .getRequest(url)
@@ -83,7 +84,7 @@ function PackedOrders() {
     restHelper
       .postRequest(url, reqData)
       .then((res) => {
-        fetchPackedOrders();
+        fetchUnderProcessingOrders();
         alert("تم تأكيد الاستلام بنجاح");
       })
       .catch((err) => {
@@ -96,6 +97,19 @@ function PackedOrders() {
     dispatch(
       openModal(
         <PackModal
+          orderData={orderData}
+          orderId={orderId}
+          fetchUnPackedOrders={fetchUnPackedOrders}
+        />
+      )
+    );
+  };
+
+  const dispatchChangeStatusModal = (orderId) => {
+    const orderData = orders.find((order) => order.id === orderId);
+    dispatch(
+      openModal(
+        <ChangeStatusModal
           orderData={orderData}
           orderId={orderId}
           fetchUnPackedOrders={fetchUnPackedOrders}
@@ -165,9 +179,12 @@ function PackedOrders() {
     }
   }, [location.pathname]);
 
+  // useEffect(() => {
+  //   isPacked ? fetchPackedOrders() : fetchUnPackedOrders();
+  // }, [isPacked]);
   useEffect(() => {
-    isPacked ? fetchPackedOrders() : fetchUnPackedOrders();
-  }, [isPacked]);
+    fetchUnderProcessingOrders();
+  }, []);
 
   return (
     <>
@@ -182,7 +199,8 @@ function PackedOrders() {
             ]
             : [
               createRowAction("البيانات", navigateToOrderDetails),
-              createRowAction("تعبئة الطلب", dispatchPackedModal),
+              // createRowAction("تعبئة الطلب", dispatchPackedModal),
+              createRowAction("Change status", dispatchChangeStatusModal),
             ]
         }
       />

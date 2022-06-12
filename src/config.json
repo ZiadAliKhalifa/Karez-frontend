@@ -34,7 +34,7 @@
       "newMontageSkinaCode": "api/montage/create-skina-codes/"
     },
     "orders": {
-      "getPackedOrders": "api/order/get-packed-orders",
+      "getUnderProcessingOrders": "api/order/under-processing-orders",
       "getUnPackedOrders": "api/order/get-unpacked-orders",
       "packOrder": "api/order/update-unpacked-orders/",
       "getOrdersByMontageId": "api/order/by-montage/",

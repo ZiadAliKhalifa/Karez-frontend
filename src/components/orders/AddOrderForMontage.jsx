@@ -39,7 +39,7 @@ export default function AddOrderForMontage() {
 
     useEffect(() => {
         let newFormData = { ...formData }
-        newFormData.roll_per_meter = ((parseInt(montage.etgah_el_gar) + parseInt(montage.gap)) * parseInt(formData.label_per_roll)) / 100;
+        newFormData.roll_per_meter = ((parseFloat(montage.etgah_el_gar) + parseFloat(montage.gap)) * parseFloat(formData.label_per_roll)) / 100;
         setFormData(newFormData)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -47,7 +47,7 @@ export default function AddOrderForMontage() {
 
     useEffect(() => {
         let newFormData = { ...formData }
-        newFormData.job_per_meter = ((((parseInt(montage.etgah_el_gar) + parseInt(montage.gap))) * parseInt(formData.quantity)) / parseInt(montage.aps)) / 100
+        newFormData.job_per_meter = ((((parseFloat(montage.etgah_el_gar) + parseFloat(montage.gap))) * parseFloat(formData.quantity)) / parseFloat(montage.aps)) / 100
         setFormData(newFormData)
     }, [formData.quantity])
 
