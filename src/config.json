@@ -40,7 +40,10 @@
       "getOrdersByMontageId": "api/order/by-montage/",
       "deliverPackedOrder": "api/order/delivered/",
       "newOrder": "api/order/create-order/",
-      "getOrderDetails": "api/order/get-all-orders-details/"
+      "getOrderDetails": "api/order/get-all-orders-details/",
+      "updateOrderStatus": "api/order/update-order-status",
+      "getOrderStatusChoices": "api/order/get-order-status-choices",
+      "getDeliveredOrders": "api/order/get-delivered-orders"
     }
   }
 }

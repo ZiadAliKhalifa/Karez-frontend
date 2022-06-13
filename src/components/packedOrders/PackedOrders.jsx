@@ -112,48 +112,21 @@ function PackedOrders() {
         <ChangeStatusModal
           orderData={orderData}
           orderId={orderId}
-          fetchUnPackedOrders={fetchUnPackedOrders}
+          fetchUnderProcessingOrders={fetchUnderProcessingOrders}
         />
       )
     );
   };
 
-  useEffect(() => {
-    if (location.pathname === "/printer/unpacked") {
-      setIsPacked(false);
+  useEffect(() => { 
       setHeaders([
         {
           key: "status",
           name: "الحالة",
         },
         {
-          key: "submission_date",
-          name: "تاريخ التسجيل",
-        },
-        {
-          key: "montage_name",
-          name: "المونتاج",
-        },
-        {
-          key: "customer_name",
-          name: "العميل",
-        },
-        {
-          key: "id",
-          name: "الرقم التعريفي",
-        },
-      ]);
-    } else {
-      setIsPacked(true);
-      setHeaders([
-        {
-          key: "status",
-          name: "الحالة",
-        },
-
-        {
-          key: "quantity",
-          name: "الكمية",
+          key: "packed_quantity",
+          name: "كمية التعبئة",
         },
         {
           key: "packed_date",
@@ -176,12 +149,8 @@ function PackedOrders() {
           name: "الرقم التعريفي",
         },
       ]);
-    }
-  }, [location.pathname]);
+  }, []);
 
-  // useEffect(() => {
-  //   isPacked ? fetchPackedOrders() : fetchUnPackedOrders();
-  // }, [isPacked]);
   useEffect(() => {
     fetchUnderProcessingOrders();
   }, []);
@@ -192,15 +161,9 @@ function PackedOrders() {
         headers={headers}
         rows={orders}
         rowActions={
-          isPacked
-            ? [
+            [
               createRowAction("البيانات", navigateToOrderDetails),
-              createRowAction("تأكيد الاستلام", deliveryHandler),
-            ]
-            : [
-              createRowAction("البيانات", navigateToOrderDetails),
-              // createRowAction("تعبئة الطلب", dispatchPackedModal),
-              createRowAction("Change status", dispatchChangeStatusModal),
+              createRowAction("تغير الحالة", dispatchChangeStatusModal),
             ]
         }
       />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./PackedOrders.css";
 
 import restHelper from "../../helpers/RestHelper";
@@ -8,81 +8,110 @@ import { closeModal } from "../../redux/modal/modalActions";
 import Autocomplete from "../common/autoComplete/AutoComplete";
 
 
-function ChangeStatusModal({ orderData, orderId, fetchUnPackedOrders }) {
+function ChangeStatusModal({ orderData, orderId, fetchUnderProcessingOrders }) {
   const dispatch = useDispatch();
-  const [orderStatus, setOrderStatus] = useState("");
-  const [orderQuantity, setOrderQuantity] = useState("0");
+  const [orderChoices, setOrderChoices] = useState("");
+  const [orderPackingQuantity, setOrderPackingQuantity] = useState("0");
+  const [orderDeliveryQuantity, setOrderDeliveryQuantity] = useState("0");
   const [formData, setFormData] = useState({});
+
+
+
+  useEffect(() => {
+    const url =
+      restHelper.getURLPrefix(appConfig.host) +
+      appConfig.services.orders.getOrderStatusChoices;
+    const data = {
+      id:orderId
+    }
+    restHelper
+      .postRequest(url,data)
+      .then((res) => {
+        setOrderChoices(res.data.map((code) => code.status_choice));
+      })
+      .catch(function (error) {
+        alert("برجاء اعادة المحاولة");
+      });
+  }, []);
 
   const handleChange = (text, key) => {
     let keys = "";
     if (key.indexOf("-") > 0) keys = key.substr(0, key.indexOf("-"));
     else keys = key;
     let newFormData = { ...formData };
-    newFormData[keys] = text.backend_label;
+    newFormData[keys] = text;
     setFormData(newFormData);
   };
 
-  const changeOrderStatusHandler = (orderId) => {
+  const changeOrderStatusHandler = (orderId,orderPackingQuantity,orderDeliveryQuantity) => {
     const url =
       restHelper.getURLPrefix(appConfig.host) +
-      appConfig.services.orders.packOrder;
+      appConfig.services.orders.updateOrderStatus;
 
     const data = {
       id: orderId,
       order_status: formData.order_status,
+      order_packing_quantity: orderPackingQuantity,
+      order_delivery_quantity: orderDeliveryQuantity
     };
 
     restHelper
       .postRequest(url, data)
       .then((res) => {
         dispatch(closeModal());
-        fetchUnPackedOrders();
-        alert("تم تعبئة الطلب بنجاح");
+        fetchUnderProcessingOrders();
+        alert("تم تغير الحالة بنجاح");
       })
       .catch((err) => {
         alert("برجاء اعادة المحاولة");
       });
   };
   
-  const options = [
-    { label: 'Cutting', backend_label: "cut" },
-    { label: 'Printing', backend_label: "print" },
-    { label: 'Packing', backend_label: "packed" },
-    { label: 'Partial Delivery', backend_label: "partial_delivery" },
-    { label: 'Delivered', backend_label: "delivered" }
-  ];
+  console.log(formData.order_status)
   return (
     <div className="packed-modal-container">
       <div className="packed-modal-title">
-        {orderData?.montage_name} أدخل كمية طبع
-      </div>
+        {orderData?.montage_name} تغير الحالة ل</div>
       <div className="packed-modal-input-label">Order Status</div>
       <div className="packed-modal-input-container">
+        <div className="order-status-modal-auto-complete">
         <Autocomplete
             id="order_status"
             type="dropdown"
-            options={options}
+            options={orderChoices}
             dropDownClassName="input"
+            value={formData.order_status}
             onChange={(e, newValue) => {
               handleChange(newValue, e.target.id);
             }}
           />
-        {formData.order_status == "packed" &&(
+        </div>
+        {formData.order_status == "Packed" &&(
           <>
-          <div className="packed-modal-input-label">Order Quantity</div>
+          <div className="packed-modal-input-label">Order Packed Quantity</div>
           <input
           type="number"
           className="packed-modal-input"
-          value={orderQuantity}
-          onChange={(e) => setOrderQuantity(e.target.value)}
+          value={orderPackingQuantity}
+          onChange={(e) => setOrderPackingQuantity(e.target.value)}
+        />
+        </>
+        )}
+        {formData.order_status == "Delivered" &&(
+          <>
+          <div className="packed-modal-input-label">Order Delivered Quantity</div>
+          <input
+          type="number"
+          className="packed-modal-input"
+          value={orderDeliveryQuantity}
+          onChange={(e) => setOrderDeliveryQuantity(e.target.value)}
         />
         </>
         )}
       </div>
       <div
         className="pack-modal-submit-container"
-        onClick={() => changeOrderStatusHandler(orderId)}
+        onClick={() => changeOrderStatusHandler(orderId,orderPackingQuantity,orderDeliveryQuantity)}
       >
         <div className="pack-modal-submit-button">تأكيد</div>
       </div>
