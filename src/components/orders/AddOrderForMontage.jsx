@@ -103,7 +103,10 @@ export default function AddOrderForMontage() {
     }
 
     const navigateToOrders = (id) => {
-        const location = { pathname: `/admin/order/by-montage/${id}` }
+        const location = { pathname: `/admin/order/by-montage/${id}`
+        ,state:{
+            montageName:montage.job_name
+        } }
         history.push(location)
     }
 

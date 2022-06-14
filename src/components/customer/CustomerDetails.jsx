@@ -125,7 +125,7 @@ export default function CustomerDetails() {
     const location = { 
       pathname: "/admin/order/by-montage/" + montageId,
       state: {
-        montageName: montages[0].job_name,
+        montageName: montages[montageId].job_name,
         customerName: customer.name,
     },};
     history.push(location);

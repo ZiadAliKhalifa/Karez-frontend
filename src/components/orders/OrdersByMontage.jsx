@@ -15,10 +15,7 @@ export default function OrdersByMontage() {
     const { id } = useParams();
     const history = useHistory();
 
-    const location = useLocation()
-
-    console.log(location.state.customerName)
-    console.log(location.state.montageName)
+    const location = useLocation();
 
     useEffect(() => {
         let url =
@@ -63,8 +60,8 @@ export default function OrdersByMontage() {
     return (
         <>
             <div className='montage-container'>
-            <div className="montage-header">Customer: {location.state.customerName}</div>
-            <div className="montage-header-montage">Montage: {location.state.montageName}</div>
+            <div className="montage-header">Customer: {location.state?.customerName}</div>
+            <div className="montage-header-montage">Montage: {location.state?.montageName}</div>
                 <div className="montage-new-order">
                     <AppButton onClick={navigateToNewOrder} text={"اضافه"} />
                 </div>
