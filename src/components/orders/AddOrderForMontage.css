@@ -30,6 +30,15 @@
     margin-top: 10px;
 }
 
+
+.part-note{
+    padding-top: 20px;
+    width: 65%;
+    height: 100px;
+    padding-bottom: 50px;
+    padding-right: 16%;
+}
+
 .input {
     border: 1px solid var(--grey) !important;
     border-radius: 25px;
@@ -37,6 +46,16 @@
     width: calc(100% - 20px) !important;
     height: 40px !important;
     direction: rtl !important;
+}
+
+textarea{
+    border: 1px solid var(--grey) !important;
+    border-radius: 10px;
+    padding: 10px 50px 0px 0px !important;
+    width: calc(100% - 20px) !important;
+    height: 100% !important;
+    direction: rtl !important;
+    resize: none;
 }
 
 .column {
@@ -50,15 +69,35 @@
     margin-bottom: 5px;
 }
 
-
-.customer-submit {
+.submit_button_div{
+    width:30%;
+    padding-right: 100px;
+    padding-bottom: 50px;
+}
+.submit_button_div button{
     border: 2px solid var(--light-grey);
     color: 1px solid var(--light-grey);
     background-color: transparent;
     border-radius: 25px 25px 25px 25px;
     width: 200px;
     padding-top: 17px;
-    padding-bottom: 10px;
+    margin: auto;
+    cursor: pointer;
+    margin-top: 40px;
+    font-family: Tajawal, roboto;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+.customer-submit {
+    background-color: gree;
+    border: 2px solid var(--light-grey);
+    color: 1px solid var(--light-grey);
+    background-color: green;
+    border-radius: 25px 25px 25px 25px;
+    width: 200px;
+    padding-top: 17px;
     margin: auto;
     cursor: pointer;
     margin-top: 40px;

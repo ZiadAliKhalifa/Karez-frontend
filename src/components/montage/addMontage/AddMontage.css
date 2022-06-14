@@ -39,6 +39,10 @@
   direction: rtl !important;
 }
 
+input:required {
+  border: 1px solid red;
+}
+
 .column {
   margin-right: 250px;
 }

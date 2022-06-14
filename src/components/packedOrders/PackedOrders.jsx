@@ -8,18 +8,14 @@ import restHelper from "../../helpers/RestHelper";
 import appConfig from "../../config.json";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { formatDateTime } from "../../utils/dateTime";
-import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { openModal } from "../../redux/modal/modalActions";
-import PackModal from "./PackModal";
 import ChangeStatusModal from "./ChangeStatusModal"
 
 function PackedOrders() {
   const history = useHistory();
-  const location = useLocation();
   const dispatch = useDispatch();
 
-  const [isPacked, setIsPacked] = useState();
   const [orders, setOrders] = useState([]);
   const [headers, setHeaders] = useState([]);
 
@@ -50,60 +46,60 @@ function PackedOrders() {
       });
   };
 
-  const fetchUnPackedOrders = () => {
-    const url =
-      restHelper.getURLPrefix(appConfig.host) +
-      appConfig.services.orders.getUnPackedOrders;
+  // const fetchUnPackedOrders = () => {
+  //   const url =
+  //     restHelper.getURLPrefix(appConfig.host) +
+  //     appConfig.services.orders.getUnPackedOrders;
 
-    restHelper
-      .getRequest(url)
-      .then((res) => {
-        setOrders(
-          res.data.map((item) => {
-            return {
-              ...item,
-              submission_date: formatDateTime(item.submission_date),
-            };
-          })
-        );
-      })
-      .catch((err) => {
-        alert("برجاء اعادة المحاولة");
-      });
-  };
+  //   restHelper
+  //     .getRequest(url)
+  //     .then((res) => {
+  //       setOrders(
+  //         res.data.map((item) => {
+  //           return {
+  //             ...item,
+  //             submission_date: formatDateTime(item.submission_date),
+  //           };
+  //         })
+  //       );
+  //     })
+  //     .catch((err) => {
+  //       alert("برجاء اعادة المحاولة");
+  //     });
+  // };
 
-  const deliveryHandler = (orderId) => {
-    const url =
-      restHelper.getURLPrefix(appConfig.host) +
-      appConfig.services.orders.deliverPackedOrder;
+  // const deliveryHandler = (orderId) => {
+  //   const url =
+  //     restHelper.getURLPrefix(appConfig.host) +
+  //     appConfig.services.orders.deliverPackedOrder;
 
-    const reqData = {
-      id: orderId,
-    };
+  //   const reqData = {
+  //     id: orderId,
+  //   };
 
-    restHelper
-      .postRequest(url, reqData)
-      .then((res) => {
-        fetchUnderProcessingOrders();
-        alert("تم تأكيد الاستلام بنجاح");
-      })
-      .catch((err) => {
-        alert("برجاء اعادة المحاولة");
-      });
-  };
+  //   restHelper
+  //     .postRequest(url, reqData)
+  //     .then((res) => {
+  //       fetchUnderProcessingOrders();
+  //       alert("تم تأكيد الاستلام بنجاح");
+  //     })
+  //     .catch((err) => {
+  //       alert("برجاء اعادة المحاولة");
+  //     });
+  // };
 
-  const dispatchPackedModal = (orderId) => {
-    const orderData = orders.find((order) => order.id === orderId);
-    dispatch(
-      openModal(
-        <PackModal
-          orderData={orderData}
-          orderId={orderId}
-          fetchUnPackedOrders={fetchUnPackedOrders}
-        />
-      )
-    );
-  };
+  // const dispatchPackedModal = (orderId) => {
+  //   const orderData = orders.find((order) => order.id === orderId);
+  //   dispatch(
+  //     openModal(
+  //       <PackModal
+  //         orderData={orderData}
+  //         orderId={orderId}
+  //         fetchUnPackedOrders={fetchUnPackedOrders}
+  //       />
+  //     )
+  //   );
+  // };
 
   const dispatchChangeStatusModal = (orderId) => {
     const orderData = orders.find((order) => order.id === orderId);

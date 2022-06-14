@@ -177,49 +177,48 @@ export default function OrderDetails() {
                                 )}
                     </div>
                     <div style={{ margin: "50px" }}>
-                                <h4>Image</h4>
-                                {
-                                    order.image_attachment ? (
-                                        <a
-                                          className="monategImageLink"
-                                          href={`${IMAGE_BASE_URL}${order.image_attachment}`}
-                                          target="_blank"
-                                        >
-                                          <img
-                                            className="monategImages"
-                                            src={`${IMAGE_BASE_URL}${order.image_attachment}`}
-                                            alt=""
-                                            height="200px"
-                                            width="200px"
-                                          />
-                                        </a>
-                                      ) : (
-                                        <p>No image found</p>
-                                      )}
-                        </div>
-                        <div style={{ margin: "50px" }}>
-                                <h4>Montage Attachment</h4>
-                                {
-                                    order.montage_attachment ? (
-                                        <a
-                                          className="monategImageLink"
-                                          href={`${IMAGE_BASE_URL}${order.montage_attachment}`}
-                                          target="_blank"
-                                        >
-                                          <img
-                                            className="monategImages"
-                                            src={`${IMAGE_BASE_URL}${order.montage_attachment}`}
-                                            alt=""
-                                            height="200px"
-                                            width="200px"
-                                          />
-                                        </a>
-                                      ) : (
-                                        <p>No image found</p>
-                                      )}
-                        </div>
+                            <h4>Image</h4>
+                            {
+                            order.image_attachment ? (
+                                <a
+                                    className="monategImageLink"
+                                    href={`${IMAGE_BASE_URL}${order.image_attachment}`}
+                                    target="_blank"
+                                >
+                                    <img
+                                    className="monategImages"
+                                    src={`${IMAGE_BASE_URL}${order.image_attachment}`}
+                                    alt=""
+                                    height="200px"
+                                    width="200px"
+                                    />
+                                </a>
+                                ) : (
+                                <p>No image found</p>
+                                )}
+                    </div>
+                    <div style={{ margin: "50px" }}>
+                        <h4>Montage Attachment</h4>
+                        {
+                        order.montage_attachment ? (
+                            <a
+                                className="monategImageLink"
+                                href={`${IMAGE_BASE_URL}${order.montage_attachment}`}
+                                target="_blank"
+                            >
+                                <img
+                                className="monategImages"
+                                src={`${IMAGE_BASE_URL}${order.montage_attachment}`}
+                                alt=""
+                                height="200px"
+                                width="200px"
+                                />
+                            </a>
+                            ) : (
+                            <p>No image found</p>
+                            )}
+                    </div>
                 </div>
-                
             </div>
             <div className="inputs_container">
                 <div className="header_lable">Order Data</div>
@@ -274,28 +273,14 @@ export default function OrderDetails() {
                         </div>
                     </div>
                 </div>
+                <div className='inputs_section'>
+                <div className="part-note">
+                    <div className="inputs_label">Note</div>
+                    <textarea id="note" value={order.note} disabled={true}></textarea>
+                </div>
+                </div>
                 <div className="header_lable">Quantity Data</div>
                 <div className='inputs_section'>
-                    {/* <div className='column'>
-                        <div className="part">
-                            <div className="inputs_label">Sample</div>
-                            <AppInput
-                                id="sample"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.sample}
-                            />
-                        </div>
-                        <div className="part">
-                            <div className="inputs_label">Ordered Roll</div>
-                            <AppInput
-                                id="order_roll"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.order_roll}
-                            />
-                        </div>
-                    </div> */}
                     <div className='column'>
                         <div className="part">
                             <div className="inputs_label">Roll per meter</div>
@@ -319,6 +304,7 @@ export default function OrderDetails() {
                         </div>
                     </div>
                 </div>
+                <div style={{padding:"20px"}}></div>
             </div>
         </div>
     )

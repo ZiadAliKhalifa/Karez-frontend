@@ -14,6 +14,7 @@ import "./CustomerDetails.css";
 export default function CustomerDetails() {
   const [customer, setCustomer] = useState({});
   const [montages, setMontages] = useState([]);
+  const [montageName, setMontageName] = useState([]);
 
   const { id, categoryId } = useParams();
   const history = useHistory();
@@ -120,12 +121,14 @@ export default function CustomerDetails() {
     const location = { pathname: "/admin/montage/details/" + montageId };
     history.push(location);
   };
+  // console.log(montageName)
 
   const navigateToListOfOrders = (montageId) => {
+    const rowIndex = montages.findIndex(obj => obj.id === montageId)
     const location = { 
       pathname: "/admin/order/by-montage/" + montageId,
       state: {
-        montageName: montages[montageId].job_name,
+        montageName: montages[rowIndex].job_name,
         customerName: customer.name,
     },};
     history.push(location);

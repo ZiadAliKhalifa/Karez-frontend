@@ -117,8 +117,18 @@ export default function AddMontage() {
                 <AppInput
                   id="job_name"
                   inputClassName="input"
-                  InputProps={{ disableUnderline: true }}
+                  InputProps={{ disableUnderline: true, required:true }}
                   value={formData.job_name}
+                  onChange={(e) => handleChange(e.target.value, e.target.id)}
+                />
+              </div>
+              <div className="part">
+                <div className="inputs_label">نوع</div>
+                <AppInput
+                  id="type"
+                  inputClassName="input"
+                  InputProps={{ disableUnderline: true, required:true }}
+                  value={formData.type}
                   onChange={(e) => handleChange(e.target.value, e.target.id)}
                 />
               </div>
@@ -172,16 +182,6 @@ export default function AddMontage() {
                   onChange={(e) => handleChange(e.target.value, e.target.id)}
                 />
               </div>
-              <div className="part">
-              <div className="inputs_label">نوع</div>
-              <AppInput
-                id="type"
-                inputClassName="input"
-                InputProps={{ disableUnderline: true }}
-                value={formData.type}
-                onChange={(e) => handleChange(e.target.value, e.target.id)}
-              />
-            </div>
             <div className="part">
               <div className="inputs_label">اتجاه جر</div>
               <AppInput

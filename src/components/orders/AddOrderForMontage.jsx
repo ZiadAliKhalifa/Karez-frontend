@@ -17,7 +17,6 @@ export default function AddOrderForMontage() {
     const [formData, setFormData] = useState({});
     const [files, setFiles] = useState([]);
 
-
     const history = useHistory();
     const { id } = useParams();
 
@@ -82,6 +81,7 @@ export default function AddOrderForMontage() {
         form.append("job_per_meter", formData.job_per_meter);
         form.append("label_per_roll", formData.label_per_roll);
         form.append("roll_per_meter", formData.roll_per_meter);
+        form.append("note", formData.note);
 
         const url =
             restHelper.getURLPrefix(appConfig.host) +
@@ -293,6 +293,12 @@ export default function AddOrderForMontage() {
                         </div>
                     </div>
                 </div>
+                <div className='inputs_section'>
+                <div className="part-note">
+                    <div className="inputs_label">Note</div>
+                    <textarea id="note" onChange={(e) => handleChange(e.target.value, e.target.id)}></textarea>
+                </div>
+                </div>
                 <div className='data-header'>
                     Quantity Data
                 </div>
@@ -330,9 +336,9 @@ export default function AddOrderForMontage() {
                     </div>
                 </div>
             </div>
-
-            <button className="customer-submit" onClick={handleSubmit}>اضافة</button>
-
+            <div className="submit_button_div">
+                <button className="customer-submit" onClick={handleSubmit}>اضافة</button>
+            </div>
         </div>
     )
 }
