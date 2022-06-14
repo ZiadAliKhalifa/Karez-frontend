@@ -39,7 +39,7 @@ export default function OrderDetails() {
                         <div className='column'>
 
                             <div className="part">
-                                <div className="inputs_label">اسم مونتاج</div>
+                                <div className="inputs_label">إسم الشغلانة</div>
                                 <AppInput
                                     id="job_name"
                                     inputClassName="input"
@@ -48,7 +48,16 @@ export default function OrderDetails() {
                                 />
                             </div>
                             <div className="part">
-                                <div className="inputs_label">كود سكينا</div>
+                                <div className="inputs_label">تفاصيل الشغلانة</div>
+                                <AppInput
+                                    id="type"
+                                    inputClassName="input"
+                                    InputProps={{ disableUnderline: true }}
+                                    value={order.type}
+                                />
+                            </div>
+                            <div className="part">
+                                <div className="inputs_label">كود السكينة</div>
                                 <AppInput
                                     id="skina_code"
                                     inputClassName="input"
@@ -66,7 +75,7 @@ export default function OrderDetails() {
                                 />
                             </div>
                             <div className="part">
-                                <div className="inputs_label">اللون</div>
+                                <div className="inputs_label">عدد الالوان</div>
                                 <AppInput
                                     id="color"
                                     inputClassName="input"
@@ -96,16 +105,7 @@ export default function OrderDetails() {
                     </div>
                     <div className="column">
                         <div className="part">
-                            <div className="inputs_label">نوع</div>
-                            <AppInput
-                                id="type"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.type}
-                            />
-                        </div>
-                        <div className="part">
-                            <div className="inputs_label"> اتجاه جر</div>
+                            <div className="inputs_label">اتجاه جر</div>
                             <AppInput
                                 id="etgah_el_gar"
                                 inputClassName="input"
@@ -114,7 +114,7 @@ export default function OrderDetails() {
                             />
                         </div>
                         <div className="part">
-                            <div className="inputs_label">فجوة </div>
+                            <div className="inputs_label">جاب</div>
                             <AppInput
                                 id="gap"
                                 inputClassName="input"
@@ -123,7 +123,7 @@ export default function OrderDetails() {
                             />
                         </div>
                         <div className="part">
-                            <div className="inputs_label">لون خاص</div>
+                            <div className="inputs_label">اللون الخاص</div>
                             <AppInput
                                 id="special_color"
                                 inputClassName="input"

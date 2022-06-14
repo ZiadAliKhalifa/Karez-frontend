@@ -113,7 +113,7 @@ export default function AddMontage() {
           <div>
             <div className="column">
               <div className="part">
-                <div className="inputs_label">اسم مونتاج</div>
+                <div className="inputs_label">إسم الشغلانة</div>
                 <AppInput
                   id="job_name"
                   inputClassName="input"
@@ -123,7 +123,7 @@ export default function AddMontage() {
                 />
               </div>
               <div className="part">
-                <div className="inputs_label">نوع</div>
+                <div className="inputs_label">تفاصيل الشغلانة</div>
                 <AppInput
                   id="type"
                   inputClassName="input"
@@ -133,7 +133,7 @@ export default function AddMontage() {
                 />
               </div>
               <div className="part">
-                <div className="inputs_label">كود سكينا </div>
+                <div className="inputs_label">كود السكينة</div>
                 <div className="skina-code-container">
                   <Autocomplete
                     id="skina_code"
@@ -163,7 +163,7 @@ export default function AddMontage() {
                 />
               </div>
               <div className="part">
-                <div className="inputs_label">اللون</div>
+                <div className="inputs_label">عدد الالوان</div>
                 <AppInput
                   id="color"
                   inputClassName="input"
@@ -197,7 +197,7 @@ export default function AddMontage() {
           </div>
           <div className="column">
             <div className="part">
-              <div className="inputs_label">Gap</div>
+              <div className="inputs_label">جاب</div>
               <AppInput
                 id="gap"
                 inputClassName="input"
@@ -208,7 +208,7 @@ export default function AddMontage() {
               />
             </div>
             <div className="part">
-              <div className="inputs_label">لون خاص</div>
+              <div className="inputs_label">اللون الخاص</div>
               <AppInput
                 id="special_color"
                 inputClassName="input"
