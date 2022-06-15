@@ -90,34 +90,14 @@ export default function CustomerDetails() {
     },
   ];
 
-  // const edit = (montageId) => {
-  //   history.push(`/admin/montage/new/${montageId}`);
-  // };
-
-  // const reorder = (montageId) => {
-  //   // API request to reorder
-  //   const url =
-  //     restHelper.getURLPrefix(appConfig.host) +
-  //     appConfig.services.montages.reorderMontageById;
-
-  //   const data = {
-  //     id: montageId,
-  //   };
-
-  //   restHelper
-  //     .postRequest(url, data)
-  //     .then((res) => {
-  //       // Hacky way to reset the orders for the customer
-  //       setCustomer("");
-  //       setCustomer(customer);
-  //     })
-  //     .catch((err) => {
-  //       alert("لا يمكن اعادة الطلب");
-  //     });
-  // };
-
   const navigateToDetails = (montageId) => {
-    const location = { pathname: "/admin/montage/details/" + montageId };
+    const location = {
+      pathname: "/admin/montage/details/" + montageId ,
+      state: {
+        id: id,
+        categoryId: categoryId,
+      },
+    };
     history.push(location);
   };
   // console.log(montageName)

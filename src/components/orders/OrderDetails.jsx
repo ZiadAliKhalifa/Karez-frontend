@@ -329,7 +329,7 @@ export default function OrderDetails() {
                 </div>
                 <div style={{padding:"20px"}}></div>
             </div>
-            {order.status !== "Cancel"  && 
+            {((order.status !== "Cancel") && (order.status !== "Delivered"))  && 
             (
             <div className="submit_button_div">
                 <button className="customer-submit" onClick={handleCancel}>إلغاء</button>

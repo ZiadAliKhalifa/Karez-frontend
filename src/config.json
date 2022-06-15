@@ -31,7 +31,8 @@
       "getMontageCategories": "api/montage/categories/",
       "getMontagebyCategory": "api/montage/by-category/",
       "getMontageSkinaCodes": "api/montage/skina-codes/",
-      "newMontageSkinaCode": "api/montage/create-skina-codes/"
+      "newMontageSkinaCode": "api/montage/create-skina-codes/",
+      "editMontage": "api/montage/edit-montage/"
     },
     "orders": {
       "getUnderProcessingOrders": "api/order/under-processing-orders",
@@ -44,7 +45,8 @@
       "updateOrderStatus": "api/order/update-order-status",
       "getOrderStatusChoices": "api/order/get-order-status-choices",
       "getDeliveredOrders": "api/order/get-delivered-orders",
-      "getLatestOrderByMontage": "api/order/get-latest-order-by-montage"
+      "getLatestOrderByMontage": "api/order/get-latest-order-by-montage",
+      "editOrderAndMontage": "api/order/edit-order-montage"
     }
   }
 }

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import { useParams, useHistory } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory, useLocation } from "react-router-dom";
 import AppInput from "../../common/input/Input";
 
 import { IMAGE_BASE_URL } from "../../../consts/general.js";
@@ -14,7 +13,8 @@ export default function MontageDetails() {
   const [montage, setMontage] = useState({});
   // const [formData, setFormData] = useState({});
 
-  // const history = useHistory();
+  const history = useHistory();
+  const location = useLocation();
   const { id } = useParams();
 
   useEffect(() => {
@@ -32,38 +32,18 @@ export default function MontageDetails() {
       });
   }, []);
 
-  // const handleChange = (text, key) => {
-  //   let keys = "";
-  //   if (key.indexOf("-") > 0) keys = key.substr(0, key.indexOf("-"));
-  //   else keys = key;
-  //   let newFormData = { ...formData };
-  //   newFormData[keys] = text;
-  //   setFormData(newFormData);
-  // };
+  console.log(location.state)
 
-  // const handleSubmit = () => {
-
-  //   formData.montage_id = id;
-
-  //   const url =
-  //     restHelper.getURLPrefix(appConfig.host) +
-  //     appConfig.services.orders.newOrder;
-
-  //   restHelper
-  //     .postRequest(url, formData)
-  //     .then((res) => {
-  //       navigateToAllCustomers();
-  //     })
-  //     .catch((err) => {
-  //       alert("لم نتمكن من ادخال");
-  //     });
-  // };
-
-  // const navigateToAllCustomers = () => {
-  //   const location = { pathname: "/admin/customers" };
-  //   history.push(location);
-  // };
-
+  const navigteToEditMontage = () => {
+    const editLocation = {
+      pathname: `/admin/montage/edit/${id}` ,
+      state: {
+        id: location.state.id,
+        categoryId: location.state.categoryId,
+      },
+    };
+    history.push(editLocation);
+  };
   return (
     <div className="main_container">
       <div className="inputs_container">
@@ -250,6 +230,9 @@ export default function MontageDetails() {
               )}
             </div>
         </div>
+      </div>
+      <div className="submit_button_div">
+          <button className="customer-submit" onClick={navigteToEditMontage}>تعديل</button>
       </div>
     </div>
   );

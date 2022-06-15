@@ -22,6 +22,7 @@ import MontageDetails from "./components/montage/montageDetails/MontageDetails";
 import OrderDetails from "./components/orders/OrderDetails";
 import NewCategory from "./components/customer/NewCategory";
 import DeliveredOrders from "./components/packedOrders/DeliveredOrders";
+import EditMontage from "./components/montage/editMontage/EditMontage";
 
 // This function should check if the JWT access token exists to avail guarded routes
 // check if JWT exists
@@ -100,6 +101,15 @@ const Routes = () => {
           >
             <ComponentWrapper>
               <AddMontage />
+            </ComponentWrapper>
+          </GuardedRoute>
+          <GuardedRoute
+            path="/admin/montage/edit/:id"
+            exact
+            meta={{ auth: true }}
+          >
+            <ComponentWrapper>
+              <EditMontage />
             </ComponentWrapper>
           </GuardedRoute>
           <GuardedRoute
