@@ -67,7 +67,6 @@ function ChangeStatusModal({ orderData, orderId, fetchUnderProcessingOrders }) {
       });
   };
   
-  console.log(formData.order_status)
   return (
     <div className="packed-modal-container">
       <div className="packed-modal-title">
@@ -86,7 +85,7 @@ function ChangeStatusModal({ orderData, orderId, fetchUnderProcessingOrders }) {
             }}
           />
         </div>
-        {formData.order_status == "Packed" &&(
+        {formData.order_status === "Packed" &&(
           <>
           <div className="packed-modal-input-label">Order Packed Quantity</div>
           <input
@@ -97,7 +96,7 @@ function ChangeStatusModal({ orderData, orderId, fetchUnderProcessingOrders }) {
         />
         </>
         )}
-        {formData.order_status == "Delivered" &&(
+        {formData.order_status === "Delivered" &&(
           <>
           <div className="packed-modal-input-label">Order Delivered Quantity</div>
           <input

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-import AppButton from '../common/button/Button'
-import AppInput from '../common/input/Input'
+// import AppButton from '../common/button/Button'
+// import AppInput from '../common/input/Input'
 
 import restHelper from "../../helpers/RestHelper";
 import appConfig from "../../config.json";

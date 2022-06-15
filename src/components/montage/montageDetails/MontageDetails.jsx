@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+// import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import AppInput from "../../common/input/Input";
 
 import { IMAGE_BASE_URL } from "../../../consts/general.js";
@@ -11,9 +12,9 @@ import "./MontageDetails.css";
 
 export default function MontageDetails() {
   const [montage, setMontage] = useState({});
-  const [formData, setFormData] = useState({});
+  // const [formData, setFormData] = useState({});
 
-  const history = useHistory();
+  // const history = useHistory();
   const { id } = useParams();
 
   useEffect(() => {
@@ -31,37 +32,37 @@ export default function MontageDetails() {
       });
   }, []);
 
-  const handleChange = (text, key) => {
-    let keys = "";
-    if (key.indexOf("-") > 0) keys = key.substr(0, key.indexOf("-"));
-    else keys = key;
-    let newFormData = { ...formData };
-    newFormData[keys] = text;
-    setFormData(newFormData);
-  };
+  // const handleChange = (text, key) => {
+  //   let keys = "";
+  //   if (key.indexOf("-") > 0) keys = key.substr(0, key.indexOf("-"));
+  //   else keys = key;
+  //   let newFormData = { ...formData };
+  //   newFormData[keys] = text;
+  //   setFormData(newFormData);
+  // };
 
-  const handleSubmit = () => {
+  // const handleSubmit = () => {
 
-    formData.montage_id = id;
+  //   formData.montage_id = id;
 
-    const url =
-      restHelper.getURLPrefix(appConfig.host) +
-      appConfig.services.orders.newOrder;
+  //   const url =
+  //     restHelper.getURLPrefix(appConfig.host) +
+  //     appConfig.services.orders.newOrder;
 
-    restHelper
-      .postRequest(url, formData)
-      .then((res) => {
-        navigateToAllCustomers();
-      })
-      .catch((err) => {
-        alert("لم نتمكن من ادخال");
-      });
-  };
+  //   restHelper
+  //     .postRequest(url, formData)
+  //     .then((res) => {
+  //       navigateToAllCustomers();
+  //     })
+  //     .catch((err) => {
+  //       alert("لم نتمكن من ادخال");
+  //     });
+  // };
 
-  const navigateToAllCustomers = () => {
-    const location = { pathname: "/admin/customers" };
-    history.push(location);
-  };
+  // const navigateToAllCustomers = () => {
+  //   const location = { pathname: "/admin/customers" };
+  //   history.push(location);
+  // };
 
   return (
     <div className="main_container">
@@ -192,6 +193,7 @@ export default function MontageDetails() {
                   className="monategImageLink"
                   href={`${IMAGE_BASE_URL}${montage.montage_attachment}`}
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <img
                     className="monategImages"
@@ -212,6 +214,7 @@ export default function MontageDetails() {
                   className="monategImageLink"
                   href={`${IMAGE_BASE_URL}${montage.desgin_upload_file}`}
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <img
                     className="monategImages"
@@ -232,6 +235,7 @@ export default function MontageDetails() {
                   className="monategImageLink"
                   href={`${IMAGE_BASE_URL}${montage.image_attachment}`}
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <img
                     className="monategImages"

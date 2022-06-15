@@ -29,6 +29,26 @@ export default function OrderDetails() {
             });
     }, [id])
 
+    const handleCancel = () => {
+        const url =
+          restHelper.getURLPrefix(appConfig.host) +
+          appConfig.services.orders.updateOrderStatus;
+    
+        const data = {
+          id: id,
+          order_status: "Cancelled",
+        };
+    
+        restHelper
+          .postRequest(url, data)
+          .then((res) => {
+            alert("تم تغير الحالة بنجاح");
+          })
+          .catch((err) => {
+            alert("برجاء اعادة المحاولة");
+          });
+      };
+
 
     return (
         <div className='main_container'>
@@ -163,6 +183,7 @@ export default function OrderDetails() {
                                     className="monategImageLink"
                                     href={`${IMAGE_BASE_URL}${order.desgin_upload_file}`}
                                     target="_blank"
+                                    rel="noreferrer"
                                 >
                                     <img
                                     className="monategImages"
@@ -184,6 +205,7 @@ export default function OrderDetails() {
                                     className="monategImageLink"
                                     href={`${IMAGE_BASE_URL}${order.image_attachment}`}
                                     target="_blank"
+                                    rel="noreferrer"
                                 >
                                     <img
                                     className="monategImages"
@@ -205,6 +227,7 @@ export default function OrderDetails() {
                                 className="monategImageLink"
                                 href={`${IMAGE_BASE_URL}${order.montage_attachment}`}
                                 target="_blank"
+                                rel="noreferrer"
                             >
                                 <img
                                 className="monategImages"
@@ -306,6 +329,14 @@ export default function OrderDetails() {
                 </div>
                 <div style={{padding:"20px"}}></div>
             </div>
+            {order.status !== "Cancel"  && 
+            (
+            <div className="submit_button_div">
+                <button className="customer-submit" onClick={handleCancel}>إلغاء</button>
+            </div>
+            )
+            }
+
         </div>
     )
 }

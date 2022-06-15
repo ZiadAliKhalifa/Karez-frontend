@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./SideNav.css";
 import customerLogo from "../../static/images/customerLogo.svg";
-import designLogo from "../../static/images/designLogo.svg";
+// import designLogo from "../../static/images/designLogo.svg";
 import packedLogo from "../../static/images/packedLogo.svg";
 import unpackedLogo from "../../static/images/unpackedLogo.svg";
 import { useHistory } from "react-router";
@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 function SideNav() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const userRole = getCookie("role");
+  // const userRole = getCookie("role");
   useEffect(() => {
     getCookie("accessToken").length > 0
       ? dispatch(loginUser())

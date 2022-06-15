@@ -4,7 +4,7 @@ import "./MontageCategoriesModal.css";
 import restHelper from "../../helpers/RestHelper";
 import appConfig from "../../config.json";
 
-import { IMAGE_BASE_URL } from "../../consts/general";
+// import { IMAGE_BASE_URL } from "../../consts/general";
 
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { closeModal } from "../../redux/modal/modalActions";

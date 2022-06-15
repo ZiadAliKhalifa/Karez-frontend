@@ -8,7 +8,6 @@ import appConfig from "../../config.json";
 import "./AddOrderForMontage.css"
 
 import { FileUploadButton } from '../common/uploadButton/uploadButton';
-import { formatMs } from '@material-ui/core';
 
 
 export default function AddOrderForMontage() {
@@ -29,6 +28,30 @@ export default function AddOrderForMontage() {
             .getRequest(url + id)
             .then((res) => {
                 setMontage({ ...res.data });
+            })
+            .catch((err) => {
+                alert("برجاء اعادة المحاولة");
+            });
+
+    }, [])
+
+    //get most recent order if found by montage
+    useEffect(() => {
+        let url =
+            restHelper.getURLPrefix(appConfig.host) +
+            appConfig.services.orders.getLatestOrderByMontage;
+
+        const data = {
+            montage_id:id
+        }
+        restHelper
+            .postRequest(url,data)
+            .then((res) => {
+                res.data.quantity = 0
+                res.data.job_per_meter = 0
+                // res.data.label_per_roll = 0
+                console.log(res.data)
+                setFormData({ ...res.data });
             })
             .catch((err) => {
                 alert("برجاء اعادة المحاولة");
@@ -296,7 +319,7 @@ export default function AddOrderForMontage() {
                 <div className='inputs_section'>
                 <div className="part-note">
                     <div className="inputs_label">Note</div>
-                    <textarea id="note" onChange={(e) => handleChange(e.target.value, e.target.id)}></textarea>
+                    <textarea id="note" onChange={(e) => handleChange(e.target.value, e.target.id)} value={formData.note}></textarea>
                 </div>
                 </div>
                 <div className='data-header'>

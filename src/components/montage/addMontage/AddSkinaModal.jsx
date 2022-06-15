@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import AppInput from "../../common/input/Input";
 import "./AddMontage.css";
 
@@ -31,11 +31,11 @@ function AddSkinaModal({ setSkinaCodes }) {
             setSkinaCodes(res.data.map((code) => code.name));
           })
           .catch((error) => {
-            alert("b" + "برجاء اعادة المحاولة");
+            alert("برجاء اعادة المحاولة");
           });
       })
       .catch(function (error) {
-        alert("c" + "برجاء اعادة المحاولة");
+        alert("برجاء اعادة المحاولة");
       });
     alert("تم إضافة كود سكينة جديد بنجاح");
     dispatch(closeModal());

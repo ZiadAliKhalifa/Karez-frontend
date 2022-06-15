@@ -43,7 +43,8 @@
       "getOrderDetails": "api/order/get-all-orders-details/",
       "updateOrderStatus": "api/order/update-order-status",
       "getOrderStatusChoices": "api/order/get-order-status-choices",
-      "getDeliveredOrders": "api/order/get-delivered-orders"
+      "getDeliveredOrders": "api/order/get-delivered-orders",
+      "getLatestOrderByMontage": "api/order/get-latest-order-by-montage"
     }
   }
 }

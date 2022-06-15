@@ -14,7 +14,6 @@ import "./CustomerDetails.css";
 export default function CustomerDetails() {
   const [customer, setCustomer] = useState({});
   const [montages, setMontages] = useState([]);
-  const [montageName, setMontageName] = useState([]);
 
   const { id, categoryId } = useParams();
   const history = useHistory();
@@ -91,31 +90,31 @@ export default function CustomerDetails() {
     },
   ];
 
-  const edit = (montageId) => {
-    history.push(`/admin/montage/new/${montageId}`);
-  };
+  // const edit = (montageId) => {
+  //   history.push(`/admin/montage/new/${montageId}`);
+  // };
 
-  const reorder = (montageId) => {
-    // API request to reorder
-    const url =
-      restHelper.getURLPrefix(appConfig.host) +
-      appConfig.services.montages.reorderMontageById;
+  // const reorder = (montageId) => {
+  //   // API request to reorder
+  //   const url =
+  //     restHelper.getURLPrefix(appConfig.host) +
+  //     appConfig.services.montages.reorderMontageById;
 
-    const data = {
-      id: montageId,
-    };
+  //   const data = {
+  //     id: montageId,
+  //   };
 
-    restHelper
-      .postRequest(url, data)
-      .then((res) => {
-        // Hacky way to reset the orders for the customer
-        setCustomer("");
-        setCustomer(customer);
-      })
-      .catch((err) => {
-        alert("لا يمكن اعادة الطلب");
-      });
-  };
+  //   restHelper
+  //     .postRequest(url, data)
+  //     .then((res) => {
+  //       // Hacky way to reset the orders for the customer
+  //       setCustomer("");
+  //       setCustomer(customer);
+  //     })
+  //     .catch((err) => {
+  //       alert("لا يمكن اعادة الطلب");
+  //     });
+  // };
 
   const navigateToDetails = (montageId) => {
     const location = { pathname: "/admin/montage/details/" + montageId };
