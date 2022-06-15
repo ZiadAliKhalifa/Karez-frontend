@@ -1,0 +1,134 @@
+.main_container {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    direction: rtl !important;
+    overflow: hidden;
+}
+
+.inputs_container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
+.header_lable {
+    font-weight: bold;
+    font-size: 43px;
+    color: var(--light-grey);
+}
+
+.inputs_section {
+    margin-top: 10px;
+    display: flex;
+    margin-right: 40px;
+}
+
+.part {
+    margin-top: 10px;
+}
+
+
+.part-note{
+    padding-top: 20px;
+    width: 65%;
+    height: 100px;
+    padding-bottom: 50px;
+    padding-right: 16%;
+}
+
+.input {
+    border: 1px solid var(--grey) !important;
+    border-radius: 25px;
+    padding: 10px 50px 0px 0px !important;
+    width: calc(100% - 20px) !important;
+    height: 40px !important;
+    direction: rtl !important;
+}
+
+textarea{
+    border: 1px solid var(--grey) !important;
+    border-radius: 10px;
+    padding: 10px 50px 0px 0px !important;
+    width: calc(100% - 20px) !important;
+    height: 100% !important;
+    direction: rtl !important;
+    resize: none;
+}
+
+.column {
+    margin-right: 200px;
+}
+
+.inputs_label {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--black);
+    margin-bottom: 5px;
+}
+
+.submit_button_div{
+    width:30%;
+    padding-right: 100px;
+    padding-bottom: 50px;
+}
+.submit_button_div button{
+    border: 2px solid var(--light-grey);
+    color: 1px solid var(--light-grey);
+    background-color: transparent;
+    border-radius: 25px 25px 25px 25px;
+    width: 200px;
+    padding-top: 17px;
+    margin: auto;
+    cursor: pointer;
+    margin-top: 40px;
+    font-family: Tajawal, roboto;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+.customer-submit {
+    background-color: gree;
+    border: 2px solid var(--light-grey);
+    color: 1px solid var(--light-grey);
+    background-color: green;
+    border-radius: 25px 25px 25px 25px;
+    width: 200px;
+    padding-top: 17px;
+    margin: auto;
+    cursor: pointer;
+    margin-top: 40px;
+    font-family: Tajawal, roboto;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.customer-submit:hover {
+    background-color: rgb(247, 247, 247);
+    transition: all 0.2s ease-in-out;
+}
+
+
+.skina-code-container {
+    display: flex;
+    width: calc(100% + 80px);
+  }
+  
+  .skina-add-icon {
+    color: green;
+    font-size: 35px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 10px;
+    cursor: pointer;
+  }
+
+  .buttons_container{
+    display: flex;
+    width: 40%;
+    }

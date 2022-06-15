@@ -32,8 +32,6 @@ export default function MontageDetails() {
       });
   }, []);
 
-  console.log(location.state)
-
   const navigteToEditMontage = () => {
     const editLocation = {
       pathname: `/admin/montage/edit/${id}` ,

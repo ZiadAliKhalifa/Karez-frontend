@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams,useHistory } from 'react-router-dom'
 
 import AppInput from '../common/input/Input'
 
@@ -12,6 +12,7 @@ export default function OrderDetails() {
     const [order, setOrder] = useState({})
 
     const { id } = useParams();
+    const history = useHistory();
 
     useEffect(() => {
 
@@ -49,7 +50,9 @@ export default function OrderDetails() {
           });
       };
 
-
+      const navigteToEditOrder = () => {
+        history.push(`/admin/edit/order/${id}`)
+      }
     return (
         <div className='main_container'>
             <div className="inputs_container">
@@ -329,14 +332,18 @@ export default function OrderDetails() {
                 </div>
                 <div style={{padding:"20px"}}></div>
             </div>
-            {((order.status !== "Cancel") && (order.status !== "Delivered"))  && 
-            (
-            <div className="submit_button_div">
-                <button className="customer-submit" onClick={handleCancel}>إلغاء</button>
+            <div className="buttons_container">
+                {((order.status !== "Cancel") && (order.status !== "Delivered"))  && 
+                (
+                <div className="submit_button_div">
+                    <button className="customer-submit" onClick={handleCancel}>إلغاء</button>
+                </div>
+                )
+                }
+                <div className="submit_button_div">
+                    <button className="customer-submit" onClick={navigteToEditOrder}>تعديل</button>
+                </div>
             </div>
-            )
-            }
-
         </div>
     )
 }
