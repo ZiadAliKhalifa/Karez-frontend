@@ -46,7 +46,8 @@
       "getOrderStatusChoices": "api/order/get-order-status-choices",
       "getDeliveredOrders": "api/order/get-delivered-orders",
       "getLatestOrderByMontage": "api/order/get-latest-order-by-montage",
-      "editOrderAndMontage": "api/order/edit-order-montage"
+      "editOrderAndMontage": "api/order/edit-order-montage",
+      "canceledOrders": "api/order/get-canceled-orders"
     }
   }
 }

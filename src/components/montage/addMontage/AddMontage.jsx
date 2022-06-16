@@ -217,7 +217,10 @@ export default function AddMontage() {
                   onChange={(e) => handleChange(e.target.value, e.target.id)}
                 />
               </div>
-              <div className="part">
+            </div>
+          </div>
+          <div className="column">
+            <div className="part">
                 <div className="inputs_label">عدد الالوان</div>
                 <AppInput
                   id="color"
@@ -237,9 +240,6 @@ export default function AddMontage() {
                   onChange={(e) => handleChange(e.target.value, e.target.id)}
                 />
               </div>
-            </div>
-          </div>
-          <div className="column">
             <div className="part">
               <div className="inputs_label">جاب</div>
               <AppInput

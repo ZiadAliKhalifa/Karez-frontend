@@ -197,7 +197,9 @@ export default function AddOrderForMontage() {
                                 value={montage.aps}
                             />
                         </div>
-                        <div className="part">
+                        </div>
+                    <div className="column">
+                    <div className="part">
                             <div className="inputs_label">عدد الالوان</div>
                             <AppInput
                                 id="color"
@@ -224,8 +226,6 @@ export default function AddOrderForMontage() {
                                 value={montage.sub_code}
                             />
                         </div>
-                        </div>
-                    <div className="column">
                         <div className="part">
                             <div className="inputs_label">جاب</div>
                             <AppInput

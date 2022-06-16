@@ -24,6 +24,7 @@ import NewCategory from "./components/customer/NewCategory";
 import DeliveredOrders from "./components/packedOrders/DeliveredOrders";
 import EditMontage from "./components/montage/editMontage/EditMontage";
 import EditOrder from "./components/orders/EditOrder";
+import CanceledOrders from "./components/packedOrders/CanceledOrders";
 // This function should check if the JWT access token exists to avail guarded routes
 // check if JWT exists
 const requireLogin = (to, from, next) => {
@@ -87,6 +88,11 @@ const Routes = () => {
           <GuardedRoute path="/order/underprocessing" exact meta={{ auth: true }}>
             <ComponentWrapper>
               <PackedOrders />
+            </ComponentWrapper>
+          </GuardedRoute>
+          <GuardedRoute path="/order/canceled" exact meta={{ auth: true }}>
+            <ComponentWrapper>
+              <CanceledOrders />
             </ComponentWrapper>
           </GuardedRoute>
           <GuardedRoute path="/admin/montage/new" exact meta={{ auth: true }}>

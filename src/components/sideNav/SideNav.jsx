@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import "./SideNav.css";
 import customerLogo from "../../static/images/customerLogo.svg";
-// import designLogo from "../../static/images/designLogo.svg";
+import cancel from "../../static/images/cancel.svg"
+import skina from "../../static/images/skina.svg"
 import packedLogo from "../../static/images/packedLogo.svg";
 import unpackedLogo from "../../static/images/unpackedLogo.svg";
 import { useHistory } from "react-router";
@@ -25,12 +26,7 @@ function SideNav() {
   return (
     <nav className="sidenav-container">
       <div className="sidenav-title">الكارز</div>
-      {/* {userRole === "Montage Admin" && ( */}
-      <>
-        <div
-          className="sidenav-tabs"
-          onClick={() => history.push("/admin/customers")}
-        >
+        <div className="sidenav-tabs" onClick={() => history.push("/admin/customers")}>
           <img
             src={customerLogo}
             alt="customer"
@@ -38,21 +34,7 @@ function SideNav() {
           />
           <div className="sidenav-tab-label">عملاء</div>
         </div>
-        {/* <div
-          className="sidenav-tabs"
-          onClick={() => history.push("/designs")}
-        >
-          <img src={designLogo} alt="design" className="sidenav-tab-img" />
-          <div className="sidenav-tab-label">تصميمات</div>
-        </div> */}
-      </>
-      {/* )} */}
-      {/* {userRole === "Montage Printer" && ( */}
-      <>
-        <div
-          className="sidenav-tabs"
-          onClick={() => history.push("/order/underprocessing")}
-        >
+        <div className="sidenav-tabs" onClick={() => history.push("/order/underprocessing")}>
           <img
             src={unpackedLogo}
             alt="customer"
@@ -60,21 +42,33 @@ function SideNav() {
           />
           <div className="sidenav-tab-label">جاري تنفيذ الطلب</div>
         </div>
-        <div
-          className="sidenav-tabs"
-          onClick={() => history.push("/order/delivered")}
-        >
-          <img src={packedLogo} alt="design" className="sidenav-tab-img" />
+        <div className="sidenav-tabs" onClick={() => history.push("/order/delivered")}>
+          <img 
+            src={packedLogo}
+            alt="design"
+            className="sidenav-tab-img" 
+            />
           <div className="sidenav-tab-label">تم تنفيذ الطلب</div>
         </div>
-      </>
-      {/* )} */}
-      <div
-        className="sidenav-logout-container"
-        onClick={() => history.push("/logout")}
-      >
-        <button className="sidenav-logout-button">تسجيل الخروج</button>
-      </div>
+        <div className="sidenav-tabs" onClick={() => history.push("/order/canceled")}>
+          <img
+            src={cancel}
+            alt="customer"
+            className="sidenav-tab-img"
+          />
+          <div className="sidenav-tab-label">طلبات مغلقة</div>
+        </div>
+        <div className="sidenav-tabs" onClick={() => history.push("/order/canceled")}>
+          <img
+            src={skina}
+            alt="customer"
+            className="sidenav-tab-img"
+          />
+          <div className="sidenav-tab-label">كود السكينة</div>
+        </div>
+        <div className="sidenav-tabs" onClick={() => history.push("/logout")}>
+          <button className="sidenav-logout-button">تسجيل الخروج</button>
+        </div>
     </nav>
   );
 }
