@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-// import AppButton from '../common/button/Button'
-// import AppInput from '../common/input/Input'
 
 import restHelper from "../../helpers/RestHelper";
 import appConfig from "../../config.json";
@@ -71,6 +69,10 @@ export default function NewCustomer() {
         },
     }
 
+    const handleback = () => {
+        history.goBack()
+      }
+
     return (
         <div className="new-customer-container">
             <div className="new-customer-header">عميل جديد</div>
@@ -87,7 +89,14 @@ export default function NewCustomer() {
                         />
                     </div>
                 )}
-                <button className="customer-submit" onClick={handleSubmit}>اضافة</button>
+                <div className="button_container">
+                    <div className="submit_button_div">
+                        <button className="customer-submit" onClick={handleSubmit}>اضافة</button>
+                    </div>
+                    <div className="submit_button_div">
+                        <button className="customer-submit" onClick={handleback}>رجوع</button>
+                    </div>
+                </div>
             </div>
         </div>
     )

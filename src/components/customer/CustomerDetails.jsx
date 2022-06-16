@@ -113,12 +113,22 @@ export default function CustomerDetails() {
     history.push(location);
   };
 
+
+  const handleback = () => {
+    history.goBack()
+  }
+
   return (
     <>
       <div className="montage-container">
         <div className="montage-header">{customer.name}</div>
-        <div className="customers-new">
-          <AppButton onClick={navigteToNewMontage} text={"اضافه مونتاج"} />
+        <div className="button_container">
+          <div className="customers-new">
+            <AppButton onClick={navigteToNewMontage} text={"اضافه مونتاج"} />
+          </div>
+          <div className="customers-new">
+            <AppButton onClick={handleback} text={"رجوع"} />
+          </div>
         </div>
         <div className="montage-customer-details">
           <div className="montage-customer-details-item">

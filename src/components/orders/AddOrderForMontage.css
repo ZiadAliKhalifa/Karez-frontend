@@ -91,10 +91,9 @@ textarea{
 
 
 .customer-submit {
-    background-color: gree;
     border: 2px solid var(--light-grey);
     color: 1px solid var(--light-grey);
-    background-color: green;
+    background-color: transparent;
     border-radius: 25px 25px 25px 25px;
     width: 200px;
     padding-top: 17px;

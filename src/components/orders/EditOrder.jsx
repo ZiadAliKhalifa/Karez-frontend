@@ -167,6 +167,10 @@ export default function EditOrder() {
         history.push(location)
     }
 
+    const handleback = () => {
+        history.goBack()
+      }
+
     return (
         <div className='main_container'>
             <div className="inputs_container">
@@ -414,8 +418,13 @@ export default function EditOrder() {
                     </div>
                 </div>
             </div>
-            <div className="submit_button_div">
-                <button className="customer-submit" onClick={handleSubmit}>اضافة</button>
+            <div className="buttons_container">
+                <div className="submit_button_div">
+                    <button className="customer-submit" onClick={handleSubmit}>اضافة</button>
+                </div>
+                <div className="submit_button_div">
+                    <button className="customer-submit" onClick={handleback}>رجوع</button>
+                </div>
             </div>
         </div>
     )

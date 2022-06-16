@@ -72,7 +72,7 @@ export default function EditMontage() {
   };
   
   const handleSubmitMontage = () => {
-    if (formData.job_name) {
+    if ((formData.job_name) && (formData.type)) {
       const url =
         restHelper.getURLPrefix(appConfig.host) +
         appConfig.services.montages.editMontage;
@@ -112,13 +112,13 @@ export default function EditMontage() {
     }
   };
 
-  const navigateToAllCustomers = () => {
-    history.goBack();
-  };
-
   const addSkinaHandler = () => {
     dispatch(openModal(<AddSkinaModal setSkinaCodes={setSkinaCodes} />));
   };
+
+  const handleback = () => {
+    history.goBack()
+  }
 
   return (
     <div className="main_container">
@@ -285,8 +285,13 @@ export default function EditMontage() {
         </div>
         <hr style={{ width: "70%", marginTop: "40px" }} />
       </div>
-      <div className="montage-submit-button submit-button">
-        <AppButton onClick={handleSubmitMontage} text={"اضافه"} />
+      <div className="buttons_container">
+        <div className="submit_button_div">
+          <button className="customer-submit" onClick={handleSubmitMontage}>اضافه</button>
+        </div>
+        <div className="submit_button_div">
+          <button className="customer-submit" onClick={handleback}>رجوع</button>
+        </div>
       </div>
     </div>
   );

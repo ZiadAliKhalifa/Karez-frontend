@@ -57,13 +57,22 @@ export default function OrdersByMontage() {
         }
     ];
 
+    const handleback = () => {
+        history.goBack()
+      }
+
     return (
         <>
             <div className='montage-container'>
-            <div className="montage-header">Customer: {location.state?.customerName}</div>
-            <div className="montage-header-montage">Montage: {location.state?.montageName}</div>
-                <div className="montage-new-order">
-                    <AppButton onClick={navigateToNewOrder} text={"اضافه"} />
+                <div className="montage-header">Customer: {location.state?.customerName}</div>
+                <div className="montage-header-montage">Montage: {location.state?.montageName}</div>
+                <div className="button_container">
+                    <div className="montage-new-order">
+                        <AppButton onClick={navigateToNewOrder} text={"اضافه"} />
+                    </div>
+                    <div className="montage-new-order">
+                        <AppButton onClick={handleback} text={"رجوع"} />
+                    </div>
                 </div>
                 <div className='montages-container'>
                     <Table

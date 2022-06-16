@@ -50,9 +50,14 @@ export default function OrderDetails() {
           });
       };
 
-      const navigteToEditOrder = () => {
+    const navigteToEditOrder = () => {
         history.push(`/admin/edit/order/${id}`)
       }
+
+    const handleback = () => {
+        history.goBack()
+      }
+      
     return (
         <div className='main_container'>
             <div className="inputs_container">
@@ -342,6 +347,9 @@ export default function OrderDetails() {
                 }
                 <div className="submit_button_div">
                     <button className="customer-submit" onClick={navigteToEditOrder}>تعديل</button>
+                </div>
+                <div className="submit_button_div">
+                    <button className="customer-submit" onClick={handleback}>رجوع</button>
                 </div>
             </div>
         </div>

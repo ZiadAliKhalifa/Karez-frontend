@@ -56,7 +56,7 @@ export default function AddMontage() {
   };
 
   const handleSubmitMontage = () => {
-    if (formData.job_name) {
+    if ((formData.job_name) && (formData.type)) {
       const url =
         restHelper.getURLPrefix(appConfig.host) +
         appConfig.services.montages.newMontage;
@@ -89,7 +89,7 @@ export default function AddMontage() {
       restHelper
         .postRequest(url, form, config)
         .then(function (response) {
-          navigateToAllCustomers();
+          handleback();
         })
         .catch(function (error) {
           alert("Error while uploading");
@@ -97,13 +97,13 @@ export default function AddMontage() {
     }
   };
 
-  const navigateToAllCustomers = () => {
-    history.push("/admin/customers");
-  };
-
   const addSkinaHandler = () => {
     dispatch(openModal(<AddSkinaModal setSkinaCodes={setSkinaCodes} />));
   };
+
+  const handleback = () => {
+    history.goBack()
+  }
 
   return (
     <div className="main_container">
@@ -272,6 +272,9 @@ export default function AddMontage() {
       </div>
       <div className="montage-submit-button submit-button">
         <AppButton onClick={handleSubmitMontage} text={"اضافه"} />
+      </div>
+      <div className="submit_button_div">
+          <button className="customer-submit" onClick={handleback}>رجوع</button>
       </div>
     </div>
   );
