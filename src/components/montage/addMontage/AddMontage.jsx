@@ -23,6 +23,11 @@ export default function AddMontage() {
   const [etgahElArd, setEtgahElArd] = useState("");
   const [aps, setAps] = useState("");
   const [files, setFiles] = useState([]);
+  const [errors, setErrors] = useState({
+    job_name:"",
+    type:""
+  });
+
 
   const { id } = useParams();
   const location = useLocation();
@@ -72,6 +77,7 @@ export default function AddMontage() {
 
   const handleSubmitMontage = () => {
     if ((formData.job_name) && (formData.type)) {
+      setErrors({job_name:"", type:""})
       const url =
         restHelper.getURLPrefix(appConfig.host) +
         appConfig.services.montages.newMontage;
@@ -109,6 +115,12 @@ export default function AddMontage() {
         .catch(function (error) {
           alert("Error while uploading");
         });
+    } else{
+      const myErrors = {...errors}
+      !formData.job_name ? myErrors.job_name = "This Field is required" : myErrors.job_name = ""
+      !formData.type ? myErrors.type = "This Field is required" : myErrors.type = ""
+
+      setErrors(myErrors)
     }
   };
 
@@ -119,6 +131,8 @@ export default function AddMontage() {
   const handleback = () => {
     history.goBack()
   }
+
+  console.log(errors);
 
   return (
     <div className="main_container">
@@ -131,10 +145,12 @@ export default function AddMontage() {
                 <div className="inputs_label">إسم الشغلانة</div>
                 <AppInput
                   id="job_name"
-                  inputClassName="input"
-                  InputProps={{ disableUnderline: true, required:true }}
+                  inputClassName={errors.job_name.length > 0 ? "input" : "input input-error"}
+                  InputProps={{ disableUnderline: true }}
                   value={formData.job_name}
                   onChange={(e) => handleChange(e.target.value, e.target.id)}
+                  error={errors.job_name.length > 0}
+                  helperText={errors.job_name}
                 />
               </div>
               <div className="part">
@@ -142,9 +158,11 @@ export default function AddMontage() {
                 <AppInput
                   id="type"
                   inputClassName="input"
-                  InputProps={{ disableUnderline: true, required:true }}
+                  InputProps={{ disableUnderline: true }}
                   value={formData.type}
                   onChange={(e) => handleChange(e.target.value, e.target.id)}
+                  error={errors.type.length > 0}
+                  helperText={errors.type}
                 />
               </div>
               <div className="part">

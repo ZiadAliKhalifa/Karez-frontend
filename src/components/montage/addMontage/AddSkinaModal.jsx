@@ -70,6 +70,7 @@ function AddSkinaModal({ setSkinaCodes, setSkinaCodesData }) {
           inputClassName="input"
           InputProps={{ disableUnderline: true }}
           value={aps}
+          type={"number"}
           onChange={(e) => setAps(e.target.value)}
         />
         <div className="inputs_label">اتجاه جر</div>
@@ -78,6 +79,7 @@ function AddSkinaModal({ setSkinaCodes, setSkinaCodesData }) {
           inputClassName="input"
           InputProps={{ disableUnderline: true }}
           value={etgahElGar}
+          type={"number"}
           onChange={(e) => setEtgahElGar(e.target.value)}
         />
         <div className="inputs_label">اتجاه عرض</div>
@@ -86,6 +88,7 @@ function AddSkinaModal({ setSkinaCodes, setSkinaCodesData }) {
           inputClassName="input"
           InputProps={{ disableUnderline: true }}
           value={etgahElArd}
+          type={"number"}
           onChange={(e) => setEtgahElArd(e.target.value)}
         />
       </div>

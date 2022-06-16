@@ -7,7 +7,21 @@
   font-weight: 500;
 }
 
+.MuiInput-input[type="error"] {
+  font-family: Tajawal !important;
+  font-weight: 500;
+}
+
 .inputDisabled {
   background-color: rgb(241, 241, 241);
   border-radius: 25px !important;
+}
+
+.inputError {
+  border-radius: 25px !important;
+  border-color:red !important;
+}
+
+.MuiFormHelperText-root {
+  margin-top: 8px !important;
 }

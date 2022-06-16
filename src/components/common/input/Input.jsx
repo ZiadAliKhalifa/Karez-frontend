@@ -56,7 +56,8 @@ function AppInput({
       defaultValue={defaultValue}
       className={
         disabled
-          ? `inputDefault ${inputClassName} inputDisabled`
+          ? `inputDefault ${inputClassName} inputDisabled` 
+          : error ? `inputDefault ${inputClassName} inputError`
           : `inputDefault ${inputClassName}`
       }
       value={value}
