@@ -171,6 +171,24 @@ export default function AddOrderForMontage() {
                             />
                         </div>
                         <div className="part">
+                            <div className="inputs_label">اتجاه عرض</div>
+                            <AppInput
+                                id="etgah_el_ard"
+                                inputClassName="input"
+                                InputProps={{ disableUnderline: true }}
+                                value={montage.etgah_el_ard}
+                            />
+                        </div>
+                        <div className="part">
+                            <div className="inputs_label">اتجاه جر</div>
+                            <AppInput
+                                id="etgah_el_gar"
+                                inputClassName="input"
+                                InputProps={{ disableUnderline: true }}
+                                value={montage.etgah_el_gar}
+                            />
+                        </div>
+                        <div className="part">
                             <div className="inputs_label">APS</div>
                             <AppInput
                                 id="aps"
@@ -209,15 +227,6 @@ export default function AddOrderForMontage() {
                         </div>
                     <div className="column">
                         <div className="part">
-                            <div className="inputs_label">اتجاه جر</div>
-                            <AppInput
-                                id="etgah_el_gar"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={montage.etgah_el_gar}
-                            />
-                        </div>
-                        <div className="part">
                             <div className="inputs_label">جاب</div>
                             <AppInput
                                 id="gap"
@@ -242,15 +251,6 @@ export default function AddOrderForMontage() {
                                 inputClassName="input"
                                 InputProps={{ disableUnderline: true }}
                                 value={montage.tars_el_takser}
-                            />
-                        </div>
-                        <div className="part">
-                            <div className="inputs_label">اتجاه عرض</div>
-                            <AppInput
-                                id="etgah_el_ard"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={montage.etgah_el_ard}
                             />
                         </div>
                     </div>

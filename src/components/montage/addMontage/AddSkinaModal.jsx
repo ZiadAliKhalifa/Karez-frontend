@@ -8,18 +8,28 @@ import AppButton from "../../common/button/Button";
 import { closeModal } from "../../../redux/modal/modalActions";
 import { useDispatch } from "react-redux";
 
-function AddSkinaModal({ setSkinaCodes }) {
+function AddSkinaModal({ setSkinaCodes, setSkinaCodesData }) {
   const dispatch = useDispatch();
 
   const [skinaCode, setSkinaCode] = useState("");
+  const [etgahElGar, setEtgahElGar] = useState("");
+  const [etgahElArd, setEtgahElArd] = useState("");
+  const [aps, setAps] = useState("");
+
 
   const handleAddSkinaSubmit = () => {
     const url =
       restHelper.getURLPrefix(appConfig.host) +
       appConfig.services.montages.newMontageSkinaCode;
 
+    const data = {
+      name: skinaCode,
+      aps: aps,
+      etgah_el_ard: etgahElArd,
+      etgah_el_gar: etgahElGar,
+    }
     restHelper
-      .postRequest(url, { name: skinaCode })
+      .postRequest(url, data)
       .then(function (response) {
         const url =
           restHelper.getURLPrefix(appConfig.host) +
@@ -29,6 +39,7 @@ function AddSkinaModal({ setSkinaCodes }) {
           .getRequest(url)
           .then((res) => {
             setSkinaCodes(res.data.map((code) => code.name));
+            setSkinaCodesData(res.data);
           })
           .catch((error) => {
             alert("برجاء اعادة المحاولة");
@@ -52,6 +63,30 @@ function AddSkinaModal({ setSkinaCodes }) {
           InputProps={{ disableUnderline: true }}
           value={skinaCode}
           onChange={(e) => setSkinaCode(e.target.value)}
+        />
+        <div className="inputs_label">APS</div>
+        <AppInput
+          id="aps"
+          inputClassName="input"
+          InputProps={{ disableUnderline: true }}
+          value={aps}
+          onChange={(e) => setAps(e.target.value)}
+        />
+        <div className="inputs_label">اتجاه جر</div>
+        <AppInput
+          id="etgah_el_gar"
+          inputClassName="input"
+          InputProps={{ disableUnderline: true }}
+          value={etgahElGar}
+          onChange={(e) => setEtgahElGar(e.target.value)}
+        />
+        <div className="inputs_label">اتجاه عرض</div>
+        <AppInput
+          id="etgah_el_ard"
+          inputClassName="input"
+          InputProps={{ disableUnderline: true }}
+          value={etgahElArd}
+          onChange={(e) => setEtgahElArd(e.target.value)}
         />
       </div>
       <div className="montage-submit-button submit-button">

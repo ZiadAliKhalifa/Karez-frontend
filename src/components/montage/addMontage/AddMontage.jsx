@@ -18,6 +18,10 @@ export default function AddMontage() {
 
   const [formData, setFormData] = useState({});
   const [skinaCodes, setSkinaCodes] = useState([]);
+  const [skinaCodesData, setSkinaCodesData] = useState([]);
+  const [etgahElGar, setEtgahElGar] = useState("");
+  const [etgahElArd, setEtgahElArd] = useState("");
+  const [aps, setAps] = useState("");
   const [files, setFiles] = useState([]);
 
   const { id } = useParams();
@@ -34,11 +38,22 @@ export default function AddMontage() {
       .getRequest(url)
       .then((res) => {
         setSkinaCodes(res.data.map((code) => code.name));
+        setSkinaCodesData(res.data);
       })
       .catch(function (error) {
         alert("برجاء اعادة المحاولة");
       });
   }, []);
+
+  useEffect(() => {
+    skinaCodesData.map((code) => {
+      if(code.name===formData.skina_code){
+        setEtgahElGar(code.etgah_el_gar)
+        setEtgahElArd(code.etgah_el_ard)
+        setAps(code.aps)
+      }
+    })
+  }, [formData.skina_code]);
 
   const handleChange = (text, key) => {
     let keys = "";
@@ -71,16 +86,16 @@ export default function AddMontage() {
       form.append("montage_category_id", location.state.categoryId);
       form.append("job_name", formData.job_name);
       form.append("skina_code", formData.skina_code);
-      form.append("aps", formData.aps);
+      form.append("aps", aps);
       form.append("color", formData.color);
       form.append("darafel", formData.darafel);
       form.append("type", formData.type);
-      form.append("etgah_el_gar", formData.etgah_el_gar);
+      form.append("etgah_el_gar", etgahElGar);
       form.append("gap", formData.gap);
       form.append("special_color", formData.special_color);
       form.append("tars_el_takser", formData.tars_el_takser);
       form.append("sub_code", formData.sub_code);
-      form.append("etgah_el_ard", formData.etgah_el_ard);
+      form.append("etgah_el_ard", etgahElArd);
 
       const config = {
         headers: { "content-type": "multipart/form-data" },
@@ -98,7 +113,7 @@ export default function AddMontage() {
   };
 
   const addSkinaHandler = () => {
-    dispatch(openModal(<AddSkinaModal setSkinaCodes={setSkinaCodes} />));
+    dispatch(openModal(<AddSkinaModal setSkinaCodes={setSkinaCodes} setSkinaCodesData={setSkinaCodesData} />));
   };
 
   const handleback = () => {
@@ -152,13 +167,35 @@ export default function AddMontage() {
                 </div>
               </div>
               <div className="part">
+                <div className="inputs_label">اتجاه عرض</div>
+                <AppInput
+                  id="etgah_el_ard"
+                  inputClassName="input"
+                  InputProps={{ disableUnderline: true }}
+                  value={etgahElArd}
+                  disabled={true}
+                  onChange={(e) => handleChange(e.target.value, e.target.id)}
+                />
+            </div>
+              <div className="part">
+                <div className="inputs_label">اتجاه جر</div>
+                <AppInput
+                  id="etgah_el_gar"
+                  inputClassName="input"
+                  InputProps={{ disableUnderline: true }}
+                  value={etgahElGar}
+                  disabled={true}
+                  onChange={(e) => handleChange(e.target.value, e.target.id)}
+                />
+              </div>
+              <div className="part">
                 <div className="inputs_label">APS</div>
                 <AppInput
                   id="aps"
                   inputClassName="input"
-                  type={"number"}
                   InputProps={{ disableUnderline: true }}
-                  value={formData.aps}
+                  value={aps}
+                  disabled={true}
                   onChange={(e) => handleChange(e.target.value, e.target.id)}
                 />
               </div>
@@ -182,17 +219,6 @@ export default function AddMontage() {
                   onChange={(e) => handleChange(e.target.value, e.target.id)}
                 />
               </div>
-            <div className="part">
-              <div className="inputs_label">اتجاه جر</div>
-              <AppInput
-                id="etgah_el_gar"
-                inputClassName="input"
-                InputProps={{ disableUnderline: true }}
-                value={formData.etgah_el_gar}
-                type={"number"}
-                onChange={(e) => handleChange(e.target.value, e.target.id)}
-              />
-            </div>
             </div>
           </div>
           <div className="column">
@@ -234,17 +260,6 @@ export default function AddMontage() {
                 inputClassName="input"
                 InputProps={{ disableUnderline: true }}
                 value={formData.sub_code}
-                onChange={(e) => handleChange(e.target.value, e.target.id)}
-              />
-            </div>
-            <div className="part">
-              <div className="inputs_label">اتجاه عرض</div>
-              <AppInput
-                id="etgah_el_ard"
-                inputClassName="input"
-                InputProps={{ disableUnderline: true }}
-                value={formData.etgah_el_ard}
-                type={"number"}
                 onChange={(e) => handleChange(e.target.value, e.target.id)}
               />
             </div>

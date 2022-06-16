@@ -81,6 +81,24 @@ export default function MontageDetails() {
               />
             </div>
             <div className="part">
+              <div className="inputs_label">اتجاه عرض</div>
+              <AppInput
+                id="etgah_el_ard"
+                inputClassName="input"
+                InputProps={{ disableUnderline: true }}
+                value={montage.etgah_el_ard}
+              />
+            </div>
+            <div className="part">
+              <div className="inputs_label">اتجاه جر</div>
+              <AppInput
+                id="etgah_el_gar"
+                inputClassName="input"
+                InputProps={{ disableUnderline: true }}
+                value={montage.etgah_el_gar}
+              />
+            </div>
+            <div className="part">
               <div className="inputs_label">APS</div>
               <AppInput
                 id="aps"
@@ -105,15 +123,6 @@ export default function MontageDetails() {
                 inputClassName="input"
                 InputProps={{ disableUnderline: true }}
                 value={montage.darafel}
-              />
-            </div>
-            <div className="part">
-              <div className="inputs_label">اتجاه جر</div>
-              <AppInput
-                id="etgah_el_gar"
-                inputClassName="input"
-                InputProps={{ disableUnderline: true }}
-                value={montage.etgah_el_gar}
               />
             </div>
           </div>
@@ -152,15 +161,6 @@ export default function MontageDetails() {
                 inputClassName="input"
                 InputProps={{ disableUnderline: true }}
                 value={montage.sub_code}
-              />
-            </div>
-            <div className="part">
-              <div className="inputs_label">اتجاه عرض</div>
-              <AppInput
-                id="etgah_el_ard"
-                inputClassName="input"
-                InputProps={{ disableUnderline: true }}
-                value={montage.etgah_el_ard}
               />
             </div>
           </div>

@@ -94,6 +94,24 @@ export default function OrderDetails() {
                                 />
                             </div>
                             <div className="part">
+                            <div className="inputs_label">اتجاه عرض</div>
+                            <AppInput
+                                id="etgah_el_ard"
+                                inputClassName="input"
+                                InputProps={{ disableUnderline: true }}
+                                value={order.etgah_el_ard}
+                            />
+                            </div>
+                            <div className="part">
+                            <div className="inputs_label">اتجاه جر</div>
+                            <AppInput
+                                id="etgah_el_gar"
+                                inputClassName="input"
+                                InputProps={{ disableUnderline: true }}
+                                value={order.etgah_el_gar}
+                            />
+                            </div>
+                            <div className="part">
                                 <div className="inputs_label">APS</div>
                                 <AppInput
                                     id="aps"
@@ -120,27 +138,9 @@ export default function OrderDetails() {
                                     value={order.darafel}
                                 />
                             </div>
-                            <div className="part">
-                            <div className="inputs_label">اتجاه عرض</div>
-                            <AppInput
-                                id="etgah_el_ard"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.etgah_el_ard}
-                            />
-                        </div>
                         </div>
                     </div>
                     <div className="column">
-                        <div className="part">
-                            <div className="inputs_label">اتجاه جر</div>
-                            <AppInput
-                                id="etgah_el_gar"
-                                inputClassName="input"
-                                InputProps={{ disableUnderline: true }}
-                                value={order.etgah_el_gar}
-                            />
-                        </div>
                         <div className="part">
                             <div className="inputs_label">جاب</div>
                             <AppInput
