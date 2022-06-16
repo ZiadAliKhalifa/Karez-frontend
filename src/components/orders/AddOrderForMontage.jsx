@@ -272,6 +272,7 @@ export default function AddOrderForMontage() {
                                 value={formData.quantity}
                                 type={"number"}
                                 onChange={(e) => handleChange(e.target.value, e.target.id)}
+                                onWheel={(e) => e.target.blur()}
                             />
                         </div>
                         <div className="part">
@@ -338,6 +339,7 @@ export default function AddOrderForMontage() {
                                 value={formData.label_per_roll}
                                 type={"number"}
                                 onChange={(e) => handleChange(e.target.value, e.target.id)}
+                                onWheel={(e) => e.target.blur()}
                             />
                         </div>
                     </div>

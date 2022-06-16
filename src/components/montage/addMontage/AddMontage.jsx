@@ -249,6 +249,7 @@ export default function AddMontage() {
                 value={formData.gap}
                 type={"number"}
                 onChange={(e) => handleChange(e.target.value, e.target.id)}
+                onWheel={(e) => e.target.blur()}
               />
             </div>
             <div className="part">

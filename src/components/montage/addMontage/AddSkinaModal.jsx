@@ -72,6 +72,7 @@ function AddSkinaModal({ setSkinaCodes, setSkinaCodesData }) {
           value={aps}
           type={"number"}
           onChange={(e) => setAps(e.target.value)}
+          onWheel={(e) => e.target.blur()}
         />
         <div className="inputs_label">اتجاه جر</div>
         <AppInput
@@ -81,6 +82,7 @@ function AddSkinaModal({ setSkinaCodes, setSkinaCodesData }) {
           value={etgahElGar}
           type={"number"}
           onChange={(e) => setEtgahElGar(e.target.value)}
+          onWheel={(e) => e.target.blur()}
         />
         <div className="inputs_label">اتجاه عرض</div>
         <AppInput
@@ -90,6 +92,7 @@ function AddSkinaModal({ setSkinaCodes, setSkinaCodesData }) {
           value={etgahElArd}
           type={"number"}
           onChange={(e) => setEtgahElArd(e.target.value)}
+          onWheel={(e) => e.target.blur()}
         />
       </div>
       <div className="montage-submit-button submit-button">
