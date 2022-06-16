@@ -58,14 +58,14 @@ function SideNav() {
           />
           <div className="sidenav-tab-label">طلبات مغلقة</div>
         </div>
-        <div className="sidenav-tabs" onClick={() => history.push("/order/canceled")}>
+        {/* <div className="sidenav-tabs" onClick={() => history.push("/order/canceled")}>
           <img
             src={skina}
             alt="customer"
             className="sidenav-tab-img"
           />
           <div className="sidenav-tab-label">كود السكينة</div>
-        </div>
+        </div> */}
         <div className="sidenav-tabs" onClick={() => history.push("/logout")}>
           <button className="sidenav-logout-button">تسجيل الخروج</button>
         </div>
