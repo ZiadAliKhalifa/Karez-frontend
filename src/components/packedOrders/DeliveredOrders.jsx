@@ -33,7 +33,8 @@ function PackedOrders() {
               ...item,
               submission_date: formatDateTime(item.submission_date),
               packed_date: formatDateTime(item.packed_date),
-              delivery_date: formatDateTime(item.delivery_date)
+              delivery_date: formatDateTime(item.delivery_date),
+              partial_delivery_date: formatDateTime(item.partial_delivery_date),
             };
           })
         );
@@ -45,6 +46,14 @@ function PackedOrders() {
 
   useEffect(() => {;
       setHeaders([
+        {
+          key: "partial_delivery_date",
+          name: "معاد تسليم جزء الكمية",
+        },
+        {
+          key: "partial_delivered_quantity",
+          name: "كمية جزء التسليم",
+        },
         {
           key: "delivery_date",
           name: "معاد التسليم"

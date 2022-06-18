@@ -46,61 +46,6 @@ function PackedOrders() {
       });
   };
 
-  // const fetchUnPackedOrders = () => {
-  //   const url =
-  //     restHelper.getURLPrefix(appConfig.host) +
-  //     appConfig.services.orders.getUnPackedOrders;
-
-  //   restHelper
-  //     .getRequest(url)
-  //     .then((res) => {
-  //       setOrders(
-  //         res.data.map((item) => {
-  //           return {
-  //             ...item,
-  //             submission_date: formatDateTime(item.submission_date),
-  //           };
-  //         })
-  //       );
-  //     })
-  //     .catch((err) => {
-  //       alert("برجاء اعادة المحاولة");
-  //     });
-  // };
-
-  // const deliveryHandler = (orderId) => {
-  //   const url =
-  //     restHelper.getURLPrefix(appConfig.host) +
-  //     appConfig.services.orders.deliverPackedOrder;
-
-  //   const reqData = {
-  //     id: orderId,
-  //   };
-
-  //   restHelper
-  //     .postRequest(url, reqData)
-  //     .then((res) => {
-  //       fetchUnderProcessingOrders();
-  //       alert("تم تأكيد الاستلام بنجاح");
-  //     })
-  //     .catch((err) => {
-  //       alert("برجاء اعادة المحاولة");
-  //     });
-  // };
-
-  // const dispatchPackedModal = (orderId) => {
-  //   const orderData = orders.find((order) => order.id === orderId);
-  //   dispatch(
-  //     openModal(
-  //       <PackModal
-  //         orderData={orderData}
-  //         orderId={orderId}
-  //         fetchUnPackedOrders={fetchUnPackedOrders}
-  //       />
-  //     )
-  //   );
-  // };
-
   const dispatchChangeStatusModal = (orderId) => {
     const orderData = orders.find((order) => order.id === orderId);
     dispatch(
@@ -119,6 +64,14 @@ function PackedOrders() {
         {
           key: "status",
           name: "الحالة",
+        },
+        {
+          key: "partial_delivery_date",
+          name: "معاد تسليم جزء الكمية",
+        },
+        {
+          key: "partial_delivered_quantity",
+          name: "كمية جزء التسليم",
         },
         {
           key: "packed_quantity",
