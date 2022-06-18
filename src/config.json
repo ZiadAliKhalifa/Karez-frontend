@@ -32,7 +32,8 @@
       "getMontagebyCategory": "api/montage/by-category/",
       "getMontageSkinaCodes": "api/montage/skina-codes/",
       "newMontageSkinaCode": "api/montage/create-skina-codes/",
-      "editMontage": "api/montage/edit-montage/"
+      "editMontage": "api/montage/edit-montage/",
+      "editSkinaCode":"api/montage/edit-skina-codes/"
     },
     "orders": {
       "getUnderProcessingOrders": "api/order/under-processing-orders",

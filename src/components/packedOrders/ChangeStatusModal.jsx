@@ -11,8 +11,9 @@ import Autocomplete from "../common/autoComplete/AutoComplete";
 function ChangeStatusModal({ orderData, orderId, fetchUnderProcessingOrders }) {
   const dispatch = useDispatch();
   const [orderChoices, setOrderChoices] = useState("");
-  const [orderPackingQuantity, setOrderPackingQuantity] = useState("0");
-  const [orderDeliveryQuantity, setOrderDeliveryQuantity] = useState("0");
+  const [orderPackingQuantity, setOrderPackingQuantity] = useState("");
+  const [orderDeliveryQuantity, setOrderDeliveryQuantity] = useState("");
+  const [orderPartialDeliveryQuantity, setOrderPartialDeliveryQuantity] = useState("");
   const [formData, setFormData] = useState({});
 
 
@@ -43,7 +44,7 @@ function ChangeStatusModal({ orderData, orderId, fetchUnderProcessingOrders }) {
     setFormData(newFormData);
   };
 
-  const changeOrderStatusHandler = (orderId,orderPackingQuantity,orderDeliveryQuantity) => {
+  const changeOrderStatusHandler = (orderId,orderPackingQuantity,orderDeliveryQuantity,orderPartialDeliveryQuantity) => {
     const url =
       restHelper.getURLPrefix(appConfig.host) +
       appConfig.services.orders.updateOrderStatus;
@@ -52,7 +53,8 @@ function ChangeStatusModal({ orderData, orderId, fetchUnderProcessingOrders }) {
       id: orderId,
       order_status: formData.order_status,
       order_packing_quantity: orderPackingQuantity,
-      order_delivery_quantity: orderDeliveryQuantity
+      order_delivery_quantity: orderDeliveryQuantity,
+      order_partial_delivery_quantity:orderPartialDeliveryQuantity
     };
 
     restHelper
@@ -107,10 +109,21 @@ function ChangeStatusModal({ orderData, orderId, fetchUnderProcessingOrders }) {
         />
         </>
         )}
+        {formData.order_status === "PartialDelivery" &&(
+          <>
+          <div className="packed-modal-input-label">Order Partial Delivered Quantity</div>
+          <input
+          type="number"
+          className="packed-modal-input"
+          value={orderPartialDeliveryQuantity}
+          onChange={(e) => setOrderPartialDeliveryQuantity(e.target.value)}
+        />
+        </>
+        )}
       </div>
       <div
         className="pack-modal-submit-container"
-        onClick={() => changeOrderStatusHandler(orderId,orderPackingQuantity,orderDeliveryQuantity)}
+        onClick={() => changeOrderStatusHandler(orderId,orderPackingQuantity,orderDeliveryQuantity,orderPartialDeliveryQuantity)}
       >
         <div className="pack-modal-submit-button">تأكيد</div>
       </div>
