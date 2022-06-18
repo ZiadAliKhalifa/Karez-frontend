@@ -37,6 +37,7 @@ function PackedOrders() {
               ...item,
               submission_date: formatDateTime(item.submission_date),
               packed_date: formatDateTime(item.packed_date),
+              partial_delivery_date: formatDateTime(item.partial_delivery_date),
             };
           })
         );

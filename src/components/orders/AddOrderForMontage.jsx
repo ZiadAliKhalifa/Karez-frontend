@@ -47,10 +47,9 @@ export default function AddOrderForMontage() {
         restHelper
             .postRequest(url,data)
             .then((res) => {
-                res.data.quantity = 0
+                res.data.quantity = ""
                 res.data.job_per_meter = 0
                 // res.data.label_per_roll = 0
-                console.log(res.data)
                 setFormData({ ...res.data });
             })
             .catch((err) => {
