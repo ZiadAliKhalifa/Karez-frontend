@@ -155,7 +155,7 @@ export default function MontageDetails() {
               />
             </div>
             <div className="part">
-              <div className="inputs_label">كود فرعي </div>
+              <div className="inputs_label">كود فرعي</div>
               <AppInput
                 id="sub_code"
                 inputClassName="input"

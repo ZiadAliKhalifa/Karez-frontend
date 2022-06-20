@@ -78,15 +78,19 @@ export default function CustomerDetails() {
   const headers = [
     {
       key: "type",
-      name: "النوع",
+      name: "تفاصيل الشغلانة",
     },
     {
       key: "sub_code",
-      name: "الرقم التعريفي",
+      name: "كود فرعي",
     },
     {
       key: "job_name",
       name: "الاسم",
+    },
+    {
+      key: "id",
+      name: "الرقم التعريفي",
     },
   ];
 

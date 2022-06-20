@@ -263,7 +263,7 @@ export default function AddMontage() {
               />
             </div>
             <div className="part">
-              <div className="inputs_label"> ترس التكسير</div>
+              <div className="inputs_label">ترس التكسير</div>
               <AppInput
                 id="tars_el_takser"
                 inputClassName="input"

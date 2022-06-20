@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation, useParams } from "react-router-dom";
+import { formatDateTime } from "../../utils/dateTime";
+
 
 import Table from "../common/Table/Table";
 
@@ -25,7 +27,14 @@ export default function OrdersByMontage() {
         restHelper
             .getRequest(url + id)
             .then((res) => {
-                setOrders(res.data);
+                setOrders(
+                    res.data.map((item) => {
+                      return {
+                        ...item,
+                        submission_date: formatDateTime(item.submission_date),
+                      };
+                    })
+                  );
             })
             .catch((err) => {
                 alert("برجاء اعادة المحاولة");
