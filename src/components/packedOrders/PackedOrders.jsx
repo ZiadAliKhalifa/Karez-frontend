@@ -31,13 +31,15 @@ function PackedOrders() {
     restHelper
       .getRequest(url)
       .then((res) => {
+        console.log(res)
+
         setOrders(
           res.data.map((item) => {
             return {
               ...item,
               submission_date: formatDateTime(item.submission_date),
-              packed_date: formatDateTime(item.packed_date),
-              partial_delivery_date: formatDateTime(item.partial_delivery_date),
+              packed_date: item.packed_date?formatDateTime(item.packed_date):null,
+              partial_delivery_date: item.partial_delivery_date?formatDateTime(item.partial_delivery_date):null,
             };
           })
         );
@@ -77,6 +79,10 @@ function PackedOrders() {
         {
           key: "packed_quantity",
           name: "كمية التعبئة",
+        },
+        {
+          key: "requested_quantity",
+          name: "الكمية المطلوبة",
         },
         {
           key: "packed_date",
